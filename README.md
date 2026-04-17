@@ -59,6 +59,16 @@ gane-nav/
     trade/                # React 19 + Firebase + Leaflet navigation console
     brainiac/             # React 19 + three.js + Python backend (Aegis + Brainiac)
 
+  services/
+    gane-platform/        # Express + tRPC backend (RBAC, policy, trust, route
+                          # explainer, offline sovereignty, release gate,
+                          # regression sentinel, safety-UX, admin, billing)
+
+  reference/              # Third-party source-level references (NOT built by CI)
+    navigation2/          #   ROS 2 Navigation Stack snapshot (Apache-2.0)
+                          #   See reference/README.md and
+                          #   reference/navigation2/GANE_REFERENCE.md
+
   .github/workflows/      # CI: build, clippy, test, fmt, bench, doc (Rust only today)
   Cargo.toml              # Workspace manifest (2,452 unique members)
   Dockerfile              # Multi-stage release build for gane-app
