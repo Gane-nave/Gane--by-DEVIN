@@ -39,29 +39,24 @@ impl CliArgs {
 
         let mut i = 1; // skip binary name
         while i < args.len() {
+            let has_value = i + 1 < args.len();
             match args[i].as_str() {
-                "--config" | "-c" => {
-                    if i + 1 < args.len() {
-                        cli.config_path = Some(PathBuf::from(&args[i + 1]));
-                        i += 1;
-                    }
+                "--config" | "-c" if has_value => {
+                    cli.config_path = Some(PathBuf::from(&args[i + 1]));
+                    i += 1;
                 }
-                "--port" | "-p" => {
-                    if i + 1 < args.len() {
-                        cli.port = args[i + 1].parse().ok();
-                        i += 1;
-                    }
+                "--port" | "-p" if has_value => {
+                    cli.port = args[i + 1].parse().ok();
+                    i += 1;
                 }
-                "--log-level" | "-l" => {
-                    if i + 1 < args.len() {
-                        cli.log_level = Some(args[i + 1].clone());
-                        i += 1;
-                    }
+                "--log-level" | "-l" if has_value => {
+                    cli.log_level = Some(args[i + 1].clone());
+                    i += 1;
                 }
                 "--dump-config" => cli.dump_config = true,
                 "--version" | "-V" => cli.version = true,
                 "--status" => cli.status_only = true,
-                _ => {} // ignore unknown args
+                _ => {} // ignore unknown args / missing values
             }
             i += 1;
         }
