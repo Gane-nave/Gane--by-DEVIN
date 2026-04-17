@@ -1,18 +1,27 @@
-# AURORA NAV / GMIN
+# G.A.N.E NAV
 
-**Global Mobility Intelligence Network** -- A production-grade navigation system built in Rust with 210+ modular crates covering GNSS positioning, sensor fusion, routing, traffic, V2X communication, indoor positioning, AR navigation, and more.
+**Global Autonomous Navigation Engine / Global Mobility Intelligence Network**
 
-## Architecture Overview
+G.A.N.E NAV is a production-grade, modular navigation platform built as a
+Cargo workspace of `aurora-*` crates. It unifies the codebases previously
+tracked as *AURORA NAV*, *GMIN*, and *G.A.N.E* into a single repository:
 
-AURORA NAV is organized as a Cargo workspace with modular crates in `crates/`:
+- The Rust workspace in `crates/` — positioning, sensor fusion, integrity
+  monitoring, routing, traffic, V2X, indoor / AR navigation, the REST API
+  server, and the Leaflet-based web dashboard.
+- The `frontend/` directory — a React / TypeScript client snapshot that
+  pairs with `aurora-api` for a richer dashboard experience. See
+  [`frontend/README.md`](frontend/README.md) for its current status.
+
+## Workspace Layout
 
 ```
-aurora-nav/
+gane-nav/
   crates/
     aurora-core/          # Core types, coordinates, errors
     aurora-gnss/          # Multi-constellation GNSS receiver
     aurora-fusion/        # Extended Kalman Filter sensor fusion
-    aurora-integrity/     # RAIM, protection levels, jamming/spoofing detection
+    aurora-integrity/     # RAIM, protection levels, jamming/spoofing
     aurora-routing/       # A* / Dijkstra route planning
     aurora-map/           # Map data, tiles, matching
     aurora-lane/          # Lane-level guidance
@@ -24,99 +33,123 @@ aurora-nav/
     aurora-web/           # Interactive web dashboard (Leaflet.js)
     aurora-app/           # Application orchestration
     aurora-orchestrator/  # Pipeline orchestrator
-    ... (200+ more crates)
+    ... (2,400+ more crates covering sensors, infra, UX, compliance, etc.)
+  frontend/               # React/TypeScript dashboard snapshot
+    src/                  # Component snapshot (see frontend/README.md)
+    docs/                 # Historical status reports from the import
+  .github/workflows/      # CI: build, clippy, test, fmt, bench, doc
+  Cargo.toml              # Workspace manifest (2,452 unique members)
+  Dockerfile              # Multi-stage release build for aurora-app
+  docker-compose.yml      # Local runtime for aurora-nav
 ```
 
-## Key Features
+## Key Capabilities
 
 ### Positioning and Navigation
-- **Multi-GNSS**: GPS, Galileo, GLONASS, BeiDou with quality scoring
-- **EKF Fusion**: Extended Kalman Filter combining GNSS, IMU, barometer, odometry
-- **Tunnel Mode**: Dead-reckoning with automatic GNSS handoff
-- **RTK/PPP**: Centimetre-level corrections with RAIM integrity
-- **Indoor Positioning**: BLE beacon trilateration, WiFi RTT, magnetic fingerprinting
-- **Dead Reckoning**: Inertial navigation for GNSS-denied environments
+- **Multi-GNSS**: GPS, Galileo, GLONASS, BeiDou with per-signal quality scoring.
+- **EKF Fusion**: Extended Kalman Filter combining GNSS, IMU, barometer,
+  odometry, and map matching.
+- **Continuity Manager**: automatic degraded-mode switching (Modes A–E)
+  with graceful recovery and re-entry.
+- **Tunnel / Urban Canyon Recovery**: dead reckoning with automatic GNSS
+  handoff when signals return.
+- **RTK / PPP / SBAS corrections** with RAIM integrity monitoring.
+- **Indoor positioning**: BLE beacons, WiFi RTT, magnetic fingerprinting.
 
-### Routing and Traffic
-- **Multi-modal Routing**: Car, bicycle, pedestrian, public transit
-- **Real-time Traffic**: Congestion heatmaps, incident detection, predictive routing
-- **Lane Guidance**: Turn-by-turn with lane-level precision
-- **Risk Engine**: Probabilistic route scoring with confidence intervals
-- **ETA Prediction**: ML-enhanced arrival time estimation
+### Routing, Traffic, Risk
+- Multi-modal routing: car, truck, EV, bicycle, pedestrian, transit.
+- Probabilistic routing with ETA confidence intervals and volatility index.
+- Lane-level guidance and corridor routing.
+- Network-stability-aware flow control (anti-herding, corridor throttling).
+- Per-segment risk scoring and safety-envelope routing.
 
-### V2X Communication
-- **DSRC / C-V2X**: Dual-mode vehicle-to-everything communication
-- **BSM**: Basic Safety Message exchange with nearby vehicles
-- **SPaT**: Signal Phase and Timing from smart intersections
-- **GLOSA**: Green-Light Optimal Speed Advisory
-- **Collision Detection**: Time-to-collision (TTC) based warnings
+### Integrity, Trust, Evidence
+- Spoofing and jamming detection, satellite exclusion, per-source trust.
+- Evidence capture with signed metadata and privacy blur.
+- Anti-manipulation checks and algorithm-transparency logs.
 
-### AR Navigation
-- **3D Projection**: Pinhole camera model for AR waypoint overlay
-- **Lane Projection**: Straight and curved lane guidance visualization
-- **Distance Fading**: Opacity and scale based on depth
-- **Depth Sorting**: Back-to-front rendering order
+### Communication & V2X
+- Basic Safety Message (BSM), SPaT, GLOSA.
+- Satellite store-and-forward for emergency packets.
+- Mesh fallback over Bluetooth / Wi-Fi Direct.
 
 ### Infrastructure
-- **210+ Crates**: Modular, independently testable components
-- **4,600+ Tests**: Comprehensive unit, integration, and adversarial tests
-- **REST API**: Axum-based server with health checks, CORS, tracing
-- **Web Dashboard**: Interactive Leaflet.js map with real-time telemetry
-- **Docker Ready**: Multi-stage build with health checks
-- **Observability**: Structured logging, distributed tracing, histograms
+- **2,452 modular crates**, independently testable.
+- REST API (Axum) + WebSocket surface.
+- Interactive Leaflet web dashboard (`aurora-web`).
+- Docker multi-stage build and compose for local runtime.
+- Structured logging, distributed tracing, histograms, Prometheus metrics.
 
 ## Quick Start
 
 ### Prerequisites
-- Rust 1.70+ (tested on 1.94.0)
+- Rust 1.83+ (tested on 1.83.0)
 - Cargo (included with Rust)
+- Node 18+ and pnpm (only if working on `frontend/`)
 
-### Build
+### Build the workspace
 ```bash
 cargo build --workspace
 ```
 
-### Run Tests
+### Type-check only (fast)
+```bash
+cargo check --workspace
+```
+
+### Run the test suite
 ```bash
 cargo test --workspace
 ```
 
-### Run API Server
+### Run the API server
 ```bash
 cargo run -p aurora-api
 ```
-The server starts on `http://localhost:3000` with:
-- `GET /` -- Web dashboard
-- `GET /api/dashboard` -- JSON telemetry data
-- `GET /health` -- Health check
+The server starts on `http://localhost:3000`:
+- `GET /` — web dashboard
+- `GET /api/dashboard` — JSON telemetry
+- `GET /health` — health check
 
-### Lint
+### Lint & format
 ```bash
 cargo clippy --all-targets -- -D warnings
 cargo fmt --all -- --check
 ```
 
+### Docker
+```bash
+docker compose up --build
+```
+
 ## Crate Categories
 
-| Category | Crates | Description |
-|----------|--------|-------------|
-| Core | aurora-core, aurora-events, aurora-config | Foundation types, events, configuration |
-| GNSS/PNT | aurora-gnss, aurora-multi-gnss, aurora-ekf, aurora-tunnel | Positioning, navigation, timing |
-| Sensors | aurora-sensors, aurora-fusion, aurora-dead-reckoning | IMU, barometer, odometry fusion |
-| Integrity | aurora-integrity, aurora-continuity, aurora-anti-manipulation | RAIM, jamming/spoofing detection |
-| Routing | aurora-routing, aurora-risk, aurora-probabilistic | Route planning, risk scoring |
-| Traffic | aurora-traffic, aurora-stability, aurora-crowd-speed | Real-time traffic management |
-| V2X | aurora-v2x | Vehicle-to-Everything communication |
-| Indoor | aurora-indoor | Indoor positioning systems |
-| AR | aurora-ar-nav, aurora-ar | Augmented Reality navigation |
-| Maps | aurora-map, aurora-lane, aurora-offline, aurora-tiles | Map data, lane guidance, offline maps |
-| API/Web | aurora-api, aurora-web | REST API server, web dashboard |
-| Fleet | aurora-fleet, aurora-emergency | Fleet management, emergency routing |
-| Smart City | aurora-city, aurora-twin | Smart city integration, digital twins |
-| Infrastructure | aurora-cache, aurora-pipeline, aurora-mesh | Data structures, concurrency, networking |
-| Observability | aurora-telemetry, aurora-metrics, aurora-tracing-dist | Logging, metrics, distributed tracing |
-| Security | aurora-auth, aurora-security, aurora-compliance | Authentication, encryption, compliance |
+| Category | Representative crates |
+|---|---|
+| Core | `aurora-core`, `aurora-events`, `aurora-config`, `aurora-errors` |
+| GNSS / PNT | `aurora-gnss`, `aurora-multi-gnss`, `aurora-ekf`, `aurora-tunnel`, `aurora-dual-freq` |
+| Sensors | `aurora-sensors`, `aurora-fusion`, `aurora-dead-reckoning`, `aurora-imu-sensor` |
+| Integrity | `aurora-integrity`, `aurora-continuity`, `aurora-anti-manipulation`, `aurora-anti-jam` |
+| Routing | `aurora-routing`, `aurora-risk`, `aurora-probabilistic`, `aurora-multistop` |
+| Traffic | `aurora-traffic`, `aurora-stability`, `aurora-crowd-speed`, `aurora-traffic-predict` |
+| V2X | `aurora-v2x`, `aurora-v2v-comm`, `aurora-v2i-comm`, `aurora-v2p-safety` |
+| Indoor / AR | `aurora-indoor`, `aurora-ar`, `aurora-ar-nav` |
+| Maps | `aurora-map`, `aurora-lane`, `aurora-offline`, `aurora-tiles`, `aurora-map-match` |
+| API / Web | `aurora-api`, `aurora-web`, `aurora-websocket` |
+| Fleet / EMS | `aurora-fleet`, `aurora-emergency`, `aurora-emergency-sat` |
+| Smart City | `aurora-city`, `aurora-twin`, `aurora-intersection` |
+| Infrastructure | `aurora-cache`, `aurora-pipeline`, `aurora-mesh`, `aurora-ratelimit` |
+| Observability | `aurora-telemetry`, `aurora-metrics`, `aurora-tracing-dist`, `aurora-structured-log` |
+| Security | `aurora-auth`, `aurora-security`, `aurora-compliance`, `aurora-audit` |
+
+## Repository Conventions
+
+- **Branches**: `main` (release), `devin/<timestamp>-<slug>` (work branches).
+- **Never** commit release archives, PDFs, or `target/` artifacts — see
+  `.gitignore`.
+- Binary / rendered artifacts (`*.zip`, `*.tar*`, `*.pdf`) are blocked at
+  the gitignore level to keep the repo lean.
 
 ## License
 
-MIT
+MIT.

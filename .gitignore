@@ -3,3 +3,20 @@
 *.swp
 *.swo
 .DS_Store
+
+# Never commit archives / release bundles
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+
+# Binary / rendered documents belong outside source control
+*.pdf
+
+# Node / frontend build artifacts
+frontend/node_modules
+frontend/dist
+frontend/.vite
+frontend/coverage
+frontend/.env
+frontend/.env.local

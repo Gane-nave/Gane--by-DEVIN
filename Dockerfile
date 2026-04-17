@@ -1,5 +1,5 @@
 # ============================================================================
-# AURORA NAV — Multi-stage Docker build
+# G.A.N.E NAV — Multi-stage Docker build
 # ============================================================================
 # Stage 1: Build the release binary
 FROM rust:1.83-slim-bookworm AS builder
