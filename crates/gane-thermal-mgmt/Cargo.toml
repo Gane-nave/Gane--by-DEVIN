@@ -1,0 +1,6 @@
+[package]
+name = "gane-thermal-mgmt"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

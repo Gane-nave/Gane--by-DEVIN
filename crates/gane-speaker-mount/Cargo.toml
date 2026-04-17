@@ -1,0 +1,6 @@
+[package]
+name = "gane-speaker-mount"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

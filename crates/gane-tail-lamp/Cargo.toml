@@ -1,0 +1,6 @@
+[package]
+name = "gane-tail-lamp"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

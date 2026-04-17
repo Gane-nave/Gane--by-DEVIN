@@ -1,0 +1,6 @@
+[package]
+name = "gane-headlight-ctrl"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

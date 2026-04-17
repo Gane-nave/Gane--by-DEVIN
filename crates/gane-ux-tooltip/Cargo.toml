@@ -1,0 +1,4 @@
+[package]
+name = "gane-ux-tooltip"
+version = "0.1.0"
+edition = "2021"

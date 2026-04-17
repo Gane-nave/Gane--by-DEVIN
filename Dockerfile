@@ -8,8 +8,8 @@ WORKDIR /build
 COPY Cargo.toml Cargo.lock ./
 COPY crates/ crates/
 
-RUN cargo build --release -p aurora-app && \
-    strip target/release/aurora-nav
+RUN cargo build --release -p gane-app && \
+    strip target/release/gane-nav
 
 # Stage 2: Minimal runtime image
 FROM debian:bookworm-slim AS runtime
@@ -20,7 +20,7 @@ RUN apt-get update && \
 
 RUN useradd -m -s /bin/bash aurora
 
-COPY --from=builder /build/target/release/aurora-nav /usr/local/bin/aurora-nav
+COPY --from=builder /build/target/release/gane-nav /usr/local/bin/gane-nav
 
 USER aurora
 WORKDIR /home/aurora
@@ -28,7 +28,7 @@ WORKDIR /home/aurora
 EXPOSE 3000
 
 HEALTHCHECK --interval=15s --timeout=5s --start-period=10s --retries=3 \
-    CMD ["/usr/local/bin/aurora-nav", "--status"]
+    CMD ["/usr/local/bin/gane-nav", "--status"]
 
-ENTRYPOINT ["/usr/local/bin/aurora-nav"]
+ENTRYPOINT ["/usr/local/bin/gane-nav"]
 CMD ["--port", "3000"]

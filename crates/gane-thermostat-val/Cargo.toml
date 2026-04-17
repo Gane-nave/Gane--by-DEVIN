@@ -1,0 +1,6 @@
+[package]
+name = "gane-thermostat-val"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

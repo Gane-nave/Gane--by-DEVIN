@@ -1,0 +1,6 @@
+[package]
+name = "gane-motor-ctrl"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

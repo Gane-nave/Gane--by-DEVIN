@@ -1,0 +1,4 @@
+[package]
+name = "gane-test-suite"
+version = "0.1.0"
+edition = "2021"

@@ -1,0 +1,6 @@
+[package]
+name = "gane-gas-strut"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

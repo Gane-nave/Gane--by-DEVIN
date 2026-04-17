@@ -1,0 +1,6 @@
+[package]
+name = "gane-corrosion-mon"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

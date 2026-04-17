@@ -1,0 +1,6 @@
+[package]
+name = "gane-trip-computer"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

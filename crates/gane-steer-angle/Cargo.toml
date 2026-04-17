@@ -1,0 +1,6 @@
+[package]
+name = "gane-steer-angle"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

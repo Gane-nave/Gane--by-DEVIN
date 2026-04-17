@@ -1,0 +1,6 @@
+[package]
+name = "gane-nut-prev"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

@@ -1,0 +1,6 @@
+[package]
+name = "gane-rev-limiter"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

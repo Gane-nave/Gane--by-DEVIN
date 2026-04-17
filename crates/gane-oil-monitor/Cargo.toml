@@ -1,0 +1,6 @@
+[package]
+name = "gane-oil-monitor"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

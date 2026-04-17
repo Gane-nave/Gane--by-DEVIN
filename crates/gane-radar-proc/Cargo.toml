@@ -1,0 +1,6 @@
+[package]
+name = "gane-radar-proc"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

@@ -1,0 +1,6 @@
+[package]
+name = "gane-modal-damp"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

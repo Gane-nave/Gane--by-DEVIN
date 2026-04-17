@@ -1,0 +1,6 @@
+[package]
+name = "gane-gear-whine"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

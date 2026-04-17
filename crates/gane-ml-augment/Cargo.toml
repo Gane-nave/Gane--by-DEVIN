@@ -1,0 +1,4 @@
+[package]
+name = "gane-ml-augment"
+version = "0.1.0"
+edition = "2021"

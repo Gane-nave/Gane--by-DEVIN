@@ -1,0 +1,6 @@
+[package]
+name = "gane-weld-integ"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

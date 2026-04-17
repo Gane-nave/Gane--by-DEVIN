@@ -1,0 +1,6 @@
+[package]
+name = "gane-wiper-mech"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

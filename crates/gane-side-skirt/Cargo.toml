@@ -1,0 +1,6 @@
+[package]
+name = "gane-side-skirt"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

@@ -1,0 +1,6 @@
+[package]
+name = "gane-load-level"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

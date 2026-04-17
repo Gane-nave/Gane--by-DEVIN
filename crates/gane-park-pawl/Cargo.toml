@@ -1,0 +1,6 @@
+[package]
+name = "gane-park-pawl"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

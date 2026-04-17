@@ -1,0 +1,6 @@
+[package]
+name = "gane-corner-weight"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

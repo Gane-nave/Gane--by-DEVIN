@@ -1,0 +1,6 @@
+[package]
+name = "gane-adaptive-light"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

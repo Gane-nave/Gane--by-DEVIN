@@ -1,0 +1,6 @@
+[package]
+name = "gane-drive-shaft"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

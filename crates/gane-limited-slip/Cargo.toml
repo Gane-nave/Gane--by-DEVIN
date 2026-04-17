@@ -1,0 +1,6 @@
+[package]
+name = "gane-limited-slip"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

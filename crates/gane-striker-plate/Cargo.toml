@@ -1,0 +1,6 @@
+[package]
+name = "gane-striker-plate"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

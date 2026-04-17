@@ -1,0 +1,4 @@
+[package]
+name = "gane-acc-ctrl"
+version = "0.1.0"
+edition = "2021"

@@ -1,0 +1,6 @@
+[package]
+name = "gane-fuel-economy"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

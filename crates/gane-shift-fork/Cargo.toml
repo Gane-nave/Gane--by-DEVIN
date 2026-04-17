@@ -1,0 +1,6 @@
+[package]
+name = "gane-shift-fork"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

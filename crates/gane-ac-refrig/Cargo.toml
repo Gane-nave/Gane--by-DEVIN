@@ -1,0 +1,4 @@
+[package]
+name = "gane-ac-refrig"
+version = "0.1.0"
+edition = "2021"

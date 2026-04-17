@@ -1,0 +1,6 @@
+[package]
+name = "gane-compressor-ac"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

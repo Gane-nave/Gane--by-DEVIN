@@ -1,0 +1,6 @@
+[package]
+name = "gane-door-seal"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

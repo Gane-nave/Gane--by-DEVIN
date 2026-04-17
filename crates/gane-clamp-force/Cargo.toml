@@ -1,0 +1,6 @@
+[package]
+name = "gane-clamp-force"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

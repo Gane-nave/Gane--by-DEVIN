@@ -1,0 +1,6 @@
+[package]
+name = "gane-hvac-noise"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

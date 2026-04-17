@@ -1,0 +1,6 @@
+[package]
+name = "gane-ignition-ctrl"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

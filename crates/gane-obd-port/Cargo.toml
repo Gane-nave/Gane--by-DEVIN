@@ -1,0 +1,6 @@
+[package]
+name = "gane-obd-port"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

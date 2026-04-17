@@ -1,0 +1,6 @@
+[package]
+name = "gane-mirror-fold"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

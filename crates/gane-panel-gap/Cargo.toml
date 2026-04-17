@@ -1,0 +1,6 @@
+[package]
+name = "gane-panel-gap"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

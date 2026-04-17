@@ -1,0 +1,4 @@
+[package]
+name = "gane-integ-sse"
+version = "0.1.0"
+edition = "2021"

@@ -1,0 +1,6 @@
+[package]
+name = "gane-sunroof-mech"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

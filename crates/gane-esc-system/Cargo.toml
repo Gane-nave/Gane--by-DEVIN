@@ -1,0 +1,6 @@
+[package]
+name = "gane-esc-system"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

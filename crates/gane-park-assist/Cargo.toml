@@ -1,0 +1,6 @@
+[package]
+name = "gane-park-assist"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

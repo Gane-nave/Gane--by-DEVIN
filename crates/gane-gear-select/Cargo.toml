@@ -1,0 +1,6 @@
+[package]
+name = "gane-gear-select"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

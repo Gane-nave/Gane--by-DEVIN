@@ -1,0 +1,6 @@
+[package]
+name = "gane-range-calc"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

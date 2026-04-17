@@ -1,0 +1,6 @@
+[package]
+name = "gane-weather-seal"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

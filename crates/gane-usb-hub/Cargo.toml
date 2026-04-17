@@ -1,0 +1,6 @@
+[package]
+name = "gane-usb-hub"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

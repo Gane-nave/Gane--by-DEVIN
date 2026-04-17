@@ -1,0 +1,6 @@
+[package]
+name = "gane-bracket-mount"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

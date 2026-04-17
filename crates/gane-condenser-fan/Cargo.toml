@@ -1,0 +1,6 @@
+[package]
+name = "gane-condenser-fan"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

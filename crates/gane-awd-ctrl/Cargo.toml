@@ -1,0 +1,6 @@
+[package]
+name = "gane-awd-ctrl"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

@@ -1,0 +1,6 @@
+[package]
+name = "gane-cabin-press"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

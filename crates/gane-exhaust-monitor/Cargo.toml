@@ -1,0 +1,6 @@
+[package]
+name = "gane-exhaust-monitor"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

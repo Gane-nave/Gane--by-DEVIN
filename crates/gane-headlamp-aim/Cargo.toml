@@ -1,0 +1,6 @@
+[package]
+name = "gane-headlamp-aim"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

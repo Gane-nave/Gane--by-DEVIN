@@ -1,0 +1,6 @@
+[package]
+name = "gane-seat-heater"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

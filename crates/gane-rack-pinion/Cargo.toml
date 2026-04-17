@@ -1,0 +1,6 @@
+[package]
+name = "gane-rack-pinion"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

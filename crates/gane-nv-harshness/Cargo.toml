@@ -1,0 +1,6 @@
+[package]
+name = "gane-nv-harshness"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

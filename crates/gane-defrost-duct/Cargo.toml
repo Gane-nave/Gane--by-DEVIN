@@ -1,0 +1,6 @@
+[package]
+name = "gane-defrost-duct"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

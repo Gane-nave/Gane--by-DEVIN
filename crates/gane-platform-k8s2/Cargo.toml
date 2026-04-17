@@ -1,0 +1,4 @@
+[package]
+name = "gane-platform-k8s2"
+version = "0.1.0"
+edition = "2021"

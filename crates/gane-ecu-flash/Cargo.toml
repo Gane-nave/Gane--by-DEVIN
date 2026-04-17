@@ -1,0 +1,6 @@
+[package]
+name = "gane-ecu-flash"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

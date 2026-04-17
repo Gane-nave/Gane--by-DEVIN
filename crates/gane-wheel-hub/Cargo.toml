@@ -1,0 +1,4 @@
+[package]
+name = "gane-wheel-hub"
+version = "0.1.0"
+edition = "2021"

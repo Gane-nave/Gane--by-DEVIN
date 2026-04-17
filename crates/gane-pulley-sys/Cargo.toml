@@ -1,0 +1,6 @@
+[package]
+name = "gane-pulley-sys"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

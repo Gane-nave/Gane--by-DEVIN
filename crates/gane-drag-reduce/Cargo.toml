@@ -1,0 +1,6 @@
+[package]
+name = "gane-drag-reduce"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

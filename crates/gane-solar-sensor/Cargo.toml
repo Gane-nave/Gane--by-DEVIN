@@ -1,0 +1,6 @@
+[package]
+name = "gane-solar-sensor"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

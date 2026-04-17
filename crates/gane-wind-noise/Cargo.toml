@@ -1,0 +1,6 @@
+[package]
+name = "gane-wind-noise"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

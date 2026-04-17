@@ -1,0 +1,6 @@
+[package]
+name = "gane-humidity-sens"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

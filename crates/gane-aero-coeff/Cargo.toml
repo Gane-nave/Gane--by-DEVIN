@@ -1,0 +1,6 @@
+[package]
+name = "gane-aero-coeff"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

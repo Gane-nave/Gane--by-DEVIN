@@ -1,0 +1,6 @@
+[package]
+name = "gane-bluetooth-mod"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

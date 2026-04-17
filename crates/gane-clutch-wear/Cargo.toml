@@ -1,0 +1,6 @@
+[package]
+name = "gane-clutch-wear"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

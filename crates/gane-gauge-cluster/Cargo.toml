@@ -1,0 +1,6 @@
+[package]
+name = "gane-gauge-cluster"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

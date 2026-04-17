@@ -1,0 +1,4 @@
+[package]
+name = "gane-net-memcache"
+version = "0.1.0"
+edition = "2021"

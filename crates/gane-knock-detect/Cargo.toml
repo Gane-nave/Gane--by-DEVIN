@@ -1,0 +1,6 @@
+[package]
+name = "gane-knock-detect"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

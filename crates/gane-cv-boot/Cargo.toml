@@ -1,0 +1,6 @@
+[package]
+name = "gane-cv-boot"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

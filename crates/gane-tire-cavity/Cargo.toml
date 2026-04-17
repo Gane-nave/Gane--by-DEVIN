@@ -1,0 +1,6 @@
+[package]
+name = "gane-tire-cavity"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

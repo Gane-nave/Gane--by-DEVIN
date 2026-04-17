@@ -1,0 +1,6 @@
+[package]
+name = "gane-piston-ring"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

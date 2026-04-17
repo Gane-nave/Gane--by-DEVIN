@@ -1,0 +1,6 @@
+[package]
+name = "gane-oil-press"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

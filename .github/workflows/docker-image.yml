@@ -2,9 +2,9 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "devin/1773587117-aurora-nav-phase0" ]
+    branches: [ "devin/1773587117-gane-nav-phase0" ]
   pull_request:
-    branches: [ "devin/1773587117-aurora-nav-phase0" ]
+    branches: [ "devin/1773587117-gane-nav-phase0" ]
 
 jobs:
 

@@ -1,0 +1,6 @@
+[package]
+name = "gane-zinc-layer"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

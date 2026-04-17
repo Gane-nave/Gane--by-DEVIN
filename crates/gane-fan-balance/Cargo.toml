@@ -1,0 +1,6 @@
+[package]
+name = "gane-fan-balance"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

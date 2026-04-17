@@ -1,0 +1,4 @@
+[package]
+name = "gane-freeze-frame"
+version = "0.1.0"
+edition = "2021"

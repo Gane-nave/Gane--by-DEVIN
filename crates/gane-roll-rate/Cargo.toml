@@ -1,0 +1,6 @@
+[package]
+name = "gane-roll-rate"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

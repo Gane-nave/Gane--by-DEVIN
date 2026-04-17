@@ -1,0 +1,6 @@
+[package]
+name = "gane-coolant-pump"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

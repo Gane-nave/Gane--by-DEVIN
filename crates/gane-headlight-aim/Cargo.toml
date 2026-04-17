@@ -1,0 +1,6 @@
+[package]
+name = "gane-headlight-aim"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

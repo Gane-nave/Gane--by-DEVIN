@@ -1,0 +1,6 @@
+[package]
+name = "gane-vent-actuator"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

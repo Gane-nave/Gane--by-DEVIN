@@ -1,0 +1,4 @@
+[package]
+name = "gane-cloud-cdn"
+version = "0.1.0"
+edition = "2021"

@@ -1,0 +1,6 @@
+[package]
+name = "gane-puddle-light"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

@@ -1,0 +1,6 @@
+[package]
+name = "gane-coolant-temp"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

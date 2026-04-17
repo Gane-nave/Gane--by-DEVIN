@@ -1,0 +1,6 @@
+[package]
+name = "gane-rollover-det"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

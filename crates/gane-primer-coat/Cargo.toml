@@ -1,0 +1,6 @@
+[package]
+name = "gane-primer-coat"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

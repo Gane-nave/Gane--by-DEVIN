@@ -1,0 +1,6 @@
+[package]
+name = "gane-check-strap"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

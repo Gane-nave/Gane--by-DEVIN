@@ -1,0 +1,6 @@
+[package]
+name = "gane-absorber-panel"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

@@ -1,0 +1,6 @@
+[package]
+name = "gane-adhesive-bond"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

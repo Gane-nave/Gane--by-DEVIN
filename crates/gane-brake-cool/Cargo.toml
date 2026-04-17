@@ -1,0 +1,6 @@
+[package]
+name = "gane-brake-cool"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

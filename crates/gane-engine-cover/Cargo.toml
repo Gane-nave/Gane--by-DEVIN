@@ -1,0 +1,6 @@
+[package]
+name = "gane-engine-cover"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

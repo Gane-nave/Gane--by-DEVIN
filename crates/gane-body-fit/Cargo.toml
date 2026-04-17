@@ -1,0 +1,6 @@
+[package]
+name = "gane-body-fit"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

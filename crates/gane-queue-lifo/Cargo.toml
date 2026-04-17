@@ -1,0 +1,4 @@
+[package]
+name = "gane-queue-lifo"
+version = "0.1.0"
+edition = "2021"

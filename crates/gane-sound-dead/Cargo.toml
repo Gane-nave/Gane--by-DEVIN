@@ -1,0 +1,6 @@
+[package]
+name = "gane-sound-dead"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]

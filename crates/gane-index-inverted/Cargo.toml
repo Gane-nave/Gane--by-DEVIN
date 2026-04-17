@@ -1,0 +1,4 @@
+[package]
+name = "gane-index-inverted"
+version = "0.1.0"
+edition = "2021"

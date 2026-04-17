@@ -18,29 +18,29 @@ This is a **polyglot monorepo**:
 
 The Rust workspace is the **source of truth** for positioning, sensor
 fusion, and integrity monitoring. The Node and React surfaces consume
-`aurora-api` (Axum) for the high-assurance real-time path and layer
+`gane-api` (Axum) for the high-assurance real-time path and layer
 their own product UX on top.
 
 ## Workspace Layout
 
 ```
 gane-nav/
-  crates/                 # Rust workspace — 2,452 aurora-* crates
-    aurora-core/          #   Core types, coordinates, errors
-    aurora-gnss/          #   Multi-constellation GNSS receiver
-    aurora-fusion/        #   Extended Kalman Filter sensor fusion
-    aurora-integrity/     #   RAIM, protection levels, jamming/spoofing
-    aurora-routing/       #   A* / Dijkstra route planning
-    aurora-map/           #   Map data, tiles, matching
-    aurora-lane/          #   Lane-level guidance
-    aurora-traffic/       #   Real-time traffic flow
-    aurora-v2x/           #   Vehicle-to-Everything (DSRC/C-V2X)
-    aurora-indoor/        #   BLE beacon trilateration, magnetic fingerprinting
-    aurora-ar-nav/        #   Augmented Reality overlay, lane projection
-    aurora-api/           #   REST API server (Axum)
-    aurora-web/           #   Interactive web dashboard (Leaflet.js)
-    aurora-app/           #   Application orchestration
-    aurora-orchestrator/  #   Pipeline orchestrator
+  crates/                 # Rust workspace — 2,452 gane-* crates
+    gane-core/          #   Core types, coordinates, errors
+    gane-gnss/          #   Multi-constellation GNSS receiver
+    gane-fusion/        #   Extended Kalman Filter sensor fusion
+    gane-integrity/     #   RAIM, protection levels, jamming/spoofing
+    gane-routing/       #   A* / Dijkstra route planning
+    gane-map/           #   Map data, tiles, matching
+    gane-lane/          #   Lane-level guidance
+    gane-traffic/       #   Real-time traffic flow
+    gane-v2x/           #   Vehicle-to-Everything (DSRC/C-V2X)
+    gane-indoor/        #   BLE beacon trilateration, magnetic fingerprinting
+    gane-ar-nav/        #   Augmented Reality overlay, lane projection
+    gane-api/           #   REST API server (Axum)
+    gane-web/           #   Interactive web dashboard (Leaflet.js)
+    gane-app/           #   Application orchestration
+    gane-orchestrator/  #   Pipeline orchestrator
     ... (2,400+ more crates covering sensors, infra, UX, compliance, etc.)
 
   frontend/               # Node-based full-stack surface (gmin-spec snapshot)
@@ -61,8 +61,8 @@ gane-nav/
 
   .github/workflows/      # CI: build, clippy, test, fmt, bench, doc (Rust only today)
   Cargo.toml              # Workspace manifest (2,452 unique members)
-  Dockerfile              # Multi-stage release build for aurora-app
-  docker-compose.yml      # Local runtime for aurora-nav
+  Dockerfile              # Multi-stage release build for gane-app
+  docker-compose.yml      # Local runtime for gane-nav
 ```
 
 ## Key Capabilities
@@ -98,7 +98,7 @@ gane-nav/
 ### Infrastructure
 - **2,452 modular crates**, independently testable.
 - REST API (Axum) + WebSocket surface.
-- Interactive Leaflet web dashboard (`aurora-web`).
+- Interactive Leaflet web dashboard (`gane-web`).
 - Docker multi-stage build and compose for local runtime.
 - Structured logging, distributed tracing, histograms, Prometheus metrics.
 
@@ -126,7 +126,7 @@ cargo test --workspace
 
 ### Run the API server
 ```bash
-cargo run -p aurora-api
+cargo run -p gane-api
 ```
 The server starts on `http://localhost:3000`:
 - `GET /` — web dashboard
@@ -148,21 +148,21 @@ docker compose up --build
 
 | Category | Representative crates |
 |---|---|
-| Core | `aurora-core`, `aurora-events`, `aurora-config`, `aurora-errors` |
-| GNSS / PNT | `aurora-gnss`, `aurora-multi-gnss`, `aurora-ekf`, `aurora-tunnel`, `aurora-dual-freq` |
-| Sensors | `aurora-sensors`, `aurora-fusion`, `aurora-dead-reckoning`, `aurora-imu-sensor` |
-| Integrity | `aurora-integrity`, `aurora-continuity`, `aurora-anti-manipulation`, `aurora-anti-jam` |
-| Routing | `aurora-routing`, `aurora-risk`, `aurora-probabilistic`, `aurora-multistop` |
-| Traffic | `aurora-traffic`, `aurora-stability`, `aurora-crowd-speed`, `aurora-traffic-predict` |
-| V2X | `aurora-v2x`, `aurora-v2v-comm`, `aurora-v2i-comm`, `aurora-v2p-safety` |
-| Indoor / AR | `aurora-indoor`, `aurora-ar`, `aurora-ar-nav` |
-| Maps | `aurora-map`, `aurora-lane`, `aurora-offline`, `aurora-tiles`, `aurora-map-match` |
-| API / Web | `aurora-api`, `aurora-web`, `aurora-websocket` |
-| Fleet / EMS | `aurora-fleet`, `aurora-emergency`, `aurora-emergency-sat` |
-| Smart City | `aurora-city`, `aurora-twin`, `aurora-intersection` |
-| Infrastructure | `aurora-cache`, `aurora-pipeline`, `aurora-mesh`, `aurora-ratelimit` |
-| Observability | `aurora-telemetry`, `aurora-metrics`, `aurora-tracing-dist`, `aurora-structured-log` |
-| Security | `aurora-auth`, `aurora-security`, `aurora-compliance`, `aurora-audit` |
+| Core | `gane-core`, `gane-events`, `gane-config`, `gane-errors` |
+| GNSS / PNT | `gane-gnss`, `gane-multi-gnss`, `gane-ekf`, `gane-tunnel`, `gane-dual-freq` |
+| Sensors | `gane-sensors`, `gane-fusion`, `gane-dead-reckoning`, `gane-imu-sensor` |
+| Integrity | `gane-integrity`, `gane-continuity`, `gane-anti-manipulation`, `gane-anti-jam` |
+| Routing | `gane-routing`, `gane-risk`, `gane-probabilistic`, `gane-multistop` |
+| Traffic | `gane-traffic`, `gane-stability`, `gane-crowd-speed`, `gane-traffic-predict` |
+| V2X | `gane-v2x`, `gane-v2v-comm`, `gane-v2i-comm`, `gane-v2p-safety` |
+| Indoor / AR | `gane-indoor`, `gane-ar`, `gane-ar-nav` |
+| Maps | `gane-map`, `gane-lane`, `gane-offline`, `gane-tiles`, `gane-map-match` |
+| API / Web | `gane-api`, `gane-web`, `gane-websocket` |
+| Fleet / EMS | `gane-fleet`, `gane-emergency`, `gane-emergency-sat` |
+| Smart City | `gane-city`, `gane-twin`, `gane-intersection` |
+| Infrastructure | `gane-cache`, `gane-pipeline`, `gane-mesh`, `gane-ratelimit` |
+| Observability | `gane-telemetry`, `gane-metrics`, `gane-tracing-dist`, `gane-structured-log` |
+| Security | `gane-auth`, `gane-security`, `gane-compliance`, `gane-audit` |
 
 ## Repository Conventions
 
