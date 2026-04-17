@@ -1017,6 +1017,7 @@ document.getElementById('search-input').addEventListener('keypress', async (e) =
 </html>"##;
 
 #[cfg(test)]
+#[allow(clippy::const_is_empty)]
 mod tests {
     use super::*;
 
