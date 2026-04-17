@@ -94,13 +94,8 @@ impl ContextEngine {
         // GNSS sample rate: higher in complex areas, lower at standstill
         self.params.gnss_sample_rate_hz = match self.environment {
             EnvironmentType::Urban | EnvironmentType::Parking => 5.0,
-            EnvironmentType::Highway => {
-                if self.speed_kmh > 80.0 {
-                    2.0
-                } else {
-                    1.0
-                }
-            }
+            EnvironmentType::Highway if self.speed_kmh > 80.0 => 2.0,
+            EnvironmentType::Highway => 1.0,
             EnvironmentType::Tunnel | EnvironmentType::Indoor => 0.1,
             _ => 1.0,
         };
