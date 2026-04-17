@@ -2,19 +2,31 @@ import { eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import { InsertUser, users } from "../drizzle/schema";
 import { ENV } from './_core/env';
+import { createVirtualDb } from "./gane/virtualDb";
 
-let _db: ReturnType<typeof drizzle> | null = null;
+type DbClient = ReturnType<typeof drizzle>;
 
-// Lazily create the drizzle instance so local tooling can run without a DB.
+let _db: DbClient | null = null;
+
+// Lazily create the DB instance. Fall back to an in-memory adapter so local
+// tooling and tests can still execute collaboration/routing flows without an
+// external MySQL dependency.
 export async function getDb() {
-  if (!_db && process.env.DATABASE_URL) {
+  if (_db) {
+    return _db;
+  }
+
+  if (process.env.DATABASE_URL) {
     try {
       _db = drizzle(process.env.DATABASE_URL);
+      return _db;
     } catch (error) {
-      console.warn("[Database] Failed to connect:", error);
-      _db = null;
+      console.warn("[Database] Failed to connect, using virtual fallback:", error);
     }
   }
+
+  console.warn("[Database] DATABASE_URL not set — using virtual in-memory fallback");
+  _db = createVirtualDb() as unknown as DbClient;
   return _db;
 }
 

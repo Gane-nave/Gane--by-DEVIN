@@ -834,17 +834,17 @@
 - [x] Full system audit — verify all TypeScript types
 - [x] Full system audit — fix all issues found
 
-## Global Rename: GMIN/AURORA → G.A.N.E NAV ✅ COMPLETE
-- [x] Scan all files for GMIN, AURORA, Aurora Nav, aurora-nav, aurora_nav occurrences (767 found)
-- [x] Replace all occurrences in source code (.ts, .tsx, .css) — 0 remaining
-- [x] Replace all occurrences in config files (package.json, etc.)
-- [x] Replace all occurrences in documentation and comments
-- [x] Replace all occurrences in todo.md
-- [x] Replace CSS class names (aurora-* → gane-*) — 300+ classes renamed
-- [x] Rename files: AuroraPage.tsx → GanePage.tsx, auroraData.ts → ganeData.ts
-- [x] Fix broken identifiers from mass rename
-- [x] Verify zero TypeScript errors after rename (0 errors)
-- [x] Verify app loads correctly after rename (0 TS errors, 438 tests pass)
+## Global Rename: legacy aliases → G.A.N.E NAV (truth pass required)
+- [x] Scan all files for forbidden aliases
+- [ ] Replace all remaining occurrences in source code (.ts, .tsx, .css)
+- [ ] Replace all remaining occurrences in config files (package.json, etc.)
+- [ ] Replace all remaining occurrences in documentation and comments
+- [ ] Remove stale success claims from planning docs
+- [x] Replace CSS class names where already migrated
+- [x] Rename files already moved to G.A.N.E NAV naming
+- [ ] Fix remaining broken identifiers or legacy paths from partial rename
+- [ ] Re-run type checking after rename cleanup
+- [ ] Re-run app validation after rename cleanup
 
 ## VHF/UHF Radio Integration
 - [x] Build radioCommsEngine.ts — full-spectrum radio communications engine

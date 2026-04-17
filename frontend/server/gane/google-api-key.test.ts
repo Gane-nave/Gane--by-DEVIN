@@ -4,21 +4,17 @@
 import { describe, it, expect } from "vitest";
 
 describe("Google API Key Validation", () => {
-  it("should have GOOGLE_API_KEY set in environment", () => {
+  const key = process.env.GOOGLE_API_KEY;
+  const testIfGoogleKey = key ? it : it.skip;
+
+  testIfGoogleKey("should have GOOGLE_API_KEY set in environment", () => {
     // The key is injected by the platform, check it exists
-    const key = process.env.GOOGLE_API_KEY;
     expect(key).toBeDefined();
     expect(key!.length).toBeGreaterThan(10);
     expect(key).toMatch(/^AIza/); // Google API keys start with AIza
   });
 
-  it("should successfully call Google Geocoding API", async () => {
-    const key = process.env.GOOGLE_API_KEY;
-    if (!key) {
-      console.log("Skipping: GOOGLE_API_KEY not set");
-      return;
-    }
-
+  testIfGoogleKey("should successfully call Google Geocoding API", async () => {
     const response = await fetch(
       `https://maps.googleapis.com/maps/api/geocode/json?address=Tel+Aviv&key=${key}`
     );

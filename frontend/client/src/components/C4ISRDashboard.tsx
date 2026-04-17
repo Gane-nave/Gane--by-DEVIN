@@ -4,7 +4,7 @@
  * Real-time fleet tracking with 1Hz position updates,
  * VRP multi-stop route optimization, mission injection,
  * and vehicle health monitoring.
- * 
+ *
  * Connected to: fleetRouter (tRPC) + WebSocket (binary telemetry)
  */
 
@@ -17,18 +17,21 @@ import {
   Play, Pause, Square, RefreshCw, Target, Crosshair,
   Shield, Zap, Gauge, Users, Package, Navigation,
   Radio, Wifi, WifiOff, Eye, EyeOff, Filter,
-  BarChart3, TrendingUp, Activity, Brain
+  BarChart3, TrendingUp, Activity, Brain, Waves, ZapOff
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { trpc } from "@/lib/trpc";
+
 
 const COLORS = {
-  cyan: '#2563EB',
-  green: '#16A34A',
-  red: '#DC2626',
-  purple: '#7C3AED',
-  orange: '#F97316',
+  cyan: '#6366F1',   // Indigo/Elite
+  green: '#10B981',  // Emerald
+  red: '#E11D48',    // Ruby
+  purple: '#8B5CF6',
+  orange: '#F59E0B',
   gold: '#FACC15',
   blue: '#3B82F6',
+  slate: '#94A3B8'
 };
 
 // ─── Simulated Fleet Data ───
@@ -37,6 +40,7 @@ interface FleetVehicle {
   callsign: string;
   type: 'patrol' | 'ambulance' | 'logistics' | 'drone' | 'command';
   status: 'active' | 'idle' | 'maintenance' | 'emergency' | 'offline';
+  signalCondition: 'nominal' | 'jammed' | 'spoofed';
   lat: number;
   lon: number;
   heading: number;
@@ -65,9 +69,10 @@ function generateFleetData(): FleetVehicle[] {
   const baseLon = 34.7818;
   const types: FleetVehicle['type'][] = ['patrol', 'ambulance', 'logistics', 'drone', 'command'];
   const statuses: FleetVehicle['status'][] = ['active', 'active', 'active', 'idle', 'maintenance'];
+  const signalConditions: FleetVehicle['signalCondition'][] = ['nominal', 'nominal', 'jammed', 'spoofed'];
   const names = ['Alpha', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Foxtrot', 'Golf', 'Hotel'];
   const drivers = ['Cohen', 'Levi', 'Mizrahi', 'Peretz', 'Biton', 'Azulay', 'Dahan', 'Amar'];
-  
+
   return names.map((name, i) => ({
     id: `v-${i + 1}`,
     callsign: `${name}-${i + 1}`,
@@ -79,6 +84,7 @@ function generateFleetData(): FleetVehicle[] {
     speed: Math.random() * 120,
     battery: 40 + Math.random() * 60,
     signal: 60 + Math.random() * 40,
+    signalCondition: signalConditions[i % signalConditions.length],
     driver: drivers[i],
     mission: i < 4 ? `Mission-${100 + i}` : undefined,
     eta: i < 4 ? `${5 + Math.floor(Math.random() * 25)} min` : undefined,
@@ -134,7 +140,7 @@ function solveVRP(
   vehicleCount: number
 ): { vehicleId: number; route: typeof stops; totalDist: number }[] {
   if (stops.length === 0) return [];
-  
+
   const dist = (a: { lat: number; lon: number }, b: { lat: number; lon: number }) => {
     const R = 6371;
     const dLat = (b.lat - a.lat) * Math.PI / 180;
@@ -179,6 +185,88 @@ function solveVRP(
   return assignments;
 }
 
+// ─── SIGINT Signal Spectrum Component ───
+function SignalSpectrum() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let animationId: number;
+    const draw = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const width = canvas.width;
+      const height = canvas.height;
+      const step = 2;
+
+      ctx.beginPath();
+      ctx.moveTo(0, height);
+      for (let x = 0; x <= width; x += step) {
+        const noise = Math.random() * 5;
+        const base = height * 0.7;
+        // Occasional jamming spike
+        const spike = Math.random() > 0.98 ? Math.random() * -30 : 0;
+        const y = base + Math.sin(x * 0.05 + Date.now() * 0.01) * 10 + noise + spike;
+        ctx.lineTo(x, y);
+      }
+      ctx.strokeStyle = 'rgba(99, 102, 241, 0.4)';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      // Shadow fill
+      ctx.lineTo(width, height);
+      ctx.lineTo(0, height);
+      const gradient = ctx.createLinearGradient(0, 0, 0, height);
+      gradient.addColorStop(0, 'rgba(99, 102, 241, 0.05)');
+      gradient.addColorStop(1, 'rgba(15, 23, 42, 0)');
+      ctx.fillStyle = gradient;
+      ctx.fill();
+
+      animationId = requestAnimationFrame(draw);
+    };
+
+    draw();
+    return () => cancelAnimationFrame(animationId);
+  }, []);
+
+  return (
+    <div className="relative h-16 w-full rounded-lg overflow-hidden border border-slate-800/50 bg-slate-950/50 mt-4">
+      <div className="absolute top-1 left-2 flex items-center gap-1.5 z-10">
+        <Waves className="w-2.5 h-2.5 text-indigo-400" />
+        <span className="text-[8px] font-bold tracking-[0.2em] text-slate-400 uppercase">SIGINT Spectrum</span>
+      </div>
+      <canvas ref={canvasRef} width={340} height={64} className="w-full h-full" />
+      <div className="absolute bottom-1 right-2 z-10">
+        <div className="flex items-center gap-1">
+          <div className="w-1.5 h-1.5 rounded-full bg-emerald-500/50 animate-pulse" />
+          <span className="text-[7px] text-slate-500 font-mono">NOISE FLOOR: -104dBm</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── Ghost / Shadow Navigation Recovery Sub-component ───
+function ShadowRecoveryOverlay({ vehicle }: { vehicle: FleetVehicle }) {
+  if (vehicle.signalCondition !== 'spoofed') return null;
+
+  return (
+    <div className="mt-2 p-2 rounded-md bg-amber-500/5 border border-amber-500/20">
+      <div className="flex items-center gap-1.5">
+        <ZapOff className="w-3 h-3 text-amber-500 animate-pulse" />
+        <span className="text-[9px] font-bold text-amber-500 uppercase tracking-wider">Shadow Recovery Active</span>
+      </div>
+      <p className="text-[8px] text-slate-400 mt-0.5 leading-relaxed">
+        GPS compromised. Initiating PDR/Dead Reckoning.
+        Deviation: <span className="text-amber-500/80 font-mono">+12.4m</span>
+      </p>
+    </div>
+  );
+}
+
 // ─── Sub-components ───
 
 function VehicleCard({ vehicle, isSelected, onClick }: {
@@ -199,8 +287,8 @@ function VehicleCard({ vehicle, isSelected, onClick }: {
       onClick={onClick}
       className="w-full text-left rounded-lg p-3 transition-all cursor-pointer"
       style={{
-        background: isSelected ? `${sColor}12` : 'rgba(243,244,246,0.4)',
-        border: isSelected ? `1px solid ${sColor}30` : '1px solid rgba(229,231,235,0.4)',
+        background: isSelected ? `${sColor}08` : 'rgba(30, 41, 59, 0.3)',
+        border: isSelected ? `1px solid ${sColor}20` : '1px solid rgba(148, 163, 184, 0.05)',
       }}
       whileHover={{ backgroundColor: 'rgba(229,231,235,0.4)' }}
       whileTap={{ scale: 0.98 }}
@@ -222,17 +310,18 @@ function VehicleCard({ vehicle, isSelected, onClick }: {
             {vehicle.speed.toFixed(0)} km/h
           </div>
           <div className="flex items-center gap-1 mt-0.5">
-            <Battery className="w-3 h-3" style={{ color: vehicle.battery > 30 ? COLORS.green : COLORS.red }} />
-            <span className="text-[9px] font-mono" style={{ color: vehicle.battery > 30 ? COLORS.green : COLORS.red }}>
+            <Battery className="w-3 h-3" style={{ color: vehicle.battery > 30 ? (vehicle.signalCondition === 'jammed' ? COLORS.red : COLORS.green) : COLORS.red }} />
+            <span className="text-[9px] font-mono" style={{ color: vehicle.battery > 30 ? (vehicle.signalCondition === 'jammed' ? COLORS.red : COLORS.green) : COLORS.red }}>
               {vehicle.battery.toFixed(0)}%
             </span>
           </div>
         </div>
       </div>
+      <ShadowRecoveryOverlay vehicle={vehicle} />
       {vehicle.mission && (
-        <div className="mt-2 flex items-center gap-2 px-2 py-1 rounded-md" style={{ background: 'rgba(243,244,246,0.5)' }}>
+        <div className="mt-2 flex items-center gap-2 px-2 py-1 rounded-md" style={{ background: 'rgba(30, 41, 59, 0.5)' }}>
           <Target className="w-3 h-3" style={{ color: COLORS.purple }} />
-          <span className="text-[10px] text-white/40">{vehicle.mission}</span>
+          <span className="text-[10px] text-slate-400">{vehicle.mission}</span>
           {vehicle.eta && (
             <span className="text-[10px] font-mono ml-auto" style={{ color: COLORS.orange }}>ETA {vehicle.eta}</span>
           )}
@@ -289,34 +378,41 @@ function MissionCard({ mission }: { mission: Mission }) {
 // ─── Main Dashboard ───
 
 export default function C4ISRDashboard({ onClose }: { onClose: () => void }) {
-  const [vehicles, setVehicles] = useState<FleetVehicle[]>(() => generateFleetData());
-  const [missions] = useState<Mission[]>(() => generateMissions());
+  const { data: serverVehicles } = trpc.fleet.vehicles.useQuery(
+    { fleetId: 1 },
+    { refetchInterval: 1000, enabled: true }
+  );
+  trpc.fleet.list.useQuery();
+
   const [selectedVehicle, setSelectedVehicle] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'fleet' | 'missions' | 'vrp'>('fleet');
   const [statusFilter, setStatusFilter] = useState<string>('all');
   const [vrpResult, setVrpResult] = useState<ReturnType<typeof solveVRP> | null>(null);
   const [vrpRunning, setVrpRunning] = useState(false);
+  const missions = useMemo(() => generateMissions(), []);
 
-  // Simulate 1Hz position updates
+  // Map server vehicles to UI format
+  const vehicles = useMemo(() => {
+    return (serverVehicles || []).map(v => ({
+      id: String(v.id),
+      callsign: v.name || `Unit-${v.id}`,
+      type: (v.type as FleetVehicle['type']) || 'patrol',
+      status: (v.status as FleetVehicle['status']) || 'active',
+      lat: v.lastLat || 0,
+      lon: v.lastLon || 0,
+      heading: v.lastHeading || 0,
+      speed: v.lastSpeed || 0,
+      battery: v.batteryLevel || 100,
+      signal: 100,
+      signalCondition: ((v as { signalCondition?: FleetVehicle['signalCondition'] }).signalCondition || 'nominal') as FleetVehicle['signalCondition'],
+      driver: "Operational Unit",
+      lastUpdate: v.lastSeen ? new Date(v.lastSeen).getTime() : Date.now(),
+    }));
+  }, [serverVehicles]);
+
+  // Real-time synchronization is handled by trpc refetchInterval
   useEffect(() => {
-    const interval = setInterval(() => {
-      setVehicles(prev => prev.map(v => {
-        if (v.status !== 'active') return v;
-        const headingRad = v.heading * Math.PI / 180;
-        const speedDeg = (v.speed / 3600) * 0.00001; // rough conversion
-        return {
-          ...v,
-          lat: v.lat + Math.cos(headingRad) * speedDeg + (Math.random() - 0.5) * 0.0001,
-          lon: v.lon + Math.sin(headingRad) * speedDeg + (Math.random() - 0.5) * 0.0001,
-          heading: v.heading + (Math.random() - 0.5) * 5,
-          speed: Math.max(0, v.speed + (Math.random() - 0.5) * 8),
-          battery: Math.max(0, v.battery - 0.01),
-          signal: Math.min(100, Math.max(20, v.signal + (Math.random() - 0.5) * 3)),
-          lastUpdate: Date.now(),
-        };
-      }));
-    }, 1000);
-    return () => clearInterval(interval);
+    // No-op simulator - replaced by Sovereign backend Simulation
   }, []);
 
   const filteredVehicles = useMemo(() => {
@@ -330,7 +426,7 @@ export default function C4ISRDashboard({ onClose }: { onClose: () => void }) {
     idle: vehicles.filter(v => v.status === 'idle').length,
     emergency: vehicles.filter(v => v.status === 'emergency').length,
     avgSpeed: vehicles.filter(v => v.status === 'active').reduce((s, v) => s + v.speed, 0) / Math.max(1, vehicles.filter(v => v.status === 'active').length),
-    avgBattery: vehicles.reduce((s, v) => s + v.battery, 0) / vehicles.length,
+    avgBattery: vehicles.reduce((s, v) => s + v.battery, 0) / Math.max(vehicles.length, 1),
   }), [vehicles]);
 
   const runVRP = useCallback(() => {
@@ -339,7 +435,7 @@ export default function C4ISRDashboard({ onClose }: { onClose: () => void }) {
     const allStops = missions
       .filter(m => m.status === 'pending' || m.status === 'active')
       .flatMap(m => m.waypoints);
-    
+
     // Simulate computation delay
     setTimeout(() => {
       const result = solveVRP(depot, allStops, Math.min(3, vehicles.filter(v => v.status === 'active').length));
@@ -360,12 +456,12 @@ export default function C4ISRDashboard({ onClose }: { onClose: () => void }) {
       animate={{ x: 0, opacity: 1 }}
       exit={{ x: -360, opacity: 0 }}
       transition={{ type: 'spring', damping: 28, stiffness: 300 }}
-      className="expand-panel fixed left-[96px] top-0 bottom-0 z-50 overflow-hidden flex flex-col"
+      className="expand-panel fixed left-[96px] top-0 bottom-0 z-50 overflow-hidden flex flex-col nav-layer"
       style={{
         width: '380px',
-        background: 'linear-gradient(180deg, rgba(4,8,18,0.97) 0%, rgba(2,4,10,0.99) 100%)',
-        borderRight: '1px solid rgba(229,231,235,0.6)',
-        boxShadow: '8px 0 40px rgba(249,250,251,0.8)',
+        background: 'rgba(15, 23, 42, 0.96)',
+        borderRight: '1px solid rgba(148,163,184,0.1)',
+        boxShadow: '20px 0 60px rgba(0,0,0,0.5)',
       }}
     >
       {/* Header */}
@@ -378,13 +474,22 @@ export default function C4ISRDashboard({ onClose }: { onClose: () => void }) {
             </div>
             <div>
               <h2 className="text-sm font-bold text-white/90 tracking-wide">C4ISR COMMAND</h2>
-              <p className="text-[10px] text-white/30 font-mono">GOD'S-EYE TERMINAL</p>
+              <div className="flex items-center gap-1.5 mt-0.5">
+                <Shield className="w-2.5 h-2.5" style={{ color: COLORS.green }} />
+                <span className="text-[9px] font-bold tracking-[0.2em] text-indigo-400 animate-pulse">
+                  SOVEREIGN SHIELD ACTIVE
+                </span>
+              </div>
+              <p className="text-[10px] text-white/30 font-mono">GOD'S-EYE TERMINAL v4.0</p>
             </div>
           </div>
           <button onClick={onClose} className="p-2 rounded-lg hover:bg-white/5 transition-colors cursor-pointer">
             <X className="w-4 h-4 text-white/40" />
           </button>
         </div>
+
+        {/* SIGINT / EW Awareness Radar */}
+        <SignalSpectrum />
 
         {/* Stats bar */}
         <div className="mt-3 grid grid-cols-4 gap-2">
@@ -412,9 +517,9 @@ export default function C4ISRDashboard({ onClose }: { onClose: () => void }) {
               onClick={() => setActiveTab(tab.id)}
               className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg text-[10px] font-bold tracking-wider transition-all cursor-pointer"
               style={{
-                background: activeTab === tab.id ? `${COLORS.cyan}15` : 'rgba(243,244,246,0.4)',
-                border: activeTab === tab.id ? `1px solid ${COLORS.cyan}25` : '1px solid rgba(229,231,235,0.4)',
-                color: activeTab === tab.id ? COLORS.cyan : 'rgba(107,114,128,0.8)',
+                background: activeTab === tab.id ? 'rgba(99, 102, 241, 0.08)' : 'rgba(30, 41, 59, 0.4)',
+                border: activeTab === tab.id ? '1px solid rgba(99, 102, 241, 0.2)' : '1px solid rgba(148, 163, 184, 0.05)',
+                color: activeTab === tab.id ? COLORS.cyan : 'rgba(148, 163, 184, 0.5)',
               }}
             >
               <tab.icon className="w-3.5 h-3.5" />
@@ -530,6 +635,10 @@ export default function C4ISRDashboard({ onClose }: { onClose: () => void }) {
           {activeTab === 'vrp' && (
             <motion.div key="vrp" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}>
               <div className="rounded-lg p-4 mb-3" style={{ background: `${COLORS.purple}08`, border: `1px solid ${COLORS.purple}15` }}>
+                <div className="flex items-center gap-1 text-[10px] text-slate-500">
+                  <Filter className="w-3 h-3"/>
+                  <span>FILTER: {statusFilter.toUpperCase()}</span>
+                </div>
                 <div className="flex items-center gap-2 mb-2">
                   <Route className="w-4 h-4" style={{ color: COLORS.purple }} />
                   <span className="text-xs font-bold" style={{ color: COLORS.purple }}>VRP OPTIMIZER</span>

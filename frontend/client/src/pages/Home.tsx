@@ -1,9 +1,9 @@
 /**
  * G.A.N.E — Global Mobility Intelligence Network
- * 
+ *
  * Main Home page — orchestrates all sub-components.
  * Refactored from 1,276 lines into modular sub-components.
- * 
+ *
  * Sub-components:
  *   QuantumBoot   — Cinematic boot sequence animation
  *   AppSidebar    — Left sidebar with collapsible groups
@@ -36,7 +36,7 @@ import OfflineIndicator from "@/components/OfflineIndicator";
 import PWAInstallPrompt from "@/components/PWAInstallPrompt";
 import CollaboratorCursors from "@/components/CollaboratorCursors";
 import DrawingToolbar from "@/components/DrawingToolbar";
-import { useCollaboration } from "@/hooks/useCollaboration";
+import { useCollaboration, type Participant } from "@/hooks/useCollaboration";
 import { useAuth } from "@/_core/hooks/useAuth";
 
 // Full-screen overlay views
@@ -48,7 +48,13 @@ import TrafficDashboard from "@/components/TrafficDashboard";
 import OnboardingScreen from "@/components/OnboardingScreen";
 
 // Refactored sub-components
-import { QuantumBoot, AppSidebar, SearchBar, BottomDock, LiveStatusBar, PanelRenderer, navModes } from "./home";
+import QuantumBoot from "./home/QuantumBoot";
+import AppSidebar from "./home/AppSidebar";
+import SearchBar from "./home/SearchBar";
+import BottomDock from "./home/BottomDock";
+import LiveStatusBar from "./home/LiveStatusBar";
+import PanelRenderer from "./home/PanelRenderer";
+import { navModes } from "./home/homeConstants";
 
 export default function Home() {
   const { state, dispatch, mapRef } = useNavigation();
@@ -62,7 +68,7 @@ export default function Home() {
   const enrichedCursors = useMemo(() => {
     const enriched = new Map<number, { lat: number; lon: number; color: string; name?: string }>();
     remoteCursors.forEach((cursor, userId) => {
-      const participant = (participants ?? []).find((p: any) => p.userId === userId);
+      const participant = (participants ?? []).find((p: Participant) => p.userId === userId);
       enriched.set(userId, {
         ...cursor,
         name: participant?.displayName || `User ${userId}`,
@@ -73,15 +79,15 @@ export default function Home() {
   const [showContent, setShowContent] = useState(false);
   const { weather } = useRealDataContext();
 
-  const activeMode = useMemo(() =>
-    navModes.find(m => m.id === state.navMode) || navModes[0],
+  const activeMode = useMemo(
+    () => navModes.find((mode) => mode.id === state.navMode) || navModes[0],
     [state.navMode]
   );
 
   // Performance-aware animation control
   const { shouldAnimate, shouldAnimateLight } = useAnimationPerformance();
 
-  const showSidebar = state.view === 'map' && !state.isNavigating;
+  const showSidebar = state.view === "map" && !state.isNavigating;
 
   const handleBootComplete = useCallback(() => {
     setBooted(true);
@@ -89,20 +95,20 @@ export default function Home() {
   }, []);
 
   const closePanel = useCallback(() => {
-    dispatch({ type: 'SET_ACTIVE_PANEL', panel: null });
+    dispatch({ type: "SET_ACTIVE_PANEL", panel: null });
   }, [dispatch]);
 
   const togglePanel = useCallback((panel: SmartPanel) => {
     // Special handling for drawing tools — toggle toolbar instead of panel
-    if (panel === ('drawing-tools' as SmartPanel)) {
-      setShowDrawingTools(prev => !prev);
+    if (panel === ("drawing-tools" as SmartPanel)) {
+      setShowDrawingTools((prev) => !prev);
       return;
     }
-    dispatch({ type: 'SET_ACTIVE_PANEL', panel: state.activePanel === panel ? null : panel });
+    dispatch({ type: "SET_ACTIVE_PANEL", panel: state.activePanel === panel ? null : panel });
   }, [dispatch, state.activePanel]);
 
   return (
-    <div className="h-screen w-screen overflow-hidden relative" style={{ background: '#F9FAFB' }}>
+    <div className="h-screen w-screen overflow-hidden relative" style={{ background: "#F9FAFB" }}>
       {/* ═══ OFFLINE INDICATOR ═══ */}
       <OfflineIndicator />
 
@@ -143,21 +149,21 @@ export default function Home() {
       <NightModeController>{() => null}</NightModeController>
 
       {/* Live status bar */}
-      {showContent && state.view === 'map' && !state.isNavigating && (
+      {showContent && state.view === "map" && !state.isNavigating && (
         <LiveStatusBar color={activeMode.color} />
       )}
 
       {/* AI Copilot Orb */}
-      {showContent && state.view === 'map' && !state.isNavigating && (
+      {showContent && state.view === "map" && !state.isNavigating && (
         <>
-          <div className="fixed z-40" style={{ right: '16px', bottom: '90px' }}>
+          <div className="fixed z-40" style={{ right: "16px", bottom: "90px" }}>
             <AIOrb
-              onClick={() => dispatch({ type: 'SET_ACTIVE_PANEL', panel: state.activePanel === 'smart-alerts' ? null : 'smart-alerts' as any })}
+              onClick={() => dispatch({ type: "SET_ACTIVE_PANEL", panel: state.activePanel === "smart-alerts" ? null : "smart-alerts" as SmartPanel })}
               hasAlerts={true}
             />
           </div>
           <AnimatePresence>
-            {state.activePanel === 'smart-alerts' && (
+            {state.activePanel === "smart-alerts" && (
               <AIChatPanel isOpen={true} onClose={closePanel} />
             )}
           </AnimatePresence>
@@ -185,30 +191,30 @@ export default function Home() {
       </AnimatePresence>
 
       {/* Drawing Toolbar */}
-      {showContent && showDrawingTools && state.view === 'map' && !state.isNavigating && (
+      {showContent && showDrawingTools && state.view === "map" && !state.isNavigating && (
         <ComponentErrorBoundary componentName="DrawingToolbar" variant="panel">
           <DrawingToolbar
             map={mapRef.current}
             isCollaborating={!!activeCollabSession}
             onAddAnnotation={addAnnotation}
             onDeleteAnnotation={deleteAnnotation}
-            remoteAnnotations={annotations as any}
+            remoteAnnotations={annotations as never}
           />
         </ComponentErrorBoundary>
       )}
 
       {/* Map controls */}
-      {showContent && state.view !== 'search' && state.view !== 'settings' && state.view !== 'traffic' && (
+      {showContent && state.view !== "search" && state.view !== "settings" && state.view !== "traffic" && (
         <MapControls />
       )}
 
       {/* ═══ SEARCH BAR ═══ */}
-      {showContent && state.view === 'map' && !state.isNavigating && (
+      {showContent && state.view === "map" && !state.isNavigating && (
         <SearchBar activeMode={activeMode} showSidebar={showSidebar} />
       )}
 
       {/* ═══ BOTTOM DOCK ═══ */}
-      {showContent && state.view === 'map' && !state.isNavigating && (
+      {showContent && state.view === "map" && !state.isNavigating && (
         <BottomDock activeMode={activeMode} showSidebar={showSidebar} />
       )}
 
@@ -223,11 +229,11 @@ export default function Home() {
 
       {/* ═══ OVERLAYS ═══ */}
       <AnimatePresence>
-        {state.view === 'search' && <SearchPanel key="search" />}
-        {state.view === 'route-plan' && <RoutePlanner key="route" />}
+        {state.view === "search" && <SearchPanel key="search" />}
+        {state.view === "route-plan" && <RoutePlanner key="route" />}
         {state.isNavigating && <NavigationHUD key="hud" />}
-        {state.view === 'settings' && <SettingsPanel key="settings" />}
-        {state.view === 'traffic' && <TrafficDashboard key="traffic" />}
+        {state.view === "settings" && <SettingsPanel key="settings" />}
+        {state.view === "traffic" && <TrafficDashboard key="traffic" />}
         {state.showOnboarding && <OnboardingScreen key="onboarding" />}
       </AnimatePresence>
     </div>

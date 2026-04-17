@@ -1,17 +1,17 @@
 # G.A.N.E NAV — Web Frontend (full snapshot)
 
 This directory is the Node-based web stack of **G.A.N.E NAV**. It is a
-full snapshot of the `gmin-spec` project and complements the Rust
+full imported frontend snapshot and complements the Rust
 workspace in `../crates/`:
 
 | Role | Location | Notes |
 |---|---|---|
-| Rust REST API | `../crates/aurora-api` | Axum, 2,452-crate workspace |
-| Rust dashboard (Leaflet) | `../crates/aurora-web` | Lightweight, server-rendered |
+| Rust REST API | `../crates/` | Axum real-time workspace |
+| Rust dashboard (Leaflet) | `../crates/` | Lightweight, server-rendered |
 | **Node API / web app** | `./server`, `./client`, `./shared` | This directory |
 
 The Node stack is the richer product surface (Drizzle + Postgres +
-OpenTelemetry + Playwright + Vitest + Radix UI). The Rust `aurora-api`
+OpenTelemetry + Playwright + Vitest + Radix UI). The Rust API layer
 is the high-assurance real-time path.
 
 ## Layout
@@ -110,7 +110,7 @@ tracing.
 
 - The Rust workspace in `../crates/` is the **source of truth** for
   positioning, sensor fusion, integrity, and the REST reference
-  implementation (`aurora-api`). For production/high-assurance
+  implementation. For production/high-assurance
   deployments, the Node server forwards to the Rust API where needed.
 - `../apps/trade/` and `../apps/brainiac/` are separate React apps
   imported from standalone bundles. They currently ship with their own
@@ -120,8 +120,8 @@ tracing.
 
 ## Status
 
-This snapshot was re-imported on 2026-04-17 from
-`gmin-spec-complete+1.zip` (456 files, ~6.5 MB). Everything that was
+This snapshot was re-imported on 2026-04-17 from a legacy frontend
+archive (456 files, ~6.5 MB). Everything that was
 originally inside that archive is preserved verbatim — including the
 audit reports, QA logs, patches, migrations, and E2E tests — with two
 exceptions:
