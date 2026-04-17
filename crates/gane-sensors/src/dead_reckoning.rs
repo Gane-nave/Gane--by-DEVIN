@@ -1,8 +1,8 @@
 //! Dead reckoning engine — integrates IMU and odometry for position propagation.
 
+use chrono::{DateTime, Utc};
 use gane_core::sensor::InertialDelta;
 use gane_core::types::GeoPosition;
-use chrono::{DateTime, Utc};
 use tracing::debug;
 
 use crate::imu::CorrectedImu;

@@ -3,8 +3,8 @@
 //! Operations are queued while offline and drained in priority order
 //! when connectivity is restored. Supports TTL expiration and deduplication.
 
-use gane_core::types::EntityId;
 use chrono::{DateTime, Duration, Utc};
+use gane_core::types::EntityId;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use tracing::{debug, warn};

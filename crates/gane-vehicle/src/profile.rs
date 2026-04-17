@@ -1,8 +1,8 @@
 //! Vehicle profiles — per-vehicle configuration, sensor mapping,
 //! performance characteristics, and compatibility management.
 
-use gane_core::types::EntityId;
 use chrono::{DateTime, Utc};
+use gane_core::types::EntityId;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 

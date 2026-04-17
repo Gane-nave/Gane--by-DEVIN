@@ -1,7 +1,7 @@
 //! Layer switchboard — manages map overlay visibility, ordering, and opacity.
 
-use gane_core::types::EntityId;
 use chrono::{DateTime, Utc};
+use gane_core::types::EntityId;
 use serde::{Deserialize, Serialize};
 use tracing::debug;
 

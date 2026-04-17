@@ -1,8 +1,8 @@
 //! Vehicle communication protocols — CAN bus message parsing,
 //! OBD-II PID handling, and protocol negotiation.
 
-use gane_core::types::EntityId;
 use chrono::{DateTime, Utc};
+use gane_core::types::EntityId;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 

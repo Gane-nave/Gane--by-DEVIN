@@ -1,7 +1,7 @@
 //! Health state machine for pipeline watchdogs.
 
-use gane_core::types::ContinuityMode;
 use chrono::{DateTime, Utc};
+use gane_core::types::ContinuityMode;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 

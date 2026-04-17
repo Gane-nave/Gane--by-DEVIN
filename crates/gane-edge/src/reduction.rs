@@ -3,8 +3,8 @@
 //! Implements sampling, deduplication, delta encoding, and spatial
 //! aggregation to minimize bandwidth usage.
 
-use gane_core::types::EntityId;
 use chrono::{DateTime, Utc};
+use gane_core::types::EntityId;
 use serde::{Deserialize, Serialize};
 use tracing::debug;
 

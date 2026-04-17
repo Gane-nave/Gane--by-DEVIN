@@ -2,8 +2,8 @@
 //! hospital entrance (ER, trauma, helipad, ambulance bay) with real-time
 //! capacity and diversion logic.
 
-use gane_core::types::{EntityId, GeoPosition};
 use chrono::{DateTime, Utc};
+use gane_core::types::{EntityId, GeoPosition};
 use serde::{Deserialize, Serialize};
 use tracing::debug;
 

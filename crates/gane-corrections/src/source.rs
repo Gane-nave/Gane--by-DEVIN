@@ -1,7 +1,7 @@
 //! Correction source abstraction.
 
-use gane_core::gnss::{CorrectionSource, CorrectionState};
 use chrono::{DateTime, Utc};
+use gane_core::gnss::{CorrectionSource, CorrectionState};
 use serde::{Deserialize, Serialize};
 
 /// Correction data for a specific satellite or regional area.

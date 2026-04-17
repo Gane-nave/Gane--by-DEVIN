@@ -1,8 +1,8 @@
 //! Assignment engine — matches tasks to drivers based on proximity,
 //! skills, capacity, workload, and priority.
 
-use gane_core::types::{EntityId, GeoPosition};
 use chrono::{DateTime, Utc};
+use gane_core::types::{EntityId, GeoPosition};
 use serde::{Deserialize, Serialize};
 use tracing::debug;
 

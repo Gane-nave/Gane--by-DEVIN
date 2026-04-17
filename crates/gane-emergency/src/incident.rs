@@ -1,8 +1,8 @@
 //! Mass incident management — coordinates multi-agency response, resource
 //! allocation, incident zones, and communication for large-scale emergencies.
 
-use gane_core::types::{EntityId, GeoPosition};
 use chrono::{DateTime, Utc};
+use gane_core::types::{EntityId, GeoPosition};
 use serde::{Deserialize, Serialize};
 use tracing::debug;
 

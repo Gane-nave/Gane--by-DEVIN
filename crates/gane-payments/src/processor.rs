@@ -1,8 +1,8 @@
 //! Payment processor — transaction processing, gateway abstraction,
 //! retry logic, and settlement tracking.
 
-use gane_core::types::EntityId;
 use chrono::{DateTime, Utc};
+use gane_core::types::EntityId;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use tracing::info;

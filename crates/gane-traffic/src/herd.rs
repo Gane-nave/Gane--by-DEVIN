@@ -2,8 +2,8 @@
 //! by detecting when too many users are routed to the same alternative and
 //! applying stochastic route allocation to distribute load.
 
-use gane_core::types::EntityId;
 use chrono::{DateTime, Utc};
+use gane_core::types::EntityId;
 use std::collections::HashMap;
 use tracing::{debug, info};
 

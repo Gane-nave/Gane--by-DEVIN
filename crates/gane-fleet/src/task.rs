@@ -1,8 +1,8 @@
 //! Fleet task management — create, assign, track, and complete fleet tasks
 //! with time windows, constraints, and proof of completion.
 
-use gane_core::types::{EntityId, GeoPosition};
 use chrono::{DateTime, Utc};
+use gane_core::types::{EntityId, GeoPosition};
 use serde::{Deserialize, Serialize};
 use tracing::debug;
 

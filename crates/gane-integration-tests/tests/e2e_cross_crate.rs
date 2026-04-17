@@ -171,9 +171,8 @@ fn emergency_and_fleet_initialise_independently() {
 
 #[test]
 fn offline_edge_satellite_initialise() {
-    let sync_engine = gane_offline::SyncEngine::new(
-        gane_offline::sync_engine::ConflictStrategy::LastWriteWins,
-    );
+    let sync_engine =
+        gane_offline::SyncEngine::new(gane_offline::sync_engine::ConflictStrategy::LastWriteWins);
     let edge_pipeline = gane_edge::pipeline::EdgePipeline::new(10_000.0);
     let sat_link = gane_satellite::link::LinkBudget::new(10.0, 5.0);
 

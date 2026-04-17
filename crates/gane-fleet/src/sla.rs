@@ -1,8 +1,8 @@
 //! Service Level Agreement (SLA) monitoring — tracks fleet performance
 //! against defined targets and generates alerts for violations.
 
-use gane_core::types::EntityId;
 use chrono::{DateTime, Utc};
+use gane_core::types::EntityId;
 use serde::{Deserialize, Serialize};
 use tracing::debug;
 

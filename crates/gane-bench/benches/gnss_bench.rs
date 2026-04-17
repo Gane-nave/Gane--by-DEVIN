@@ -1,12 +1,12 @@
 //! Benchmarks for GNSS receiver ingestion and constellation management.
 
+use chrono::Utc;
+use criterion::{black_box, criterion_group, criterion_main, Criterion};
 use gane_core::gnss::{
     Constellation, GnssMeasurement, SatelliteId, SatelliteMeasurement, SignalType,
 };
 use gane_core::types::EntityId;
 use gane_gnss::{ConstellationManager, GnssReceiver};
-use chrono::Utc;
-use criterion::{black_box, criterion_group, criterion_main, Criterion};
 
 fn make_measurement(prn: u8, constellation: Constellation, cn0: f64) -> SatelliteMeasurement {
     SatelliteMeasurement {

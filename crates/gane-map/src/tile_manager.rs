@@ -198,8 +198,8 @@ fn lat_to_tile_y(lat: f64, n: u32) -> u32 {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use gane_core::types::EntityId;
     use chrono::Utc;
+    use gane_core::types::EntityId;
 
     fn make_tile(zoom: u8, x: u32, y: u32, version: u64) -> MapTile {
         MapTile {

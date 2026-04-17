@@ -55,9 +55,9 @@ pub fn apply_env_overrides(config: &mut AuroraConfig) -> Result<(), ConfigError>
         config.system.log_level = val;
     }
     if let Ok(val) = std::env::var("GANE_WORKER_THREADS") {
-        config.system.worker_threads = val.parse().map_err(|_| {
-            ConfigError::EnvOverride("GANE_WORKER_THREADS must be a usize".into())
-        })?;
+        config.system.worker_threads = val
+            .parse()
+            .map_err(|_| ConfigError::EnvOverride("GANE_WORKER_THREADS must be a usize".into()))?;
     }
     if let Ok(val) = std::env::var("GANE_INSTANCE_NAME") {
         config.system.instance_name = val;

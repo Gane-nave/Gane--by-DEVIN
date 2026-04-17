@@ -1,7 +1,7 @@
 //! Immutable audit logging.
 
-use gane_core::types::{AuditLog, EntityId, TransparencyLog};
 use chrono::Utc;
+use gane_core::types::{AuditLog, EntityId, TransparencyLog};
 use parking_lot::Mutex;
 use std::collections::VecDeque;
 

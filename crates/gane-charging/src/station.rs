@@ -1,8 +1,8 @@
 //! Charging station integration — station registry, availability tracking,
 //! congestion prediction, and route-to-charger planning.
 
-use gane_core::types::{EntityId, GeoPosition};
 use chrono::{DateTime, Utc};
+use gane_core::types::{EntityId, GeoPosition};
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use tracing::debug;

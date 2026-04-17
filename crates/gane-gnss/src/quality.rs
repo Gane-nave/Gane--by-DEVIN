@@ -105,9 +105,9 @@ impl Default for QualityScorer {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use chrono::Utc;
     use gane_core::gnss::*;
     use gane_core::types::EntityId;
-    use chrono::Utc;
 
     fn make_meas(cn0: f64, elevation: Option<f64>) -> SatelliteMeasurement {
         SatelliteMeasurement {

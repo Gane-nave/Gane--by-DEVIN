@@ -2,9 +2,9 @@
 //! the road network. Implements stochastic route allocation, corridor throttling,
 //! dynamic reroute limits, and residential protection zones.
 
+use chrono::{DateTime, Utc};
 use gane_core::infrastructure::LevelOfService;
 use gane_core::types::EntityId;
-use chrono::{DateTime, Utc};
 use std::collections::HashMap;
 use tracing::{debug, info, warn};
 

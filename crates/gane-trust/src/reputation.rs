@@ -1,8 +1,8 @@
 //! Reputation engine — user trust scoring with multi-source validation.
 
+use chrono::Utc;
 use gane_core::scoring::{TrustEntityType, TrustScore};
 use gane_core::types::EntityId;
-use chrono::Utc;
 use std::collections::HashMap;
 use tracing::{debug, info, warn};
 

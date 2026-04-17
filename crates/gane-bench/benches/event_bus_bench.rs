@@ -1,10 +1,10 @@
 //! Benchmarks for the event bus publish/subscribe throughput.
 
+use criterion::{black_box, criterion_group, criterion_main, Criterion};
 use gane_events::bus::EventBus;
 use gane_events::envelope::EventEnvelope;
 use gane_events::event_type::EventType;
 use gane_events::subscriber::EventHandler;
-use criterion::{black_box, criterion_group, criterion_main, Criterion};
 use std::sync::atomic::{AtomicU64, Ordering};
 use std::sync::Arc;
 use uuid::Uuid;

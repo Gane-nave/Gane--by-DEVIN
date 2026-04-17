@@ -1,8 +1,8 @@
 //! Oscillation suppression — detects and dampens traffic oscillations caused
 //! by navigation systems repeatedly rerouting users between the same corridors.
 
-use gane_core::types::EntityId;
 use chrono::{DateTime, Duration, Utc};
+use gane_core::types::EntityId;
 use std::collections::HashMap;
 use tracing::{debug, info};
 

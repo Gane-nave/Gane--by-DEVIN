@@ -1,8 +1,8 @@
 //! Indoor navigation handoff — manages transitions between outdoor GNSS
 //! navigation and indoor positioning for buildings, parking structures, etc.
 
-use gane_core::types::{EntityId, GeoPosition};
 use chrono::{DateTime, Utc};
+use gane_core::types::{EntityId, GeoPosition};
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use tracing::{debug, info};

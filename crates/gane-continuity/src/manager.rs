@@ -1,7 +1,7 @@
 //! Continuity manager — automatic mode switching with graceful degradation.
 
-use gane_core::types::{ContinuityMode, IntegrityLevel};
 use chrono::{DateTime, Utc};
+use gane_core::types::{ContinuityMode, IntegrityLevel};
 use tracing::{info, warn};
 
 use crate::health::{HealthStateMachine, Subsystem};
@@ -111,18 +111,16 @@ impl ContinuityManager {
     /// Notify that integrity level has changed.
     pub fn integrity_changed(&mut self, level: IntegrityLevel) {
         match level {
-            IntegrityLevel::Alert => {
-                if self.current_mode != ContinuityMode::ModeE {
-                    self.transition_to(ContinuityMode::ModeE, "integrity alert — emergency mode");
-                }
+            IntegrityLevel::Alert if self.current_mode != ContinuityMode::ModeE => {
+                self.transition_to(ContinuityMode::ModeE, "integrity alert — emergency mode");
             }
-            IntegrityLevel::Warning => {
-                if mode_rank(self.current_mode) > mode_rank(ContinuityMode::ModeC) {
-                    self.transition_to(
-                        ContinuityMode::ModeC,
-                        "integrity warning — degrading to Mode C",
-                    );
-                }
+            IntegrityLevel::Warning
+                if mode_rank(self.current_mode) > mode_rank(ContinuityMode::ModeC) =>
+            {
+                self.transition_to(
+                    ContinuityMode::ModeC,
+                    "integrity warning — degrading to Mode C",
+                );
             }
             _ => {}
         }

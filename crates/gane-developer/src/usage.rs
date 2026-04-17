@@ -1,8 +1,8 @@
 //! Usage tracking — monitors API consumption per key, per endpoint,
 //! and per time window for billing, analytics, and quota enforcement.
 
-use gane_core::types::EntityId;
 use chrono::{DateTime, Duration, Utc};
+use gane_core::types::EntityId;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use tracing::debug;
@@ -204,7 +204,7 @@ impl UsageTracker {
             }
         }
         let mut sorted: Vec<(String, u64)> = counts.into_iter().collect();
-        sorted.sort_by(|a, b| b.1.cmp(&a.1));
+        sorted.sort_by_key(|entry| std::cmp::Reverse(entry.1));
         sorted.truncate(limit);
         sorted
     }

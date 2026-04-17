@@ -1,8 +1,8 @@
 //! Vehicle energy model — consumption prediction, battery range estimation,
 //! and eco/fast/stable route scoring.
 
-use gane_core::types::{EnergyType, EntityId};
 use chrono::{DateTime, Utc};
+use gane_core::types::{EnergyType, EntityId};
 use serde::{Deserialize, Serialize};
 use tracing::debug;
 

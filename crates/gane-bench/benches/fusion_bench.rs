@@ -2,8 +2,8 @@
 #![allow(unknown_lints)]
 #![allow(clippy::manual_is_multiple_of)]
 
-use gane_fusion::ekf::NavigationEkf;
 use criterion::{black_box, criterion_group, criterion_main, Criterion};
+use gane_fusion::ekf::NavigationEkf;
 
 fn bench_ekf_creation(c: &mut Criterion) {
     c.bench_function("NavigationEkf::new", |b| {

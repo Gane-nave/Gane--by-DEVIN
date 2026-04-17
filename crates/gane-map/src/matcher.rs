@@ -198,8 +198,8 @@ fn bearing_deg(a: &GeoPosition, b: &GeoPosition) -> f64 {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use gane_core::map::*;
     use chrono::Utc;
+    use gane_core::map::*;
 
     fn make_index() -> RoadGraphIndex {
         let n1 = RoadNode {

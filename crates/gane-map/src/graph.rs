@@ -245,8 +245,8 @@ pub fn haversine_m(a: &GeoPosition, b: &GeoPosition) -> f64 {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use gane_core::map::*;
     use chrono::Utc;
+    use gane_core::map::*;
 
     fn make_graph() -> RoadGraph {
         let n1 = RoadNode {

@@ -2,9 +2,9 @@
 //! preemption requests, green wave coordination, and SPaT (Signal Phase
 //! and Timing) ingestion.
 
+use chrono::{DateTime, Utc};
 use gane_core::infrastructure::{TrafficPhase, TrafficSignalState};
 use gane_core::types::EntityId;
-use chrono::{DateTime, Utc};
 use std::collections::HashMap;
 use tracing::{debug, info, warn};
 
@@ -461,8 +461,8 @@ impl Default for SignalController {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use gane_core::types::GeoPosition;
     use chrono::Duration;
+    use gane_core::types::GeoPosition;
 
     fn make_signal(id: EntityId, phase: TrafficPhase, ttc: f64) -> TrafficSignalState {
         TrafficSignalState {

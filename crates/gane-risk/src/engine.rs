@@ -1,9 +1,9 @@
 //! Risk engine — computes risk scores for segments, routes, and regions.
 
+use chrono::Utc;
 use gane_core::map::RoadSegment;
 use gane_core::scoring::{RiskComponent, RiskEntityType, RiskFactor, RiskScore};
 use gane_core::types::EntityId;
-use chrono::Utc;
 use tracing::debug;
 
 /// Environmental conditions that affect risk calculations.

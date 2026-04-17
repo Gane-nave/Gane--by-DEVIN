@@ -4,8 +4,8 @@
 //! Packets are designed for extreme bandwidth constraints (< 1 kbps)
 //! with built-in error detection and priority handling.
 
-use gane_core::types::EntityId;
 use chrono::{DateTime, Utc};
+use gane_core::types::EntityId;
 use serde::{Deserialize, Serialize};
 use tracing::{debug, warn};
 

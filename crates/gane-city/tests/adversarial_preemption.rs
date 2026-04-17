@@ -2,10 +2,10 @@
 //! BUG: release_preemption used FIFO (position()) instead of max_by_key on priority.
 //! If broken: Transit (lower) would be promoted instead of Emergency (higher).
 
+use chrono::{Duration, Utc};
 use gane_city::signal::*;
 use gane_core::infrastructure::{TrafficPhase, TrafficSignalState};
 use gane_core::types::{EntityId, GeoPosition};
-use chrono::{Duration, Utc};
 
 fn make_signal(id: EntityId) -> TrafficSignalState {
     TrafficSignalState {

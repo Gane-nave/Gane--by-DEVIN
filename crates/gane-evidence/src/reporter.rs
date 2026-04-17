@@ -1,11 +1,11 @@
 //! Incident reporter — create, validate, and manage incident reports with evidence.
 
+use chrono::Utc;
 use gane_core::incident::{
     Evidence, EvidenceType, Incident, IncidentSeverity, IncidentStatus, IncidentTimeline,
     IncidentType, TimelineEntry,
 };
 use gane_core::types::{EntityId, GeoPosition};
-use chrono::Utc;
 use std::collections::{HashMap, HashSet};
 use tracing::{debug, info};
 

@@ -1,9 +1,9 @@
 //! Benchmarks for the full navigation pipeline and health aggregation.
 
+use criterion::{black_box, criterion_group, criterion_main, Criterion};
 use gane_app::health::build_health_report;
 use gane_app::pipeline::NavigationPipeline;
 use gane_config::AuroraConfig;
-use criterion::{black_box, criterion_group, criterion_main, Criterion};
 
 fn bench_pipeline_creation(c: &mut Criterion) {
     c.bench_function("NavigationPipeline::new", |b| {

@@ -60,10 +60,8 @@ impl NavigationMetrics {
                 "gane_telemetry_samples_buffered",
                 "Number of telemetry samples in the ring buffer",
             ),
-            api_requests_total: registry.counter(
-                "gane_api_requests_total",
-                "Total HTTP API requests served",
-            ),
+            api_requests_total: registry
+                .counter("gane_api_requests_total", "Total HTTP API requests served"),
             api_request_duration_seconds: registry.histogram(
                 "gane_api_request_duration_seconds",
                 "API request latency in seconds",
@@ -122,10 +120,8 @@ impl SystemMetrics {
         build_info.set(1);
 
         Self {
-            uptime_seconds: registry.gauge(
-                "gane_uptime_seconds",
-                "Time since server start in seconds",
-            ),
+            uptime_seconds: registry
+                .gauge("gane_uptime_seconds", "Time since server start in seconds"),
             active_connections: registry.gauge(
                 "gane_active_connections",
                 "Number of active HTTP connections",

@@ -1,10 +1,10 @@
 //! GNSS receiver abstraction — ingests raw measurements from all constellations.
 
+use chrono::Utc;
 use gane_core::gnss::{
     Constellation, ConstellationHealth, ConstellationState, GnssMeasurement, SatelliteId,
     SatelliteMeasurement,
 };
-use chrono::Utc;
 use std::collections::HashMap;
 use tracing::{debug, info, warn};
 
@@ -209,9 +209,9 @@ impl Default for GnssReceiver {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use chrono::Utc;
     use gane_core::gnss::*;
     use gane_core::types::EntityId;
-    use chrono::Utc;
 
     fn make_measurement(prn: u8, constellation: Constellation, cn0: f64) -> SatelliteMeasurement {
         SatelliteMeasurement {

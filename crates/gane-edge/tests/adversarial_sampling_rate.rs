@@ -3,9 +3,9 @@
 //! without guarding against zero — division by zero panic.
 //! Fix: `let rate = (self.config.sampling_rate as u64).max(1);`
 
+use chrono::Utc;
 use gane_core::types::EntityId;
 use gane_edge::reduction::*;
-use chrono::Utc;
 
 fn make_sample(value: f64) -> DataSample {
     DataSample {

@@ -1,8 +1,8 @@
 //! Evacuation planning — computes evacuation routes, manages assembly points,
 //! capacity tracking, and population flow for emergency evacuations.
 
-use gane_core::types::{EntityId, GeoPosition};
 use chrono::{DateTime, Utc};
+use gane_core::types::{EntityId, GeoPosition};
 use serde::{Deserialize, Serialize};
 use tracing::debug;
 

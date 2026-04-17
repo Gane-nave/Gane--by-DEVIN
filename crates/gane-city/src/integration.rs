@@ -2,8 +2,8 @@
 //! municipal APIs, IoT platforms, and third-party feeds, with normalization
 //! and freshness tracking.
 
-use gane_core::types::EntityId;
 use chrono::{DateTime, Duration, Utc};
+use gane_core::types::EntityId;
 use std::collections::HashMap;
 use tracing::{debug, info, warn};
 

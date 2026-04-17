@@ -1,8 +1,8 @@
 //! Simulation engine — runs what-if scenarios on digital twin state,
 //! stepping through discrete time ticks with configurable models.
 
-use gane_core::types::EntityId;
 use chrono::{DateTime, Duration, Utc};
+use gane_core::types::EntityId;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use tracing::{debug, info};

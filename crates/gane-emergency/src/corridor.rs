@@ -1,8 +1,8 @@
 //! Emergency corridor routing — computes priority routes for emergency vehicles
 //! with traffic signal preemption, corridor clearance, and priority override.
 
-use gane_core::types::{EntityId, GeoPosition};
 use chrono::{DateTime, Utc};
+use gane_core::types::{EntityId, GeoPosition};
 use serde::{Deserialize, Serialize};
 use tracing::debug;
 

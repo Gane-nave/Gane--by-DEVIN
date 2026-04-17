@@ -1,10 +1,8 @@
 //! Fault and anomaly detectors — spoofing, jamming, multipath, NLOS.
 
-use gane_core::gnss::{
-    SatelliteId, SatelliteMeasurement, ThreatAlert, ThreatSeverity, ThreatType,
-};
-use gane_core::types::EntityId;
 use chrono::Utc;
+use gane_core::gnss::{SatelliteId, SatelliteMeasurement, ThreatAlert, ThreatSeverity, ThreatType};
+use gane_core::types::EntityId;
 use std::collections::HashMap;
 use tracing::warn;
 

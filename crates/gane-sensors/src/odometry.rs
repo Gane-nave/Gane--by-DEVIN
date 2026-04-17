@@ -1,7 +1,7 @@
 //! Odometry processing — wheel and visual odometry.
 
-use gane_core::sensor::{VisualOdometry, WheelOdometry};
 use chrono::{DateTime, Utc};
+use gane_core::sensor::{VisualOdometry, WheelOdometry};
 use tracing::debug;
 
 /// Processes wheel odometry ticks into continuous distance/speed estimates.

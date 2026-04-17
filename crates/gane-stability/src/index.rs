@@ -1,9 +1,9 @@
 //! Network stability index — computes a holistic stability score for the road
 //! network using congestion entropy, flow balance, and fairness constraints.
 
+use chrono::Utc;
 use gane_core::scoring::{StabilityEntityType, StabilityScore};
 use gane_core::types::EntityId;
-use chrono::Utc;
 use tracing::{debug, warn};
 
 /// Flow state for a single segment used in stability computation.

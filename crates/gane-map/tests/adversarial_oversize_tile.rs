@@ -3,10 +3,10 @@
 //! drain the cache and still insert the tile, leaving total_bytes > max_bytes permanently.
 //! Fix: Early return if tile_size > self.max_bytes.
 
+use chrono::Utc;
 use gane_core::map::MapTile;
 use gane_core::types::EntityId;
 use gane_map::tile_manager::*;
-use chrono::Utc;
 
 fn make_tile_with_data(zoom: u8, x: u32, y: u32, data_len: usize) -> MapTile {
     MapTile {

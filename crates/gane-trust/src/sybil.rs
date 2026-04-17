@@ -1,7 +1,7 @@
 //! Sybil detector — identifies fake accounts, collusion patterns, and anomalous behavior.
 
-use gane_core::types::{EntityId, GeoPosition};
 use chrono::{DateTime, Utc};
+use gane_core::types::{EntityId, GeoPosition};
 use std::collections::{HashMap, HashSet};
 use tracing::{info, warn};
 

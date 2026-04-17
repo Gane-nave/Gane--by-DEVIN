@@ -1,12 +1,12 @@
 //! Infrastructure health monitoring — road condition detection, maintenance
 //! scheduling, health scoring, and issue lifecycle management.
 
+use chrono::{DateTime, Duration, Utc};
 use gane_core::infrastructure::{
     InfrastructureCondition, InfrastructureHealthRecord, InfrastructureIssue,
     InfrastructureIssueType, InfrastructureState,
 };
 use gane_core::types::{EntityId, GeoPosition};
-use chrono::{DateTime, Duration, Utc};
 use std::collections::HashMap;
 use tracing::{debug, info};
 

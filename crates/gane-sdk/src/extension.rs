@@ -1,8 +1,8 @@
 //! Extension system — lightweight extension points for customising
 //! SDK behaviour without the full plugin lifecycle.
 
-use gane_core::types::EntityId;
 use chrono::{DateTime, Utc};
+use gane_core::types::EntityId;
 use serde::{Deserialize, Serialize};
 use std::fmt;
 use tracing::debug;
@@ -90,7 +90,7 @@ impl ExtensionRegistry {
         self.extensions.push((ext, Utc::now()));
         // Sort by priority (descending — higher priority runs first).
         self.extensions
-            .sort_by(|(a, _), (b, _)| b.priority().cmp(&a.priority()));
+            .sort_by_key(|(ext, _)| std::cmp::Reverse(ext.priority()));
     }
 
     /// Apply all extensions to a request (in priority order).

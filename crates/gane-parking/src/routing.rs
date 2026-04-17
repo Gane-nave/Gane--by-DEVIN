@@ -1,8 +1,8 @@
 //! Parking routing — park-to-destination navigation, parking entry routing,
 //! and reservation integration.
 
-use gane_core::types::{EntityId, GeoPosition};
 use chrono::{DateTime, Utc};
+use gane_core::types::{EntityId, GeoPosition};
 use serde::{Deserialize, Serialize};
 use tracing::debug;
 

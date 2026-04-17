@@ -2,8 +2,8 @@
 //!
 //! Implements the Offline-First Architecture principle with conflict resolution.
 
-use gane_core::types::EntityId;
 use chrono::{DateTime, Utc};
+use gane_core::types::EntityId;
 use std::collections::VecDeque;
 use tracing::{debug, info, warn};
 

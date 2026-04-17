@@ -169,9 +169,9 @@ pub mod cost {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use chrono::Utc;
     use gane_core::map::*;
     use gane_core::types::GeoPosition;
-    use chrono::Utc;
 
     fn make_linear_graph() -> (RoadGraph, Vec<EntityId>) {
         // A → B → C linear graph.

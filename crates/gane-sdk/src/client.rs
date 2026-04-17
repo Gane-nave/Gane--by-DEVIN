@@ -1,8 +1,8 @@
 //! SDK client builder — fluent API for constructing and configuring
 //! an AURORA NAV SDK client instance.
 
-use gane_core::types::EntityId;
 use chrono::{DateTime, Utc};
+use gane_core::types::EntityId;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::fmt;

@@ -1,10 +1,10 @@
 //! High-level fusion engine orchestrating the EKF with measurement processing.
 
+use chrono::{DateTime, Utc};
 use gane_core::types::{
     ContinuityMode, CovarianceMatrix, EnuVelocity, FusedPosition, GeoPosition, Heading,
     IntegrityLevel,
 };
-use chrono::{DateTime, Utc};
 use tracing::info;
 
 use crate::ekf::NavigationEkf;

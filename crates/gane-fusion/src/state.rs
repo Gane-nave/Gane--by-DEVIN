@@ -1,10 +1,10 @@
 //! Fusion state vector and covariance management.
 
+use chrono::{DateTime, Utc};
 use gane_core::types::{
     ContinuityMode, CovarianceMatrix, EnuVelocity, FusedPosition, GeoPosition, Heading,
     IntegrityLevel, SourceContribution, UncertaintyEllipse,
 };
-use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
 
 /// The navigation state maintained by the fusion filter.

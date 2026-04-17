@@ -1,8 +1,8 @@
 //! Digital twin — state mirroring of physical entities with real-time
 //! synchronization, snapshot capture, and drift detection.
 
-use gane_core::types::EntityId;
 use chrono::{DateTime, Utc};
+use gane_core::types::EntityId;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use tracing::{debug, info, warn};

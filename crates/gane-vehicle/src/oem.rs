@@ -1,8 +1,8 @@
 //! OEM integration manager — manufacturer registration, capability
 //! discovery, firmware tracking, and fleet-wide OEM operations.
 
-use gane_core::types::EntityId;
 use chrono::{DateTime, Utc};
+use gane_core::types::EntityId;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use tracing::info;

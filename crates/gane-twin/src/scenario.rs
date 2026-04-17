@@ -1,8 +1,8 @@
 //! Scenario management — define, parameterize, and compare what-if
 //! scenarios for digital twin simulations.
 
-use gane_core::types::EntityId;
 use chrono::{DateTime, Utc};
+use gane_core::types::EntityId;
 use std::collections::HashMap;
 use tracing::{debug, info};
 

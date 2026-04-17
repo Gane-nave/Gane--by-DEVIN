@@ -145,8 +145,8 @@ impl Default for LaneDetector {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use gane_core::map::{Lane, TurnDirection};
     use chrono::Utc;
+    use gane_core::map::{Lane, TurnDirection};
 
     fn make_lane_graph() -> LaneGraph {
         let left_lane = Lane {

@@ -3,8 +3,8 @@
 //! Processes raw sensor data on-device before transmission, reducing
 //! bandwidth and latency. Stages can be enabled/disabled dynamically.
 
-use gane_core::types::EntityId;
 use chrono::{DateTime, Utc};
+use gane_core::types::EntityId;
 use serde::{Deserialize, Serialize};
 use tracing::{debug, info};
 

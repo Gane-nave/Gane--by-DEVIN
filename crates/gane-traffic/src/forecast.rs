@@ -1,8 +1,8 @@
 //! Traffic demand and congestion forecasting — short-term traffic prediction,
 //! delay propagation modelling, and network collapse early warning.
 
-use gane_core::types::EntityId;
 use chrono::{DateTime, Utc};
+use gane_core::types::EntityId;
 use std::collections::HashMap;
 use tracing::{debug, warn};
 

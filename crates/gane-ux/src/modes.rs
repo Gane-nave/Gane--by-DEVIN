@@ -1,8 +1,8 @@
 //! Driving mode manager — controls interface complexity, alert thresholds,
 //! and rendering density based on context (speed, cognitive load, mode).
 
-use gane_core::types::{DayNightMode, EntityId, UsageMode};
 use chrono::{DateTime, Utc};
+use gane_core::types::{DayNightMode, EntityId, UsageMode};
 use serde::{Deserialize, Serialize};
 use tracing::debug;
 

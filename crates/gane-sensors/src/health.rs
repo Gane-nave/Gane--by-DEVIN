@@ -1,7 +1,7 @@
 //! Sensor health monitoring.
 
-use gane_core::sensor::{SensorHealthReport, SensorStatus};
 use chrono::{DateTime, Utc};
+use gane_core::sensor::{SensorHealthReport, SensorStatus};
 
 /// Monitors the health of all sensor subsystems.
 pub struct SensorHealthMonitor {

@@ -167,8 +167,8 @@ fn maneuver_to_turn(maneuver: &Maneuver) -> Option<TurnDirection> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use gane_core::types::{EntityId, GeoPosition};
     use chrono::Utc;
+    use gane_core::types::{EntityId, GeoPosition};
 
     fn make_3lane_graph() -> LaneGraph {
         let lanes = (0..3)

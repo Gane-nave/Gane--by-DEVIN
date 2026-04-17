@@ -1,8 +1,8 @@
 //! Installation management — tracking installed plugins per user,
 //! version updates, enable/disable, and uninstallation.
 
-use gane_core::types::EntityId;
 use chrono::{DateTime, Utc};
+use gane_core::types::EntityId;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use tracing::info;

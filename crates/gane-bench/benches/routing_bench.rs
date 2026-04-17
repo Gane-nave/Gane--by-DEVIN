@@ -1,11 +1,11 @@
 //! Benchmarks for road graph indexing and Dijkstra shortest-path.
 
+use chrono::Utc;
+use criterion::{black_box, criterion_group, criterion_main, Criterion};
 use gane_core::map::*;
 use gane_core::types::{EntityId, GeoPosition};
 use gane_map::graph::RoadGraphIndex;
 use gane_routing::dijkstra::{self, CostFn};
-use chrono::Utc;
-use criterion::{black_box, criterion_group, criterion_main, Criterion};
 
 fn make_linear_graph(n: usize) -> (RoadGraph, Vec<EntityId>) {
     let mut nodes = Vec::with_capacity(n);

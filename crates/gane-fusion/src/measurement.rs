@@ -1,7 +1,7 @@
 //! Measurement models for the fusion filter.
 
-use gane_core::types::{GeoPosition, NavigationSource};
 use chrono::{DateTime, Utc};
+use gane_core::types::{GeoPosition, NavigationSource};
 
 /// A measurement that can be fused into the navigation filter.
 #[derive(Debug, Clone)]

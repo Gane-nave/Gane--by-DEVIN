@@ -1,8 +1,8 @@
 //! Invoice system — generation, line items, tax calculation,
 //! and payment status tracking.
 
-use gane_core::types::EntityId;
 use chrono::{DateTime, Utc};
+use gane_core::types::EntityId;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use tracing::info;

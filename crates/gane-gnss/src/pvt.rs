@@ -2,11 +2,9 @@
 //!
 //! Computes least-squares PVT solutions per constellation and combined.
 
-use gane_core::gnss::{
-    Constellation, PvtQuality, PvtSolution, SatelliteId, SatelliteMeasurement,
-};
-use gane_core::types::EcefPosition;
 use chrono::Utc;
+use gane_core::gnss::{Constellation, PvtQuality, PvtSolution, SatelliteId, SatelliteMeasurement};
+use gane_core::types::EcefPosition;
 use nalgebra::{DMatrix, DVector};
 use thiserror::Error;
 use tracing::debug;

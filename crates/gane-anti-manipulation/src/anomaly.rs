@@ -1,7 +1,7 @@
 //! Anomaly detector — identifies suspicious patterns in navigation data and reports.
 
-use gane_core::types::{EntityId, GeoPosition};
 use chrono::{DateTime, Utc};
+use gane_core::types::{EntityId, GeoPosition};
 use std::collections::HashMap;
 use tracing::{debug, warn};
 

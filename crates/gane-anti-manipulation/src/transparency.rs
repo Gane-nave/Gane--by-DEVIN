@@ -1,7 +1,7 @@
 //! Transparency logger — immutable algorithm audit trails for accountability.
 
-use gane_core::types::{EntityId, TransparencyLog};
 use chrono::Utc;
+use gane_core::types::{EntityId, TransparencyLog};
 use serde_json::Value;
 use std::collections::HashMap;
 use tracing::{debug, info};

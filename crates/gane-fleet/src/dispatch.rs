@@ -1,8 +1,8 @@
 //! Dispatch management — coordinates multi-driver operations, batch dispatching,
 //! route optimization for task sequences, and real-time re-dispatch.
 
-use gane_core::types::{EntityId, GeoPosition};
 use chrono::{DateTime, Utc};
+use gane_core::types::{EntityId, GeoPosition};
 use serde::{Deserialize, Serialize};
 use tracing::debug;
 

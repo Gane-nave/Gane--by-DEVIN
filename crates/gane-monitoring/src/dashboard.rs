@@ -172,9 +172,8 @@ pub fn gane_overview_dashboard() -> DashboardDefinition {
                 PanelDefinition {
                     title: "Error Rate".to_string(),
                     panel_type: PanelType::Gauge,
-                    query:
-                        "rate(gane_http_errors_total[5m]) / rate(gane_http_requests_total[5m])"
-                            .to_string(),
+                    query: "rate(gane_http_errors_total[5m]) / rate(gane_http_requests_total[5m])"
+                        .to_string(),
                     grid_pos: (12, 0, 6, 8),
                     unit: Some("percentunit".to_string()),
                     thresholds: vec![

@@ -2,9 +2,9 @@
 //! BUG: compute_observation_hash only hashed position/speed/heading, not source_id.
 //! Two different sources with identical readings would trigger false DataReplay alert.
 
+use chrono::Utc;
 use gane_anti_manipulation::anomaly::*;
 use gane_core::types::{EntityId, GeoPosition};
-use chrono::Utc;
 
 fn make_obs(source: EntityId, lat: f64, lon: f64, speed: f64, heading: f64) -> Observation {
     Observation {

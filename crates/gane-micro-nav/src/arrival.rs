@@ -1,8 +1,8 @@
 //! Gate-level arrival and last-metre guidance — navigates users to the exact
 //! entrance, gate, pickup point, or dropoff zone at their destination.
 
-use gane_core::types::{EntityId, GeoPosition};
 use chrono::{DateTime, Utc};
+use gane_core::types::{EntityId, GeoPosition};
 use serde::{Deserialize, Serialize};
 use tracing::debug;
 

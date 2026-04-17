@@ -1,7 +1,7 @@
 //! Telemetry recorder — captures navigation pipeline data for diagnostics.
 
-use gane_core::types::{ContinuityMode, FusedPosition, IntegrityLevel, NavigationSource};
 use chrono::{DateTime, Utc};
+use gane_core::types::{ContinuityMode, FusedPosition, IntegrityLevel, NavigationSource};
 use parking_lot::Mutex;
 use serde::{Deserialize, Serialize};
 use std::collections::VecDeque;

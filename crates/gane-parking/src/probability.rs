@@ -1,8 +1,8 @@
 //! Parking probability modelling — estimates the likelihood of finding
 //! parking at a given location, detects legality, and tracks availability.
 
-use gane_core::types::{EntityId, GeoPosition};
 use chrono::{DateTime, Utc};
+use gane_core::types::{EntityId, GeoPosition};
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use tracing::debug;

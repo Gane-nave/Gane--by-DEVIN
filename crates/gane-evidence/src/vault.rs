@@ -1,8 +1,8 @@
 //! Evidence vault — encrypted storage with integrity verification and privacy processing.
 
+use chrono::Utc;
 use gane_core::incident::{Evidence, EvidenceType};
 use gane_core::types::EntityId;
-use chrono::Utc;
 use std::collections::HashMap;
 use tracing::{debug, info, warn};
 

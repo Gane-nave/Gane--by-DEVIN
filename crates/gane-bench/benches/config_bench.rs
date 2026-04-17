@@ -1,7 +1,7 @@
 //! Benchmarks for configuration building and validation.
 
-use gane_config::{AuroraConfig, ConfigBuilder};
 use criterion::{black_box, criterion_group, criterion_main, Criterion};
+use gane_config::{AuroraConfig, ConfigBuilder};
 
 fn bench_config_default(c: &mut Criterion) {
     c.bench_function("AuroraConfig::default", |b| {

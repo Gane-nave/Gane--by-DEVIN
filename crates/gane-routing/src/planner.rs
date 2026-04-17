@@ -1,5 +1,6 @@
 //! Route planner — generates route plans with alternatives and maneuvers.
 
+use chrono::Utc;
 use gane_core::map::RoadSegment;
 use gane_core::route::{
     Corridor, LaneGuidance, Maneuver, ManeuverType, OptimizationObjective, RoutePlan, RouteSegment,
@@ -7,7 +8,6 @@ use gane_core::route::{
 };
 use gane_core::types::{EntityId, GeoPosition, TransportMode};
 use gane_map::graph::{haversine_m, RoadGraphIndex};
-use chrono::Utc;
 use tracing::{debug, info};
 
 use crate::dijkstra::{self, cost, CostFn, ShortestPath};
@@ -318,8 +318,8 @@ fn normalize_angle(angle: f64) -> f64 {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use gane_core::map::*;
     use chrono::Utc;
+    use gane_core::map::*;
 
     fn make_graph_and_index() -> (RoadGraph, RoadGraphIndex) {
         let n1 = RoadNode {

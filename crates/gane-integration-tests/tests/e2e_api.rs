@@ -3,10 +3,10 @@
 //! Proves that the API server, wired through the application pipeline,
 //! returns correct responses for all endpoints.
 
-use gane_api::server::build_router;
-use gane_api::state::AppState;
 use axum::body::Body;
 use axum::http::{Request, StatusCode};
+use gane_api::server::build_router;
+use gane_api::state::AppState;
 use std::sync::Arc;
 use tower::util::ServiceExt;
 
