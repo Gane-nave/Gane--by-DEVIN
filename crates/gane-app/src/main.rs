@@ -1,8 +1,8 @@
-//! AURORA NAV / GMIN — Main Entry Point
+//! G.A.N.E NAV — Main Entry Point
 //!
 //! Usage:
 //!   gane-nav                          # run with defaults
-//!   gane-nav -c aurora.toml           # run with config file
+//!   gane-nav -c gane.toml             # run with config file
 //!   gane-nav --port 9090              # override API port
 //!   gane-nav --dump-config            # print default config and exit
 //!   gane-nav --version                # print version and exit
@@ -16,7 +16,7 @@ use gane_auth::jwt::JwtManager;
 use gane_auth::rbac::PolicyEngine;
 use gane_auth::session::SessionManager;
 use gane_config::loader::apply_env_overrides;
-use gane_config::{load_config, AuroraConfig, ConfigBuilder};
+use gane_config::{load_config, ConfigBuilder, GaneConfig};
 use gane_metrics::registry::MetricRegistry;
 use gane_observability::probes::ProbeManager;
 use gane_security::headers::SecurityHeadersConfig;
@@ -35,7 +35,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // --version
     if args.version {
         println!(
-            "AURORA NAV / GMIN v{} — Global Mobility Intelligence Network",
+            "G.A.N.E NAV v{} — Global Mobility Intelligence Network",
             env!("CARGO_PKG_VERSION")
         );
         return Ok(());
@@ -69,7 +69,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // Build and start the API server
     let addr: SocketAddr = format!("{}:{}", config.api.host, config.api.port).parse()?;
-    info!("Starting AURORA NAV API server on {}", addr);
+    info!("Starting G.A.N.E NAV API server on {}", addr);
 
     let metrics = Arc::new(MetricRegistry::new());
     let probes = Arc::new(ProbeManager::new());
@@ -100,7 +100,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // Mark ready to receive traffic
     probes.mark_ready();
-    info!("AURORA NAV is ready — listening on {}", addr);
+    info!("G.A.N.E NAV is ready — listening on {}", addr);
 
     // Graceful shutdown: listen for SIGTERM/SIGINT
     let probes_shutdown = probes.clone();
@@ -108,7 +108,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .with_graceful_shutdown(shutdown_signal(probes_shutdown))
         .await?;
 
-    info!("AURORA NAV shutdown complete");
+    info!("G.A.N.E NAV shutdown complete");
     Ok(())
 }
 
@@ -141,7 +141,7 @@ async fn shutdown_signal(probes: Arc<ProbeManager>) {
     info!("Draining in-flight requests...");
 }
 
-fn load_configuration(args: &CliArgs) -> Result<AuroraConfig, Box<dyn std::error::Error>> {
+fn load_configuration(args: &CliArgs) -> Result<GaneConfig, Box<dyn std::error::Error>> {
     let mut config = if let Some(ref path) = args.config_path {
         let (cfg, result) = load_config(path)?;
         for w in &result.warnings {

@@ -40,7 +40,7 @@ pub async fn run_server(addr: SocketAddr) -> Result<(), Box<dyn std::error::Erro
     let state = Arc::new(AppState::new());
     let app = build_router(state);
 
-    info!("AURORA NAV API server starting on {addr}");
+    info!("G.A.N.E NAV API server starting on {addr}");
     let listener = tokio::net::TcpListener::bind(addr).await?;
     axum::serve(listener, app).await?;
 

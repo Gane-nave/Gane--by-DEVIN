@@ -1,16 +1,16 @@
 //! Default configuration TOML template.
 
 /// Returns the default configuration as a TOML string.
-/// Useful for generating a starter `aurora.toml` file.
+/// Useful for generating a starter `gane.toml` file.
 pub fn default_toml() -> String {
-    let cfg = crate::sections::AuroraConfig::default();
+    let cfg = crate::GaneConfig::default();
     toml::to_string_pretty(&cfg).expect("default config must serialise")
 }
 
 /// Returns a minimal configuration TOML with only the most commonly
 /// changed values.
 pub fn minimal_toml() -> &'static str {
-    r#"# AURORA NAV / GMIN — Minimal Configuration
+    r#"# G.A.N.E NAV — Minimal Configuration
 # Full reference: run `gane-nav --dump-config`
 
 [system]
@@ -38,14 +38,14 @@ mod tests {
     #[test]
     fn default_toml_is_parseable() {
         let toml_str = default_toml();
-        let _cfg: crate::sections::AuroraConfig =
+        let _cfg: crate::GaneConfig =
             toml::from_str(&toml_str).expect("default TOML must parse");
     }
 
     #[test]
     fn minimal_toml_is_parseable() {
         let toml_str = minimal_toml();
-        let cfg: crate::sections::AuroraConfig =
+        let cfg: crate::GaneConfig =
             toml::from_str(toml_str).expect("minimal TOML must parse");
         assert_eq!(cfg.api.port, 3000);
         assert_eq!(cfg.gnss.min_satellites, 4);

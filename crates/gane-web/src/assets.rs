@@ -1,4 +1,4 @@
-//! Embedded static assets for the AURORA NAV web UI.
+//! Embedded static assets for the G.A.N.E NAV web UI.
 
 /// The main HTML page with embedded CSS and JavaScript.
 /// Serves as a single-page application with:
@@ -19,7 +19,7 @@ pub const MAIN_HTML: &str = r##"<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AURORA NAV / GMIN — Global Mobility Intelligence Network</title>
+<title>G.A.N.E NAV — Global Mobility Intelligence Network</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
@@ -425,7 +425,7 @@ body {
     <div class="logo">
       <div class="logo-icon">A</div>
       <div>
-        <h1>AURORA NAV</h1>
+        <h1>G.A.N.E NAV</h1>
         <div class="subtitle">Global Mobility Intelligence Network</div>
       </div>
     </div>
@@ -655,7 +655,7 @@ body {
       <div class="footer-metric"><div class="dot" style="background:var(--accent-cyan)"></div>Queue: <span id="ft-queue">0</span></div>
     </div>
     <div>
-      <span id="ft-uptime">Uptime: --</span> &middot; AURORA NAV v0.1.0
+      <span id="ft-uptime">Uptime: --</span> &middot; G.A.N.E NAV v0.1.0
     </div>
   </footer>
 </div>
@@ -1050,7 +1050,7 @@ mod tests {
 
     #[test]
     fn html_contains_gane_branding() {
-        assert!(MAIN_HTML.contains("AURORA NAV"));
+        assert!(MAIN_HTML.contains("G.A.N.E NAV"));
         assert!(MAIN_HTML.contains("Global Mobility Intelligence Network"));
     }
 

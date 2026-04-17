@@ -1,4 +1,4 @@
-//! AURORA NAV / GMIN — Application Integration Layer
+//! G.A.N.E NAV — Application Integration Layer
 //!
 //! Wires all 39 subsystem crates into a unified navigation application
 //! with configuration, health monitoring, CLI, and the full processing

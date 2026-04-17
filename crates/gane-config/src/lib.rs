@@ -1,4 +1,4 @@
-//! AURORA NAV / GMIN — Unified Configuration
+//! G.A.N.E NAV — Unified Configuration
 //!
 //! Provides a single, strongly-typed configuration tree that every subsystem
 //! reads from.  Supports loading from TOML files, environment variable
@@ -13,4 +13,5 @@ pub mod validate;
 pub use builder::ConfigBuilder;
 pub use loader::load_config;
 pub use sections::AuroraConfig;
+pub use sections::AuroraConfig as GaneConfig;
 pub use validate::ConfigError;

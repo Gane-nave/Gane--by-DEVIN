@@ -2,7 +2,7 @@
 name = "gane-app"
 version.workspace = true
 edition.workspace = true
-description = "Main application binary for AURORA NAV / GMIN — wires all subsystems together"
+description = "Main application binary for G.A.N.E NAV — wires all subsystems together"
 
 [[bin]]
 name = "gane-nav"

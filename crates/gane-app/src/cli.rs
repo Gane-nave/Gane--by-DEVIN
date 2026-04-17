@@ -84,14 +84,14 @@ mod tests {
 
     #[test]
     fn config_path_parsed() {
-        let cli = CliArgs::from_args(&args("gane-nav --config /etc/aurora.toml"));
-        assert_eq!(cli.config_path.unwrap(), PathBuf::from("/etc/aurora.toml"));
+        let cli = CliArgs::from_args(&args("gane-nav --config /etc/gane.toml"));
+        assert_eq!(cli.config_path.unwrap(), PathBuf::from("/etc/gane.toml"));
     }
 
     #[test]
     fn short_config_flag() {
-        let cli = CliArgs::from_args(&args("gane-nav -c aurora.toml"));
-        assert_eq!(cli.config_path.unwrap(), PathBuf::from("aurora.toml"));
+        let cli = CliArgs::from_args(&args("gane-nav -c gane.toml"));
+        assert_eq!(cli.config_path.unwrap(), PathBuf::from("gane.toml"));
     }
 
     #[test]

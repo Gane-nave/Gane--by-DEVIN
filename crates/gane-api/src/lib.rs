@@ -1,4 +1,4 @@
-//! AURORA NAV — REST API Server
+//! G.A.N.E NAV — REST API Server
 //!
 //! Exposes the navigation pipeline, telemetry, integrity, and system health
 //! through a RESTful API built on Axum.

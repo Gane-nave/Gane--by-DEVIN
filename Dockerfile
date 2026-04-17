@@ -18,12 +18,12 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends ca-certificates && \
     rm -rf /var/lib/apt/lists/*
 
-RUN useradd -m -s /bin/bash aurora
+RUN useradd -m -s /bin/bash gane
 
 COPY --from=builder /build/target/release/gane-nav /usr/local/bin/gane-nav
 
-USER aurora
-WORKDIR /home/aurora
+USER gane
+WORKDIR /home/gane
 
 EXPOSE 3000
 

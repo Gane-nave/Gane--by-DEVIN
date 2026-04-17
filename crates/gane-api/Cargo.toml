@@ -2,7 +2,7 @@
 name = "gane-api"
 version.workspace = true
 edition.workspace = true
-description = "REST API server for AURORA NAV / GMIN"
+description = "REST API server for G.A.N.E NAV"
 
 [dependencies]
 gane-core = { path = "../gane-core" }

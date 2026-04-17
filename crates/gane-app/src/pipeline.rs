@@ -3,7 +3,7 @@
 //! Wires GNSS → Corrections → Sensors → Fusion → Integrity → Continuity
 //! into a single processing step that produces a `FusedPosition`.
 
-use gane_config::AuroraConfig;
+use gane_config::GaneConfig;
 use gane_continuity::ContinuityManager;
 use gane_core::types::FusedPosition;
 use gane_events::EventBus;
@@ -30,14 +30,14 @@ pub struct NavigationPipeline {
     pub last_position: Arc<RwLock<Option<FusedPosition>>>,
     /// Infrastructure service registry (cache, circuit breaker, rate limiter, etc.).
     pub services: Arc<RwLock<ServiceRegistry>>,
-    config: AuroraConfig,
+    config: GaneConfig,
     /// Whether any GNSS data has ever been received by this pipeline.
     has_received_gnss: AtomicBool,
 }
 
 impl NavigationPipeline {
     /// Create a new navigation pipeline from configuration.
-    pub fn new(config: AuroraConfig) -> Self {
+    pub fn new(config: GaneConfig) -> Self {
         let telemetry = Arc::new(TelemetryRecorder::new(config.telemetry.buffer_capacity));
         Self {
             gnss: Arc::new(RwLock::new(ConstellationManager::new())),
@@ -55,7 +55,7 @@ impl NavigationPipeline {
     }
 
     /// Returns the configuration.
-    pub fn config(&self) -> &AuroraConfig {
+    pub fn config(&self) -> &GaneConfig {
         &self.config
     }
 
@@ -184,7 +184,7 @@ pub struct SubsystemStatus {
 /// Print a startup banner with subsystem status.
 pub fn print_banner(status: &SubsystemStatus) {
     debug!("╔══════════════════════════════════════════════╗");
-    debug!("║   AURORA NAV / GMIN                         ║");
+    debug!("║   G.A.N.E NAV                              ║");
     debug!("║   Global Mobility Intelligence Network      ║");
     debug!("╚══════════════════════════════════════════════╝");
     debug!("Subsystems:");
@@ -272,7 +272,7 @@ mod tests {
 
     #[test]
     fn pipeline_creates_with_default_config() {
-        let pipeline = NavigationPipeline::new(AuroraConfig::default());
+        let pipeline = NavigationPipeline::new(GaneConfig::default());
         assert!(pipeline.is_healthy());
         assert_eq!(pipeline.tracked_satellites(), 0);
         assert!(pipeline.current_position().is_none());
@@ -280,14 +280,14 @@ mod tests {
 
     #[test]
     fn pipeline_config_accessible() {
-        let pipeline = NavigationPipeline::new(AuroraConfig::default());
+        let pipeline = NavigationPipeline::new(GaneConfig::default());
         assert_eq!(pipeline.config().api.port, 3000);
         assert!(pipeline.config().gnss.enable_gps);
     }
 
     #[test]
     fn pipeline_subsystem_status() {
-        let cfg = AuroraConfig::default();
+        let cfg = GaneConfig::default();
         let pipeline = NavigationPipeline::new(cfg);
         let status = pipeline.subsystem_status();
         assert!(status.gnss_enabled);
@@ -309,7 +309,7 @@ mod tests {
 
     #[test]
     fn pipeline_total_events_starts_at_zero() {
-        let pipeline = NavigationPipeline::new(AuroraConfig::default());
+        let pipeline = NavigationPipeline::new(GaneConfig::default());
         assert_eq!(pipeline.total_events(), 0);
     }
 

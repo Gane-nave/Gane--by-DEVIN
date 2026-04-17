@@ -3,8 +3,8 @@
 **Global Autonomous Navigation Engine / Global Mobility Intelligence Network**
 
 G.A.N.E NAV is a production-grade, modular navigation platform. It
-unifies the codebases previously tracked as *AURORA NAV*, *GMIN*,
-*G.A.N.E*, and several sibling React/Firebase prototypes into a single
+unifies the Rust navigation core, the Node/React product surface, and
+the sibling React/Firebase application surfaces into a single
 repository.
 
 This is a **polyglot monorepo**:
@@ -20,6 +20,11 @@ The Rust workspace is the **source of truth** for positioning, sensor
 fusion, and integrity monitoring. The Node and React surfaces consume
 `gane-api` (Axum) for the high-assurance real-time path and layer
 their own product UX on top.
+
+Repository-wide engineering structure and archive/source integration are
+tracked in:
+- `docs/ENGINEERING_STRUCTURE_OVERVIEW.md`
+- `docs/ARCHIVE_INTEGRATION_STATUS.md`
 
 ## Workspace Layout
 
@@ -43,7 +48,7 @@ gane-nav/
     gane-orchestrator/  #   Pipeline orchestrator
     ... (2,400+ more crates covering sensors, infra, UX, compliance, etc.)
 
-  frontend/               # Node-based full-stack surface (gmin-spec snapshot)
+  frontend/               # Node-based full-stack surface
     client/               #   React 18 + Vite + Tailwind + shadcn/ui
     server/               #   Express + OpenTelemetry + Drizzle
     shared/               #   Shared contracts / types
@@ -181,6 +186,8 @@ docker compose up --build
   `.gitignore`.
 - Binary / rendered artifacts (`*.zip`, `*.tar*`, `*.pdf`) are blocked at
   the gitignore level to keep the repo lean.
+- Use `scripts/verify-unified-repo.ps1` to run the shared verification flow
+  across the frontend and platform-service surfaces.
 
 ## License
 
