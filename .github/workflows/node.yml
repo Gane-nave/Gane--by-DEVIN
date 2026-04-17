@@ -1,0 +1,79 @@
+name: Node
+
+on:
+  push:
+    branches: [main, master, 'devin/**']
+  pull_request:
+    branches: [main, master, 'devin/**']
+
+concurrency:
+  group: node-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  platform:
+    name: services/gane-platform
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: services/gane-platform
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: services/gane-platform/package-lock.json
+      - run: npm ci --no-audit --no-fund
+      - run: npm run typecheck
+      - run: npm test
+
+  frontend:
+    name: frontend
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - run: pnpm install --prefer-offline --no-frozen-lockfile
+      - run: pnpm run check
+      - run: pnpm run build
+
+  trade:
+    name: apps/trade
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/trade
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: apps/trade/package-lock.json
+      - run: npm ci --no-audit --no-fund
+      - run: npm run build
+
+  brainiac:
+    name: apps/brainiac
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/brainiac
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: apps/brainiac/package-lock.json
+      - run: npm ci --no-audit --no-fund
+      - run: npm run build

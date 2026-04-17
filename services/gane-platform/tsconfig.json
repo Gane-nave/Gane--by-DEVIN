@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": ["ES2022", "DOM"],
+    "jsx": "react-jsx",
+    "strict": true,
+    "noImplicitAny": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "allowImportingTsExtensions": false,
+    "noEmit": true,
+    "types": ["node", "vitest/globals"]
+  },
+  "include": [
+    "infra/**/*.ts",
+    "admin/**/*.ts",
+    "policy/**/*.ts",
+    "trust/**/*.ts",
+    "engine/**/*.ts",
+    "offline/**/*.ts",
+    "proof/**/*.ts",
+    "sentinel/**/*.ts",
+    "ui/**/*.ts",
+    "ui/**/*.tsx",
+    "billing/**/*.ts",
+    "tests/**/*.ts"
+  ]
+}

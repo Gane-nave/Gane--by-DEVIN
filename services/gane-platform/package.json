@@ -1,0 +1,32 @@
+{
+  "name": "@gane/platform",
+  "version": "0.1.0",
+  "private": true,
+  "description": "G.A.N.E NAV platform service — backend API, RBAC, policy, trust, release gate, regression sentinel, safety-UX, offline, admin, billing.",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx infra/api/server.ts",
+    "build": "tsc -p tsconfig.json --noEmit && esbuild infra/api/server.ts --bundle --platform=node --format=esm --packages=external --outfile=dist/server.js",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "start": "node dist/server.js"
+  },
+  "dependencies": {
+    "@trpc/server": "^10.45.2",
+    "cors": "^2.8.5",
+    "drizzle-orm": "^0.36.4",
+    "express": "^4.21.2",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.2.14",
+    "esbuild": "^0.24.2",
+    "react": "^19.2.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "vitest": "^2.1.8"
+  }
+}
