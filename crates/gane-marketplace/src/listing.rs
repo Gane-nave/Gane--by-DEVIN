@@ -369,9 +369,7 @@ impl MarketplaceStore {
             .collect();
 
         match criteria.sort_by {
-            SortOrder::Popularity => {
-                results.sort_by_key(|l| std::cmp::Reverse(l.download_count))
-            }
+            SortOrder::Popularity => results.sort_by_key(|l| std::cmp::Reverse(l.download_count)),
             SortOrder::Rating => results.sort_by(|a, b| {
                 b.average_rating()
                     .partial_cmp(&a.average_rating())
