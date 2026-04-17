@@ -13,10 +13,27 @@
 # Binary / rendered documents belong outside source control
 *.pdf
 
-# Node / frontend build artifacts
-frontend/node_modules
-frontend/dist
-frontend/.vite
-frontend/coverage
-frontend/.env
-frontend/.env.local
+# Node / front-end build artefacts (shared rules for frontend/ + apps/*)
+**/node_modules
+**/dist
+**/.vite
+**/coverage
+**/.env
+**/.env.local
+**/.env.*.local
+
+# Playwright / test artefacts
+**/test-results
+**/playwright-report
+**/blob-report
+**/.nyc_output
+
+# Next / Vite caches
+**/.next
+**/.turbo
+**/.cache
+
+# OS / editor
+.idea
+.vscode
+*.log

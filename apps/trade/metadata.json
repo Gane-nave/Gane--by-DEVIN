@@ -1,0 +1,5 @@
+{
+  "name": "com.gane.nav",
+  "description": "Global Autonomous Navigation Engine - Sovereign Multi-layer distributed intelligence infrastructure.",
+  "requestFramePermissions": ["geolocation", "camera", "microphone"]
+}

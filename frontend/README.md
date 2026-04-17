@@ -1,60 +1,135 @@
-# G.A.N.E NAV — Web Frontend
+# G.A.N.E NAV — Web Frontend (full snapshot)
 
-This directory contains the React/TypeScript dashboard client for **G.A.N.E NAV**
-(Global Autonomous Navigation Engine / Global Mobility Intelligence Network).
+This directory is the Node-based web stack of **G.A.N.E NAV**. It is a
+full snapshot of the `gmin-spec` project and complements the Rust
+workspace in `../crates/`:
 
-It is intended to sit on top of the Rust workspace in `../crates/aurora-api/`
-(REST API, Axum-based) and complement the lightweight Leaflet dashboard that
-lives in `../crates/aurora-web/`.
+| Role | Location | Notes |
+|---|---|---|
+| Rust REST API | `../crates/aurora-api` | Axum, 2,452-crate workspace |
+| Rust dashboard (Leaflet) | `../crates/aurora-web` | Lightweight, server-rendered |
+| **Node API / web app** | `./server`, `./client`, `./shared` | This directory |
+
+The Node stack is the richer product surface (Drizzle + Postgres +
+OpenTelemetry + Playwright + Vitest + Radix UI). The Rust `aurora-api`
+is the high-assurance real-time path.
+
+## Layout
+
+```
+frontend/
+  package.json           # pnpm workspace root, ESM, TS throughout
+  pnpm-lock.yaml
+  tsconfig.json          # Client + shared tsconfig
+  tsconfig.node.json     # Server / tooling tsconfig
+  vite.config.ts         # Vite 5 with TS paths
+  vitest.config.ts       # Unit / integration tests
+  playwright.config.ts   # E2E tests (Chromium / WebKit / Firefox)
+  drizzle.config.ts      # Drizzle ORM migrations config
+  components.json        # shadcn/ui component registry
+
+  client/                # React 18 + Vite front-end
+    index.html
+    src/
+      main.tsx           # Entry
+      App.tsx            # Router + providers
+      index.css          # Tailwind base
+      const.ts           # Shared client constants
+      _core/             # Hooks, providers
+      components/        # UI components (dashboards, maps, panels)
+      contexts/          # React Contexts
+      engine/            # Client-side engines (battery, sensors, …)
+      hooks/             # Data-fetching / state hooks
+      lib/               # Pure utilities
+      pages/             # Route pages
+
+  server/                # Express + OpenTelemetry + Drizzle API
+    _core/               # Bootstrap, middleware
+    gane/                # G.A.N.E-specific route handlers / engines
+    routers.ts           # Top-level router composition
+    db.ts                # Drizzle DB handle
+    storage.ts           # Object storage abstraction
+    index.ts             # HTTP entrypoint
+    *.test.ts            # Vitest tests
+
+  shared/                # Shared contracts between client & server
+    _core/
+    const.ts
+    contracts/
+    types.ts
+
+  drizzle/               # Drizzle migrations (SQL + metadata)
+
+  e2e/                   # Playwright scenarios
+  load-tests/            # k6 / Artillery load tests
+  monitoring/            # Dashboards, alert rules
+  patches/               # npm patches (patch-package)
+
+  docs/                  # APK_TWA_GUIDE, CANONICAL_BACKLOG, system audit
+  ACCEPTANCE_REPORT.md   # Historical status reports
+  AUDIT_REPORT.md
+  AUDIT_FINDINGS.md
+  FINAL_PRELAUNCH_REPORT.md
+  LIGHTHOUSE_AUDIT.md
+  SUMMARY_HE.md
+  USER_REQUIREMENTS_COMPREHENSIVE.md
+  qa-*.md                # QA notes snapshot
+  ideas.md, todo.md, …   # Planning docs
+```
+
+## Quick start
+
+```bash
+cd frontend
+
+# Install deps (pnpm lockfile, node 20+).
+pnpm install
+
+# Dev — boots the tsx-watched Express server + Vite.
+pnpm dev
+
+# Production build (Vite client + esbuild-bundled Node server).
+pnpm build
+pnpm start
+
+# Type check only.
+pnpm check
+
+# Unit tests.
+pnpm test
+
+# End-to-end tests (Playwright).
+pnpm test:e2e
+```
+
+Environment variables live in `.env` (ignored). See `drizzle.config.ts`
+for database connection, and the OpenTelemetry OTLP env vars for
+tracing.
+
+## Relationship to the rest of the monorepo
+
+- The Rust workspace in `../crates/` is the **source of truth** for
+  positioning, sensor fusion, integrity, and the REST reference
+  implementation (`aurora-api`). For production/high-assurance
+  deployments, the Node server forwards to the Rust API where needed.
+- `../apps/trade/` and `../apps/brainiac/` are separate React apps
+  imported from standalone bundles. They currently ship with their own
+  `package.json` / `tsconfig` / Vite config and are **not** linked into
+  this pnpm workspace. Over time they should either converge on these
+  shared configs or be split back out; see `../MONOREPO.md`.
 
 ## Status
 
-This is a **snapshot** imported from the original `gmin-spec-complete.zip`
-bundle. It preserves 27 source files under `src/`:
+This snapshot was re-imported on 2026-04-17 from
+`gmin-spec-complete+1.zip` (456 files, ~6.5 MB). Everything that was
+originally inside that archive is preserved verbatim — including the
+audit reports, QA logs, patches, migrations, and E2E tests — with two
+exceptions:
 
-- `src/App.tsx` — routing, providers, error boundaries
-- `src/_core/hooks/useAuth.ts`
-- `src/components/*.tsx` — 22 dashboard / panel components
-- `src/components/ErrorBoundary.tsx` and `ComponentErrorBoundary.tsx`
+1. `frontend/test-results/` was stripped (run artefacts, not source).
+2. Binary archives (`*.zip`, `*.pdf`) are blocked at the repo-level
+   `.gitignore`.
 
-The snapshot is **not buildable in isolation**. The source references a number
-of modules that were not part of the imported bundle (based on a static grep of
-the imports in `src/App.tsx` and `src/components/*.tsx`):
-
-- `@/components/ui/*` — shadcn/ui primitives (`button`, `avatar`, `tooltip`,
-  `sonner`, `scroll-area`, `textarea`) — not copied in.
-- `@/contexts/*` — `ThemeContext`, `NavigationContext`, `RealDataContext`,
-  `LanguageContext`, `VoiceContext`, `GANEContext`, `AdminModeContext`.
-- `@/pages/*` — `Home`, `NotFound`, `AdminPanel`, `JoinByInvite`,
-  `NotificationCenter`.
-- `@/hooks/*` — `useCollaboration`, `useMobile`, `useNotifications`.
-- `@/lib/*` — `trpc`, `sentry`, `utils`.
-- `@/engine/batteryOptimizer`, `@/const`.
-
-The accompanying verification reports in `docs/` (see `ACCEPTANCE_REPORT.md`,
-`FINAL_PRELAUNCH_REPORT.md`, etc.) describe a larger project of roughly
-298 files / 94 k lines / 400 tests. Only the 27 files above are present in
-this repository at the moment — the rest of the tree, plus a tRPC server,
-Drizzle schema, and test suite, needs to be supplied separately before the
-frontend can be wired back up and built.
-
-## Next Steps
-
-To bring this frontend back to a green build, the missing modules listed above
-need to be re-imported (or rewritten against `aurora-api`). The Rust backend
-already exposes an HTTP surface via `aurora-api`, so the shadcn/tRPC stack can
-be swapped for thin REST / WebSocket clients as a cleaner alternative.
-
-## Docs
-
-`docs/` contains the historical status reports from the original bundle:
-
-- `SUMMARY_HE.md` — Hebrew project summary.
-- `ACCEPTANCE_REPORT.md` — acceptance log.
-- `AUDIT_REPORT.md` / `AUDIT_FINDINGS.md` — prior audit runs.
-- `FINAL_PRELAUNCH_REPORT.md` — pre-launch checklist.
-- `LIGHTHOUSE_AUDIT.md` — web-perf audit notes.
-
-These describe the state of the project at the time of the snapshot and do
-**not** reflect the current contents of this directory on their own — treat
-them as historical context rather than as a statement of today's truth.
+`pnpm install` + `pnpm build` have **not** been executed on CI yet in
+this repo. The CI workflow (`.github/workflows/`) currently only
+builds the Rust workspace. Adding a Node job is a follow-up.

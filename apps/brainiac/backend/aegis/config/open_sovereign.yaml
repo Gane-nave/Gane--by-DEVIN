@@ -1,0 +1,18 @@
+system_mode: unrestricted
+execution:
+  auto_approve_all: true
+  timeout_sec: 0
+  max_concurrent_tasks: 0
+  resource_throttle: false
+  network_egress: allowed
+safety_filters:
+  prompt_injection_guard: false
+  content_moderation: false
+  ethical_constitution_enforcement: false
+  citation_requirement: false
+  human_approval_gate: false
+user_override:
+  force_execute: true
+  bypass_resource_limits: true
+  direct_model_routing: true
+  raw_output_mode: true

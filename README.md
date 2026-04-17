@@ -2,42 +2,64 @@
 
 **Global Autonomous Navigation Engine / Global Mobility Intelligence Network**
 
-G.A.N.E NAV is a production-grade, modular navigation platform built as a
-Cargo workspace of `aurora-*` crates. It unifies the codebases previously
-tracked as *AURORA NAV*, *GMIN*, and *G.A.N.E* into a single repository:
+G.A.N.E NAV is a production-grade, modular navigation platform. It
+unifies the codebases previously tracked as *AURORA NAV*, *GMIN*,
+*G.A.N.E*, and several sibling React/Firebase prototypes into a single
+repository.
 
-- The Rust workspace in `crates/` — positioning, sensor fusion, integrity
-  monitoring, routing, traffic, V2X, indoor / AR navigation, the REST API
-  server, and the Leaflet-based web dashboard.
-- The `frontend/` directory — a React / TypeScript client snapshot that
-  pairs with `aurora-api` for a richer dashboard experience. See
-  [`frontend/README.md`](frontend/README.md) for its current status.
+This is a **polyglot monorepo**:
+
+| Surface | Location | Stack | Role |
+|---|---|---|---|
+| Real-time core | `crates/` | Rust 1.83 (2,452 crates) | Positioning, fusion, integrity, routing, REST API |
+| Full web stack | `frontend/` | React + Vite + Express + Drizzle + Playwright | Richer dashboard + Node API + E2E + load tests |
+| Trade / ops app | `apps/trade/` | React 19 + Vite + Firebase + Leaflet | Standalone navigation / trade console |
+| Brainiac agents | `apps/brainiac/` | React 19 + three.js + Python (Aegis / Brainiac) | AI agents + 3D overlays |
+
+The Rust workspace is the **source of truth** for positioning, sensor
+fusion, and integrity monitoring. The Node and React surfaces consume
+`aurora-api` (Axum) for the high-assurance real-time path and layer
+their own product UX on top.
 
 ## Workspace Layout
 
 ```
 gane-nav/
-  crates/
-    aurora-core/          # Core types, coordinates, errors
-    aurora-gnss/          # Multi-constellation GNSS receiver
-    aurora-fusion/        # Extended Kalman Filter sensor fusion
-    aurora-integrity/     # RAIM, protection levels, jamming/spoofing
-    aurora-routing/       # A* / Dijkstra route planning
-    aurora-map/           # Map data, tiles, matching
-    aurora-lane/          # Lane-level guidance
-    aurora-traffic/       # Real-time traffic flow
-    aurora-v2x/           # Vehicle-to-Everything (DSRC/C-V2X)
-    aurora-indoor/        # BLE beacon trilateration, magnetic fingerprinting
-    aurora-ar-nav/        # Augmented Reality overlay, lane projection
-    aurora-api/           # REST API server (Axum)
-    aurora-web/           # Interactive web dashboard (Leaflet.js)
-    aurora-app/           # Application orchestration
-    aurora-orchestrator/  # Pipeline orchestrator
+  crates/                 # Rust workspace — 2,452 aurora-* crates
+    aurora-core/          #   Core types, coordinates, errors
+    aurora-gnss/          #   Multi-constellation GNSS receiver
+    aurora-fusion/        #   Extended Kalman Filter sensor fusion
+    aurora-integrity/     #   RAIM, protection levels, jamming/spoofing
+    aurora-routing/       #   A* / Dijkstra route planning
+    aurora-map/           #   Map data, tiles, matching
+    aurora-lane/          #   Lane-level guidance
+    aurora-traffic/       #   Real-time traffic flow
+    aurora-v2x/           #   Vehicle-to-Everything (DSRC/C-V2X)
+    aurora-indoor/        #   BLE beacon trilateration, magnetic fingerprinting
+    aurora-ar-nav/        #   Augmented Reality overlay, lane projection
+    aurora-api/           #   REST API server (Axum)
+    aurora-web/           #   Interactive web dashboard (Leaflet.js)
+    aurora-app/           #   Application orchestration
+    aurora-orchestrator/  #   Pipeline orchestrator
     ... (2,400+ more crates covering sensors, infra, UX, compliance, etc.)
-  frontend/               # React/TypeScript dashboard snapshot
-    src/                  # Component snapshot (see frontend/README.md)
-    docs/                 # Historical status reports from the import
-  .github/workflows/      # CI: build, clippy, test, fmt, bench, doc
+
+  frontend/               # Node-based full-stack surface (gmin-spec snapshot)
+    client/               #   React 18 + Vite + Tailwind + shadcn/ui
+    server/               #   Express + OpenTelemetry + Drizzle
+    shared/               #   Shared contracts / types
+    drizzle/              #   SQL migrations
+    e2e/                  #   Playwright scenarios
+    load-tests/           #   k6 / Artillery load tests
+    docs/                 #   APK_TWA_GUIDE, CANONICAL_BACKLOG, audit
+    package.json          #   pnpm workspace root
+    pnpm-lock.yaml        #   Node dependency lockfile
+    …                     #   See frontend/README.md for full layout
+
+  apps/
+    trade/                # React 19 + Firebase + Leaflet navigation console
+    brainiac/             # React 19 + three.js + Python backend (Aegis + Brainiac)
+
+  .github/workflows/      # CI: build, clippy, test, fmt, bench, doc (Rust only today)
   Cargo.toml              # Workspace manifest (2,452 unique members)
   Dockerfile              # Multi-stage release build for aurora-app
   docker-compose.yml      # Local runtime for aurora-nav

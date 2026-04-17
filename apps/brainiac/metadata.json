@@ -1,0 +1,10 @@
+{
+  "name": "OmniKernel: Crystal Edge OS",
+  "description": "A unified AI Operating System and 3D Material Lab for Crystal Edge Glass & Mirrors, featuring Gemini-powered God Agent, Three.js spatial visualization, and Firebase integration.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ],
+  "majorCapabilities": []
+}
