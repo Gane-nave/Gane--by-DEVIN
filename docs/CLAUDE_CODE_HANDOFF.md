@@ -20,18 +20,17 @@ context to continue without access to the original chat thread.
 - Active branch:
   `devin/1776397393-gane-nav-unify`
 - Current git state at handoff:
-  run `git status -sb` and `git log --oneline --decorate -5` for the
-  exact live state. During this session, the remote tracking branch was
-  last confirmed at `2f835132`, and additional local-only continuation
-  commits were created afterward.
+  run `git status -sb`, `git log --oneline --decorate -10`, and
+  `git diff --stat origin/devin/1776397393-gane-nav-unify...HEAD` for
+  the exact live state. Do not rely on historical branch-position
+  statements in this document as a substitute for checking git live.
 
 ### Relevant commits
 
 - `2f835132` `Integrate frontend fixes and virtual DB fallback`
-  This commit is present on the remote tracking branch.
+  Milestone commit for frontend/platform stabilization.
 - `3146f8ee` `Add repository governance and canonical naming cleanup`
-  This commit exists locally and was not pushed from this terminal due to
-  missing GitHub credentials.
+  Milestone commit for repo governance and naming cleanup.
 - `39c9e863` `Add Claude Code continuation handoff`
   This commit adds the handoff files themselves.
 
@@ -167,17 +166,20 @@ User-provided sources that were checked against the live repo:
 
 ## What Is Not Complete
 
-### 1. GitHub remote is not fully updated
+### 1. GitHub synchronization must be checked live
 
-- Remote branch currently contains `2f835132`.
-- Local-only continuation commits exist beyond that point.
-- `git push` from this terminal failed because GitHub credentials were
-  not available in the shell.
-- `gh` CLI is not installed in this terminal.
+- Earlier in this effort, one terminal session did not have usable
+  GitHub push credentials.
+- Later verification showed that remote state and push capability can
+  differ by environment/session.
+- Always re-check before assuming push is blocked or already complete.
 
-If credentials become available, the next push should be:
+Recommended checks:
 
 ```powershell
+git status -sb
+git log --oneline --decorate -10
+git push --dry-run origin devin/1776397393-gane-nav-unify
 git push origin devin/1776397393-gane-nav-unify
 ```
 
@@ -246,7 +248,8 @@ performed here.
 
 - Real work was completed.
 - Verification passed for the Node/TypeScript surfaces.
-- One local commit is still unpublished.
+- Git synchronization must be checked live rather than inferred from an
+  older handoff snapshot.
 - The repo is not fully canonicalized.
 - The repo is not fully complete relative to the user’s master
   G.A.N.E NAV directive.

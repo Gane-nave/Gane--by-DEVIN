@@ -17,10 +17,11 @@ Current local branch:
 - `devin/1776397393-gane-nav-unify`
 
 Current continuation context:
-- The remote branch includes commit `2f835132`.
-- Additional local-only continuation commits exist after that point.
-- For the exact live branch state, run:
+- Do not assume remote or local branch position from this file alone.
+- For the exact live branch state, always run:
   - `git status -sb`
-  - `git log --oneline --decorate -5`
+  - `git log --oneline --decorate -10`
+- The shared Node/TypeScript verification flow is:
+  - `powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\verify-unified-repo.ps1`
 - The primary open handoff and status document is:
   `docs/CLAUDE_CODE_HANDOFF.md`.
