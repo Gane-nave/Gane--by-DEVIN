@@ -18,8 +18,9 @@ Current local branch:
 
 Current continuation context:
 - The remote branch includes commit `2f835132`.
-- The local branch has two additional unpublished commits:
-  - `3146f8ee Add repository governance and canonical naming cleanup`
-  - `39c9e863 Add Claude Code continuation handoff`
+- Additional local-only continuation commits exist after that point.
+- For the exact live branch state, run:
+  - `git status -sb`
+  - `git log --oneline --decorate -5`
 - The primary open handoff and status document is:
   `docs/CLAUDE_CODE_HANDOFF.md`.

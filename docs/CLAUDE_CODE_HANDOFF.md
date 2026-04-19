@@ -20,8 +20,10 @@ context to continue without access to the original chat thread.
 - Active branch:
   `devin/1776397393-gane-nav-unify`
 - Current git state at handoff:
-  local branch is ahead of `origin/devin/1776397393-gane-nav-unify` by
-  2 commits.
+  run `git status -sb` and `git log --oneline --decorate -5` for the
+  exact live state. During this session, the remote tracking branch was
+  last confirmed at `2f835132`, and additional local-only continuation
+  commits were created afterward.
 
 ### Relevant commits
 
@@ -31,8 +33,7 @@ context to continue without access to the original chat thread.
   This commit exists locally and was not pushed from this terminal due to
   missing GitHub credentials.
 - `39c9e863` `Add Claude Code continuation handoff`
-  This commit adds the handoff files themselves and also exists only
-  locally at handoff time.
+  This commit adds the handoff files themselves.
 
 ## What Was Completed
 
@@ -169,9 +170,7 @@ User-provided sources that were checked against the live repo:
 ### 1. GitHub remote is not fully updated
 
 - Remote branch currently contains `2f835132`.
-- Local branch additionally contains:
-  - `3146f8ee`
-  - `39c9e863`
+- Local-only continuation commits exist beyond that point.
 - `git push` from this terminal failed because GitHub credentials were
   not available in the shell.
 - `gh` CLI is not installed in this terminal.
