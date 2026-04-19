@@ -21,7 +21,7 @@ context to continue without access to the original chat thread.
   `devin/1776397393-gane-nav-unify`
 - Current git state at handoff:
   local branch is ahead of `origin/devin/1776397393-gane-nav-unify` by
-  1 commit.
+  2 commits.
 
 ### Relevant commits
 
@@ -30,6 +30,9 @@ context to continue without access to the original chat thread.
 - `3146f8ee` `Add repository governance and canonical naming cleanup`
   This commit exists locally and was not pushed from this terminal due to
   missing GitHub credentials.
+- `39c9e863` `Add Claude Code continuation handoff`
+  This commit adds the handoff files themselves and also exists only
+  locally at handoff time.
 
 ## What Was Completed
 
@@ -166,7 +169,9 @@ User-provided sources that were checked against the live repo:
 ### 1. GitHub remote is not fully updated
 
 - Remote branch currently contains `2f835132`.
-- Local branch additionally contains `3146f8ee`.
+- Local branch additionally contains:
+  - `3146f8ee`
+  - `39c9e863`
 - `git push` from this terminal failed because GitHub credentials were
   not available in the shell.
 - `gh` CLI is not installed in this terminal.
