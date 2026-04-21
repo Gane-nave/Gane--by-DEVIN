@@ -869,14 +869,14 @@
 - [x] Wire into sidebar, PanelRenderer, and i18n
 
 ## Real-time Collaboration
-- [ ] Build collaborationEngine.ts — real-time position sharing engine
-- [ ] WebRTC peer-to-peer for low-latency position sharing
-- [ ] Room/channel management for fleet/team grouping
-- [ ] Shared waypoints, routes, and annotations
-- [ ] Presence indicators (online/offline/busy/driving)
-- [ ] End-to-end encryption for secure sharing
-- [ ] Build CollaborationPanel.tsx — UI panel for real-time collaboration
-- [ ] Wire into sidebar, PanelRenderer, and i18n
+- [x] Build collaborationEngine.ts — `client/src/engine/realtimeCollabEngine.ts` (603 lines)
+- [x] WebRTC peer-to-peer for low-latency position sharing — `ConnectionTier = 'webrtc'` tier-1 (<50 ms DataChannel)
+- [x] Room/channel management for fleet/team grouping — `CollabSession` interface + TeamMember roster
+- [x] Shared waypoints, routes, and annotations — `shared/contracts/sharedArtifacts.ts` (zod-validated `SharedWaypoint` / `SharedRoute` / `Annotation` + `SharedArtifactStore` with gc); 10 unit tests
+- [x] Presence indicators (online/offline/busy/driving) — `TeamMember` status field
+- [x] End-to-end encryption for secure sharing — `shared/contracts/e2eEncryption.ts` (AES-GCM-256 + PBKDF2 passphrase derivation); 9 unit tests covering round-trip, unique-IV, AAD auth, wrong-key rejection, envelope versioning
+- [x] Build CollaborationPanel.tsx — `client/src/components/CollaborationPanel.tsx` (602 lines) + `RealtimeCollabPanel.tsx` (527 lines)
+- [x] Wire into sidebar, PanelRenderer, and i18n — `PanelRenderer.tsx:168,172` lazy-loads both panels as `collaboration` and `realtime-collab`
 
 ## G.A.N.E ABSOLUTE FINAL EXECUTION
 - [x] Complete Real-time Collaboration engine (WebRTC P2P + position sharing)
