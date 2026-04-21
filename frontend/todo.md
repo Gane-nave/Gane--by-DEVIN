@@ -888,7 +888,7 @@
 - [ ] Full performance validation — latency, render, startup, recovery
 - [ ] Full resilience validation — offline, degraded, failover, recovery
 - [ ] Full i18n validation — all strings, all directions, all languages
-- [ ] Full naming consistency — G.A.N.E NAV everywhere
+- [x] Full naming consistency — G.A.N.E NAV everywhere — verified in commit caa44f1b (crates/ + frontend/ + services/ + apps/ scanned, 0 legacy alias hits apart from one intentional `AuroraConfig` policy reference in the handoff doc)
 - [ ] Final polishing pass — UI, UX, states, animations, accessibility
 - [ ] Final production-readiness pass — all systems verified
 - [ ] Produce final acceptance dossier
@@ -931,6 +931,6 @@
 - [x] Fix notification spam — added notificationThrottle.ts utility (5s throttle between duplicates)
 - [x] Implement vehicle type selection system (11 types: car, truck, bus, motorcycle, etc.)
 - [x] Add vehicle dimensions input (length, width, height, weight) with custom override
-- [ ] Implement vehicle-specific routing optimization (integrate with routing engine)
+- [x] Implement vehicle-specific routing optimization (integrate with routing engine) — `shared/contracts/vehicleRouting.ts` adapts `RouteRequest` from a `VehicleProfileLike`: auto-selects profile (driving/trucking/cycling/walking), accumulates `AvoidFeature[]` from restrictions, emits a parallel `VehicleConstraints` envelope for provider-specific enrichment; 10 unit tests cover every vehicle class
 - [ ] Test all fixes on real device
 - [ ] Create Vehicle Selection UI button in bottom dock
