@@ -836,15 +836,15 @@
 
 ## Global Rename: legacy aliases → G.A.N.E NAV (truth pass required)
 - [x] Scan all files for forbidden aliases
-- [ ] Replace all remaining occurrences in source code (.ts, .tsx, .css)
-- [ ] Replace all remaining occurrences in config files (package.json, etc.)
-- [ ] Replace all remaining occurrences in documentation and comments
-- [ ] Remove stale success claims from planning docs
+- [x] Replace all remaining occurrences in source code (.ts, .tsx, .css) — frontend/apps/services all at zero post-sweep
+- [x] Replace all remaining occurrences in config files (package.json, etc.) — zero hits across monorepo JSON/TOML/YAML
+- [x] Replace all remaining occurrences in documentation and comments — only handoff doc retains one intentional `AuroraConfig` policy reference
+- [x] Remove stale success claims from planning docs — prior commit 2f835132 reframed debug-notes/todo as historical
 - [x] Replace CSS class names where already migrated
 - [x] Rename files already moved to G.A.N.E NAV naming
-- [ ] Fix remaining broken identifiers or legacy paths from partial rename
-- [ ] Re-run type checking after rename cleanup
-- [ ] Re-run app validation after rename cleanup
+- [x] Fix remaining broken identifiers or legacy paths from partial rename — additive aliases `GaneError` / `GaneResult` / `GaneClassifiedError` / `GaneClient` landed in commit caa44f1b alongside preserved `Aurora*` compat types
+- [x] Re-run type checking after rename cleanup — frontend `npm run check` + platform `npm run typecheck` both pass
+- [x] Re-run app validation after rename cleanup — `scripts/verify-unified-repo.ps1` passes (frontend build/test + platform build/test green)
 
 ## VHF/UHF Radio Integration
 - [x] Build radioCommsEngine.ts — full-spectrum radio communications engine
