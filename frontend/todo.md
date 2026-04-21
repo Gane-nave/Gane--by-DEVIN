@@ -816,18 +816,18 @@
 ## New Features + Full System Audit
 - [x] Fix Vite WebSocket HMR error (dev-only, allowedHosts: true)
 - [ ] Live UI test — verify GNSS Manager panel shows all 7 constellations + fallback chain- [x] Build global satellite coverage map (SVG world map with constellation zones)age zones)
-- [ ] NavIC coverage zone (India region)
-- [ ] QZSS coverage zone (Japan/Asia-Pacific)
-- [ ] BeiDou coverage zone (Global + enhanced China)
-- [ ] GPS coverage zone (Global)
-- [ ] Galileo coverage zone (Global)
-- [ ] GLONASS coverage zone (Global + enhanced northern latitudes)
-- [ ] SBAS coverage zones (WAAS, EGNOS, GAGAN, MSAS)
+- [x] NavIC coverage zone (India region) — `SatelliteCoverageMap.tsx` entry `id: 'navic'`
+- [x] QZSS coverage zone (Japan/Asia-Pacific) — `SatelliteCoverageMap.tsx` entry `id: 'qzss'`
+- [x] BeiDou coverage zone (Global + enhanced China) — `SatelliteCoverageMap.tsx` entry `id: 'beidou'`
+- [x] GPS coverage zone (Global) — `SatelliteCoverageMap.tsx` entry `id: 'gps'`
+- [x] Galileo coverage zone (Global) — `SatelliteCoverageMap.tsx` entry `id: 'galileo'`
+- [x] GLONASS coverage zone (Global + enhanced northern latitudes) — `SatelliteCoverageMap.tsx` entry `id: 'glonass'`
+- [x] SBAS coverage zones (WAAS, EGNOS, GAGAN, MSAS) — `SatelliteCoverageMap.tsx` entry `id: 'sbas'`
 - [x] Smart fallback alerts — automatic toast notifications on tier change
-- [ ] Alert when switching from GNSS to WiFi/Cell
-- [ ] Alert when switching from WiFi/Cell to IMU/DR
-- [ ] Alert when returning to GNSS from fallback
-- [ ] Visual severity indicator (green/yellow/orange/red)
+- [x] Alert when switching from GNSS to WiFi/Cell — `useFallbackTransitionAlerts` → sonner warning toast
+- [x] Alert when switching from WiFi/Cell to IMU/DR — `useFallbackTransitionAlerts` → sonner error toast
+- [x] Alert when returning to GNSS from fallback — `useFallbackTransitionAlerts` → sonner success toast
+- [x] Visual severity indicator (green/yellow/orange/red) — `<FallbackSeverityIndicator>` wired into `LiveStatusBar`, covered by 12 unit tests in `server/gane/fallback-severity.test.ts`
 - [x] Full system audit — scan all components for errors
 - [x] Full system audit — verify all services and connections
 - [x] Full system audit — verify all code paths and imports

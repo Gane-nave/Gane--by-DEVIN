@@ -11,6 +11,7 @@ import { useRealDataContext } from "@/contexts/RealDataContext";
 import useAnimationPerformance from "@/hooks/useAnimationPerformance";
 import { COLORS } from "./homeConstants";
 import NotificationBell from "@/components/NotificationBell";
+import FallbackSeverityIndicator from "@/components/FallbackSeverityIndicator";
 
 export default function LiveStatusBar({ color }: { color: string }) {
   const [time, setTime] = useState(new Date());
@@ -115,6 +116,9 @@ export default function LiveStatusBar({ color }: { color: string }) {
         <Wifi className="w-3.5 h-3.5" style={{ color: COLORS.cyan }} />
         <span className="text-[10px] font-mono text-gray-400">5G</span>
       </div>
+
+      {/* Positioning-chain severity (green/yellow/orange/red + tier) */}
+      <FallbackSeverityIndicator />
 
       {/* Notification Bell */}
       <NotificationBell />
