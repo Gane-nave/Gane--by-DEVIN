@@ -1,4 +1,4 @@
-# Prometheus configuration for AURORA NAV local development
+# Prometheus configuration for G.A.N.E NAV local development
 global:
   scrape_interval: 15s
   evaluation_interval: 15s

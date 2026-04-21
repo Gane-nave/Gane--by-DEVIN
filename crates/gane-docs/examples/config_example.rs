@@ -1,4 +1,4 @@
-//! Configuration example for AURORA NAV.
+//! Configuration example for G.A.N.E NAV.
 //!
 //! Demonstrates building configuration with the fluent builder API,
 //! including validation, constellation toggles, and feature flags.

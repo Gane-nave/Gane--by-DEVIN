@@ -1,4 +1,4 @@
-//! Error types for AURORA NAV.
+//! Error types for G.A.N.E NAV.
 
 use thiserror::Error;
 
@@ -57,3 +57,8 @@ pub enum AuroraError {
 }
 
 pub type AuroraResult<T> = Result<T, AuroraError>;
+
+// Canonical G.A.N.E alias · additive, preserves legacy Aurora* names for compat.
+// Matches the AuroraConfig/GaneConfig alias policy documented in CLAUDE.md.
+pub type GaneError = AuroraError;
+pub type GaneResult<T> = AuroraResult<T>;

@@ -2,7 +2,7 @@
 name = "gane-vehicle"
 version.workspace = true
 edition.workspace = true
-description = "Vehicle manufacturer integrations for AURORA NAV / GMIN — OEM protocols, sensor adapters, CAN bus"
+description = "Vehicle manufacturer integrations for G.A.N.E NAV / G.A.N.E — OEM protocols, sensor adapters, CAN bus"
 
 [dependencies]
 gane-core = { path = "../gane-core" }

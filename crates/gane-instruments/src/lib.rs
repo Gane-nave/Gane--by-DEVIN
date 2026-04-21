@@ -1,6 +1,6 @@
 #![allow(unknown_lints)]
 #![allow(clippy::unnecessary_map_or)]
-//! AURORA NAV — Instrumentation & Environmental Data
+//! G.A.N.E NAV — Instrumentation & Environmental Data
 //!
 //! Compass heading, speedometer, altimeter, weather integration,
 //! ambient light/temperature sensing, and environmental condition monitoring.

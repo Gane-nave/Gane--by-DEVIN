@@ -1,6 +1,6 @@
 //! CORS (Cross-Origin Resource Sharing) policy configuration.
 //!
-//! Provides configurable CORS policies for the AURORA NAV API,
+//! Provides configurable CORS policies for the G.A.N.E NAV API,
 //! supporting both permissive development and restrictive production modes.
 
 use serde::{Deserialize, Serialize};

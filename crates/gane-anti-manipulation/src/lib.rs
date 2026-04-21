@@ -1,4 +1,4 @@
-//! AURORA Anti-Manipulation Infrastructure — anomaly detection, adversarial defense,
+//! GANE Anti-Manipulation Infrastructure — anomaly detection, adversarial defense,
 //! algorithm transparency logging.
 //!
 //! Protects the navigation system from data manipulation, spoofed reports,

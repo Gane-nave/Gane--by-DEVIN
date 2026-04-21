@@ -143,7 +143,7 @@ impl fmt::Display for ClassifiedError {
     }
 }
 
-/// Aurora system error — the top-level error type.
+/// G.A.N.E system error — the top-level error type.
 #[derive(Error, Debug)]
 pub enum AuroraError {
     #[error("GNSS error: {0}")]
@@ -485,3 +485,7 @@ mod tests {
         assert!(display.contains("timeout"));
     }
 }
+
+// Canonical G.A.N.E alias · additive, preserves legacy Aurora* names for compat.
+// Matches the AuroraConfig/GaneConfig alias policy documented in CLAUDE.md.
+pub type GaneClassifiedError = AuroraError;

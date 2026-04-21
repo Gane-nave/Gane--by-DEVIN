@@ -1,4 +1,4 @@
-//! AURORA NAV — Routing Engine
+//! G.A.N.E NAV — Routing Engine
 //!
 //! Turn-by-turn navigation, alternative route generation,
 //! corridor-based routing, and multi-objective optimization per Section 18-19.

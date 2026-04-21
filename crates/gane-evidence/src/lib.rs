@@ -1,4 +1,4 @@
-//! AURORA Evidence System — incident reporting, evidence vault, signed metadata, timeline.
+//! GANE Evidence System — incident reporting, evidence vault, signed metadata, timeline.
 //!
 //! Provides instant incident reporting, evidence capture (photo, video, voice,
 //! sensor-triggered), signed metadata, encrypted evidence vault, incident

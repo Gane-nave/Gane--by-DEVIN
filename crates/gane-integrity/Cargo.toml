@@ -2,7 +2,7 @@
 name = "gane-integrity"
 version.workspace = true
 edition.workspace = true
-description = "Integrity monitoring and trust scoring for AURORA NAV / GMIN"
+description = "Integrity monitoring and trust scoring for G.A.N.E NAV / G.A.N.E"
 
 [dependencies]
 gane-core = { path = "../gane-core" }

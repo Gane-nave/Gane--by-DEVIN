@@ -1,4 +1,4 @@
-//! AURORA NAV — Offline Maps & Sync
+//! G.A.N.E NAV — Offline Maps & Sync
 //!
 //! Tile caching, differential map updates, local routing fallback,
 //! offline evidence storage, and deterministic synchronization per Section 33.

@@ -1,4 +1,4 @@
-//! Alerting rules, SLO tracking, and dashboard configurations for AURORA NAV.
+//! Alerting rules, SLO tracking, and dashboard configurations for G.A.N.E NAV.
 //!
 //! Provides a monitoring framework with configurable alert rules,
 //! Service Level Objective (SLO) tracking, and exportable dashboard

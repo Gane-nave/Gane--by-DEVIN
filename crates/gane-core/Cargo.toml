@@ -2,7 +2,7 @@
 name = "gane-core"
 version.workspace = true
 edition.workspace = true
-description = "Canonical data model for AURORA NAV / GMIN"
+description = "Canonical data model for G.A.N.E NAV / G.A.N.E"
 
 [dependencies]
 serde = { workspace = true }

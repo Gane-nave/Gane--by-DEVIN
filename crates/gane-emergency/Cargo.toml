@@ -4,7 +4,7 @@ version.workspace = true
 edition.workspace = true
 license.workspace = true
 repository.workspace = true
-description = "AURORA NAV — Emergency systems: corridor routing, mass incident mode, evacuation planning, hospital entrance navigation"
+description = "G.A.N.E NAV — Emergency systems: corridor routing, mass incident mode, evacuation planning, hospital entrance navigation"
 
 [dependencies]
 gane-core = { path = "../gane-core" }

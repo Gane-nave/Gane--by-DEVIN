@@ -1,4 +1,4 @@
-//! # Aurora Autonomous
+//! # G.A.N.E Autonomous
 //!
 //! Autonomous and semi-autonomous driving support engine.
 //! Provides ADAS integration, lane-keeping assistance,

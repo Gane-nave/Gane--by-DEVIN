@@ -83,7 +83,7 @@ pub struct CityDashboard {
 // ---------------------------------------------------------------------------
 
 /// Manages city-wide state: zones, district metrics, and dashboard
-/// aggregation for the AURORA NAV smart-city integration.
+/// aggregation for the G.A.N.E NAV smart-city integration.
 pub struct CityStateManager {
     city_name: String,
     /// Managed zones keyed by ID.

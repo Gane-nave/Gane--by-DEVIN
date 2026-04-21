@@ -1,4 +1,4 @@
-//! Strongly-typed configuration sections for every AURORA NAV subsystem.
+//! Strongly-typed configuration sections for every G.A.N.E NAV subsystem.
 
 use serde::{Deserialize, Serialize};
 
@@ -6,7 +6,7 @@ use serde::{Deserialize, Serialize};
 // Root configuration
 // ---------------------------------------------------------------------------
 
-/// Top-level configuration for the entire AURORA NAV system.
+/// Top-level configuration for the entire G.A.N.E NAV system.
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct AuroraConfig {
     /// General system settings.

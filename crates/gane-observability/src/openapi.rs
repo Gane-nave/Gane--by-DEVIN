@@ -1,4 +1,4 @@
-//! OpenAPI 3.0 specification generator for AURORA NAV API.
+//! OpenAPI 3.0 specification generator for G.A.N.E NAV API.
 
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
@@ -122,7 +122,7 @@ pub struct Components {
     pub schemas: BTreeMap<String, Schema>,
 }
 
-/// Build the complete OpenAPI specification for AURORA NAV.
+/// Build the complete OpenAPI specification for G.A.N.E NAV.
 pub fn build_spec() -> OpenApiSpec {
     let mut paths = BTreeMap::new();
     let mut schemas = BTreeMap::new();
@@ -514,12 +514,12 @@ pub fn build_spec() -> OpenApiSpec {
     OpenApiSpec {
         openapi: "3.0.3".to_string(),
         info: Info {
-            title: "AURORA NAV / GMIN API".to_string(),
+            title: "G.A.N.E NAV / G.A.N.E API".to_string(),
             description: "Global Mobility Intelligence Network — Navigation, positioning, routing, fleet management, and smart city integration API."
                 .to_string(),
             version: env!("CARGO_PKG_VERSION").to_string(),
             contact: Some(Contact {
-                name: Some("AURORA NAV Team".to_string()),
+                name: Some("G.A.N.E NAV Team".to_string()),
                 url: None,
                 email: None,
             }),
@@ -551,7 +551,7 @@ pub fn swagger_ui_html() -> String {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>AURORA NAV — API Documentation</title>
+    <title>G.A.N.E NAV — API Documentation</title>
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist@5/swagger-ui.css" >
 </head>
 <body>
@@ -674,7 +674,7 @@ mod tests {
         let json = render_json();
         let parsed: serde_json::Value = serde_json::from_str(&json).unwrap();
         assert_eq!(parsed["openapi"], "3.0.3");
-        assert_eq!(parsed["info"]["title"], "AURORA NAV / GMIN API");
+        assert_eq!(parsed["info"]["title"], "G.A.N.E NAV / G.A.N.E API");
     }
 
     #[test]

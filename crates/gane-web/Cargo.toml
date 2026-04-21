@@ -2,7 +2,7 @@
 name = "gane-web"
 version.workspace = true
 edition.workspace = true
-description = "AURORA NAV visual UI layer — interactive map, real-time tracking, route visualization"
+description = "G.A.N.E NAV visual UI layer — interactive map, real-time tracking, route visualization"
 
 [dependencies]
 gane-orchestrator = { path = "../gane-orchestrator" }

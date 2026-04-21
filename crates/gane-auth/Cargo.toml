@@ -2,7 +2,7 @@
 name = "gane-auth"
 version.workspace = true
 edition.workspace = true
-description = "Authentication, authorization, and session management for AURORA NAV"
+description = "Authentication, authorization, and session management for G.A.N.E NAV"
 
 [dependencies]
 serde = { workspace = true }

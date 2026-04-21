@@ -1,4 +1,4 @@
-//! # Aurora Wellness
+//! # G.A.N.E Wellness
 //!
 //! Driver wellness monitoring engine — fatigue detection, health tracking,
 //! break recommendations, and driving behaviour analysis.

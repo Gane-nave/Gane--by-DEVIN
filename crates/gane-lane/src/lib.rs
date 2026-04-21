@@ -1,4 +1,4 @@
-//! AURORA NAV — Lane Guidance
+//! G.A.N.E NAV — Lane Guidance
 //!
 //! Lane-level positioning, turn guidance, lane recommendations,
 //! and lane change advisories per Section 18.

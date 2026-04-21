@@ -1,7 +1,7 @@
 //! Dashboard configuration generation.
 //!
 //! Generates Grafana-compatible dashboard JSON configurations for
-//! monitoring AURORA NAV system metrics, SLOs, and alerts.
+//! monitoring G.A.N.E NAV system metrics, SLOs, and alerts.
 
 use serde::{Deserialize, Serialize};
 
@@ -150,10 +150,10 @@ impl DashboardBuilder {
 // Default dashboards
 // ---------------------------------------------------------------------------
 
-/// Build the default AURORA NAV overview dashboard.
+/// Build the default G.A.N.E NAV overview dashboard.
 pub fn gane_overview_dashboard() -> DashboardDefinition {
-    DashboardBuilder::new("AURORA NAV Overview", "gane-overview")
-        .description("System-wide overview of AURORA NAV / GMIN")
+    DashboardBuilder::new("G.A.N.E NAV Overview", "gane-overview")
+        .description("System-wide overview of G.A.N.E NAV / G.A.N.E")
         .refresh_interval("30s")
         .time_range("1h")
         .tag("aurora")
@@ -265,10 +265,10 @@ pub fn gane_overview_dashboard() -> DashboardDefinition {
         .build()
 }
 
-/// Build the AURORA NAV navigation detail dashboard.
+/// Build the G.A.N.E NAV navigation detail dashboard.
 pub fn gane_navigation_dashboard() -> DashboardDefinition {
-    DashboardBuilder::new("AURORA NAV Navigation", "gane-navigation")
-        .description("Detailed navigation metrics for AURORA NAV")
+    DashboardBuilder::new("G.A.N.E NAV Navigation", "gane-navigation")
+        .description("Detailed navigation metrics for G.A.N.E NAV")
         .refresh_interval("10s")
         .time_range("30m")
         .tag("aurora")

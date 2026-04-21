@@ -1,4 +1,4 @@
-//! AURORA NAV — Sensor Layer
+//! G.A.N.E NAV — Sensor Layer
 //!
 //! IMU, odometry, vehicle CAN signal ingestion and dead reckoning.
 

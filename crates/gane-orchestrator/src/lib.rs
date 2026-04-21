@@ -1,4 +1,4 @@
-//! AURORA NAV — Navigation Pipeline Orchestrator
+//! G.A.N.E NAV — Navigation Pipeline Orchestrator
 //!
 //! Wires infrastructure crates (cache, circuit breaker, rate limiter,
 //! retry, bloom filter, feature flags, etc.) into a unified service

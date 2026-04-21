@@ -2,7 +2,7 @@
 name = "gane-gnss"
 version.workspace = true
 edition.workspace = true
-description = "GNSS acquisition layer for AURORA NAV / GMIN"
+description = "GNSS acquisition layer for G.A.N.E NAV / G.A.N.E"
 
 [dependencies]
 gane-core = { path = "../gane-core" }

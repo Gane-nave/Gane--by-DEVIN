@@ -33,7 +33,7 @@ pub struct PluginManifest {
     pub id: String,
     /// Plugin version.
     pub version: String,
-    /// Minimum Aurora system version required.
+    /// Minimum G.A.N.E system version required.
     pub min_system_version: String,
     /// Plugin dependencies.
     pub dependencies: Vec<Dependency>,

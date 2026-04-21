@@ -1,5 +1,5 @@
 //! Sensor adapters — bridge between OEM-specific sensor formats
-//! and AURORA's canonical sensor types, with calibration support.
+//! and GANE's canonical sensor types, with calibration support.
 
 use chrono::{DateTime, Utc};
 use gane_core::types::EntityId;

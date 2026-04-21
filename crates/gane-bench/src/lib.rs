@@ -1,4 +1,4 @@
-//! AURORA NAV / GMIN — Performance Benchmarks
+//! G.A.N.E NAV / G.A.N.E — Performance Benchmarks
 //!
 //! Criterion-based benchmarks for critical navigation paths:
 //! - GNSS satellite tracking and PVT solving

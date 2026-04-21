@@ -1,10 +1,10 @@
-//! # AURORA NAV / GMIN - Global Mobility Intelligence Network
+//! # G.A.N.E NAV / G.A.N.E - Global Mobility Intelligence Network
 //!
 //! A comprehensive, production-grade navigation system built in Rust.
 //!
 //! ## Architecture Overview
 //!
-//! AURORA NAV is organised as a modular Rust workspace with 43+ crates,
+//! G.A.N.E NAV is organised as a modular Rust workspace with 43+ crates,
 //! each responsible for a well-defined domain within the navigation stack.
 //! The system follows these core principles:
 //!
@@ -194,7 +194,7 @@
 //! let uncertainty = ekf.position_uncertainty_m();
 //! ```
 
-/// Crate count in the AURORA NAV workspace.
+/// Crate count in the G.A.N.E NAV workspace.
 pub const WORKSPACE_CRATE_COUNT: usize = 43;
 
 /// Minimum test count across all workspace crates.

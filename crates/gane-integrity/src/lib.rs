@@ -1,4 +1,4 @@
-//! AURORA NAV — Integrity and Trust Layer
+//! G.A.N.E NAV — Integrity and Trust Layer
 //!
 //! Fault detection, source scoring, spoof/jam detection,
 //! cross-checks, and alarm generation per Section 12.

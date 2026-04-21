@@ -1,4 +1,4 @@
-//! AURORA NAV / GMIN — Canonical Data Model
+//! G.A.N.E NAV / G.A.N.E — Canonical Data Model
 //!
 //! Single Source of Truth for the Global Mobility Intelligence Network.
 //! All domain entities, value objects, and enumerations are defined here.
@@ -21,3 +21,4 @@ pub mod types;
 
 pub use error::AuroraError;
 pub use types::*;
+pub use error::{GaneError, GaneResult};

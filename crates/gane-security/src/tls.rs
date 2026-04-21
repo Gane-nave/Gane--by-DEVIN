@@ -1,6 +1,6 @@
 //! TLS configuration and certificate management.
 //!
-//! Provides TLS configuration for the AURORA NAV API server,
+//! Provides TLS configuration for the G.A.N.E NAV API server,
 //! supporting configurable cipher suites, protocol versions,
 //! and certificate paths.
 

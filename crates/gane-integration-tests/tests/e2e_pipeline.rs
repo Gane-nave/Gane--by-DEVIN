@@ -1,4 +1,4 @@
-//! End-to-end integration tests for the full AURORA NAV navigation pipeline.
+//! End-to-end integration tests for the full G.A.N.E NAV navigation pipeline.
 //!
 //! These tests exercise cross-crate interactions that unit tests within
 //! individual crates cannot cover.

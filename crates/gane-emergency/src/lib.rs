@@ -1,6 +1,6 @@
 #![allow(unknown_lints)]
 #![allow(clippy::unnecessary_map_or)]
-//! AURORA NAV — Emergency Systems Engine
+//! G.A.N.E NAV — Emergency Systems Engine
 //!
 //! Emergency corridor routing, mass incident management, evacuation planning,
 //! and hospital entrance navigation for emergency response operations.

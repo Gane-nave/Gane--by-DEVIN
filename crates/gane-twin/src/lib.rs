@@ -1,4 +1,4 @@
-//! AURORA NAV — Digital Twin Systems
+//! G.A.N.E NAV — Digital Twin Systems
 //!
 //! State mirroring of physical entities, scenario simulation with
 //! what-if analysis, historical event replay, and parameter sweeps.

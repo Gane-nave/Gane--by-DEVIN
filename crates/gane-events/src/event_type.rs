@@ -1,4 +1,4 @@
-//! All event types in the AURORA NAV system (Section 7 of the spec).
+//! All event types in the G.A.N.E NAV system (Section 7 of the spec).
 
 use serde::{Deserialize, Serialize};
 

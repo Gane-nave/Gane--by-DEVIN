@@ -1,5 +1,5 @@
 //! API key management — creation, validation, rotation, and revocation
-//! of API keys for developer access to AURORA NAV services.
+//! of API keys for developer access to G.A.N.E NAV services.
 
 use chrono::{DateTime, Duration, Utc};
 use gane_core::types::EntityId;

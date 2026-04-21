@@ -164,7 +164,7 @@ mod tests {
 
     #[test]
     fn test_wake_word() {
-        let c = VoiceCommand::new("Hey Aurora navigate home", CommandCategory::Navigation, 0.9);
+        let c = VoiceCommand::new("Hey G.A.N.E navigate home", CommandCategory::Navigation, 0.9);
         assert!(c.is_wake_word());
     }
 

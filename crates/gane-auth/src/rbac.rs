@@ -1,7 +1,7 @@
 //! Role-Based Access Control (RBAC).
 //!
 //! Defines roles, permissions, and resource-level access policies for the
-//! AURORA NAV system. Supports hierarchical roles where higher-privilege
+//! G.A.N.E NAV system. Supports hierarchical roles where higher-privilege
 //! roles inherit permissions from lower ones.
 
 use serde::{Deserialize, Serialize};
@@ -123,7 +123,7 @@ impl PolicyEngine {
         engine
     }
 
-    /// Register the built-in AURORA NAV roles.
+    /// Register the built-in G.A.N.E NAV roles.
     fn register_default_roles(&mut self) {
         // Viewer: read-only
         let viewer_perms: HashSet<Permission> = [

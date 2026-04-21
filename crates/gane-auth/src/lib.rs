@@ -1,4 +1,4 @@
-//! Authentication, authorization, and session management for AURORA NAV.
+//! Authentication, authorization, and session management for G.A.N.E NAV.
 //!
 //! Provides JWT token generation/validation, API key management, role-based
 //! access control (RBAC), and session lifecycle management.

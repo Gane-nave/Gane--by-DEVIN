@@ -1,4 +1,4 @@
-//! AURORA NAV — Deployment Manifests
+//! G.A.N.E NAV — Deployment Manifests
 //!
 //! This crate contains deployment configuration files:
 //!

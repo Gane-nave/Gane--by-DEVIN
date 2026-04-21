@@ -1,4 +1,4 @@
-//! Compliance & audit for AURORA NAV.
+//! Compliance & audit for G.A.N.E NAV.
 //!
 //! Provides GDPR compliance, data retention policies, audit logging,
 //! and regulatory compliance tracking for the navigation system.

@@ -91,7 +91,7 @@ impl JwtConfig {
         }
     }
 
-    /// Create a config with default AURORA NAV settings.
+    /// Create a config with default G.A.N.E NAV settings.
     pub fn default_aurora() -> Self {
         Self::new(
             b"gane-nav-default-secret-change-me",

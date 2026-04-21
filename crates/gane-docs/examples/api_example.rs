@@ -1,4 +1,4 @@
-//! API and event system example for AURORA NAV.
+//! API and event system example for G.A.N.E NAV.
 #![allow(unknown_lints)]
 #![allow(clippy::manual_is_multiple_of)]
 //!
@@ -38,7 +38,7 @@ impl EventHandler for LoggingHandler {
 }
 
 fn main() {
-    println!("=== AURORA NAV API Example ===\n");
+    println!("=== G.A.N.E NAV API Example ===\n");
 
     // --- Event Bus ---
     println!("1. Event Bus");

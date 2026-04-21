@@ -1,5 +1,5 @@
 //! SDK client builder — fluent API for constructing and configuring
-//! an AURORA NAV SDK client instance.
+//! an G.A.N.E NAV SDK client instance.
 
 use chrono::{DateTime, Utc};
 use gane_core::types::EntityId;
@@ -96,7 +96,7 @@ impl ClientBuilder {
             endpoint = %endpoint,
             plugins = plugin_manager.count(),
             extensions = extension_registry.count(),
-            "AURORA SDK client built"
+            "GANE SDK client built"
         );
 
         Ok(AuroraClient {
@@ -124,7 +124,7 @@ impl Default for ClientBuilder {
 // Client
 // ---------------------------------------------------------------------------
 
-/// The main SDK client for interacting with AURORA NAV services.
+/// The main SDK client for interacting with G.A.N.E NAV services.
 pub struct AuroraClient {
     id: EntityId,
     api_key: String,
@@ -218,7 +218,7 @@ impl AuroraClient {
         self.metadata.get(key).map(String::as_str)
     }
 
-    /// Connect to the AURORA NAV service.
+    /// Connect to the G.A.N.E NAV service.
     pub fn connect(&mut self) -> Result<(), ClientError> {
         match self.state {
             ClientState::Connected => {
@@ -531,3 +531,7 @@ mod tests {
         assert!(matches!(result.unwrap_err(), ClientError::NotConnected));
     }
 }
+
+// Canonical G.A.N.E alias · additive, preserves legacy Aurora* names for compat.
+// Matches the AuroraConfig/GaneConfig alias policy documented in CLAUDE.md.
+pub type GaneClient = AuroraClient;

@@ -1,5 +1,5 @@
 # =============================================================================
-# AURORA NAV / GMIN — Production Dockerfile
+# G.A.N.E NAV / G.A.N.E — Production Dockerfile
 # Multi-stage build for minimal runtime image
 # =============================================================================
 

@@ -1,4 +1,4 @@
-//! # Aurora Social
+//! # G.A.N.E Social
 //!
 //! Social and community features for collaborative navigation.
 //! Enables crowd-sourced road reports, shared routes,

@@ -1,4 +1,4 @@
-//! AURORA NAV Developer Portal — API key management, rate limiting,
+//! G.A.N.E NAV Developer Portal — API key management, rate limiting,
 //! usage tracking, and webhook system for third-party integrations.
 
 pub mod apikey;

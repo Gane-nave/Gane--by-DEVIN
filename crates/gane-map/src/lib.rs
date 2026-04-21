@@ -1,4 +1,4 @@
-//! AURORA NAV — Map Engine
+//! G.A.N.E NAV — Map Engine
 //!
 //! Road graph spatial indexing, tile management, map matching,
 //! and road/lane discovery per Sections 16-17.

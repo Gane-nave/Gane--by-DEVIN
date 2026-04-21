@@ -1,4 +1,4 @@
-//! # Aurora Voice
+//! # G.A.N.E Voice
 //!
 //! Voice navigation engine with TTS synthesis, audio guidance,
 //! contextual announcements, and multi-language support.

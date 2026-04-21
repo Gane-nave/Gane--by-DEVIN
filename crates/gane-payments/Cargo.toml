@@ -2,7 +2,7 @@
 name = "gane-payments"
 version.workspace = true
 edition.workspace = true
-description = "Payment systems for AURORA NAV / GMIN — billing, subscriptions, invoices, payment processing"
+description = "Payment systems for G.A.N.E NAV / G.A.N.E — billing, subscriptions, invoices, payment processing"
 
 [dependencies]
 gane-core = { path = "../gane-core" }

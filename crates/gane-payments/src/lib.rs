@@ -1,4 +1,4 @@
-//! Payment systems for AURORA NAV / GMIN — billing, subscriptions,
+//! Payment systems for G.A.N.E NAV / G.A.N.E — billing, subscriptions,
 //! invoices, and payment processing for platform services.
 
 pub mod billing;

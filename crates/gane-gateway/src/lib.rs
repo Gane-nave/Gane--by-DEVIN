@@ -1,6 +1,6 @@
-//! # Aurora Gateway
+//! # G.A.N.E Gateway
 //!
-//! API gateway for the AURORA NAV platform — request routing, rate
+//! API gateway for the G.A.N.E NAV platform — request routing, rate
 //! limiting, load balancing, circuit breaking, and request transformation.
 
 pub mod balancer;

@@ -1,5 +1,5 @@
 //! Plugin system — extensible hook-based architecture for adding custom
-//! behaviour to the AURORA NAV SDK pipeline.
+//! behaviour to the G.A.N.E NAV SDK pipeline.
 
 use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};

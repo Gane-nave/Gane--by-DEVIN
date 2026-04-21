@@ -1,4 +1,4 @@
-//! AURORA NAV — Visual UI Layer
+//! G.A.N.E NAV — Visual UI Layer
 //!
 //! Provides a rich interactive web frontend with:
 //! - Interactive map with OpenStreetMap tiles

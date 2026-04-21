@@ -248,7 +248,7 @@ mod tests {
     #[test]
     fn switch_nonexistent_fails() {
         let mut engine = ThemeEngine::new();
-        assert!(!engine.switch("Aurora"));
+        assert!(!engine.switch("G.A.N.E"));
         assert_eq!(engine.active_name(), "Day");
     }
 

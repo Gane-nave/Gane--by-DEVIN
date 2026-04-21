@@ -1,6 +1,6 @@
 #![allow(unknown_lints)]
 #![allow(clippy::unnecessary_map_or)]
-//! AURORA NAV — Temporal Context & Cultural Adaptation
+//! G.A.N.E NAV — Temporal Context & Cultural Adaptation
 //!
 //! Time-aware routing adjustments, holiday/event detection, cultural UX
 //! adaptation (language, icons, themes), and locale-sensitive navigation.

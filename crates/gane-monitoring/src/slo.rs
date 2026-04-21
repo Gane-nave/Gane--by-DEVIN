@@ -200,7 +200,7 @@ impl SloTracker {
         self.definitions.len()
     }
 
-    /// Register default AURORA NAV SLOs.
+    /// Register default G.A.N.E NAV SLOs.
     pub fn register_defaults(&mut self) {
         let defaults = vec![
             SloDefinition {

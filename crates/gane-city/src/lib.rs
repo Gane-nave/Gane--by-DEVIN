@@ -1,4 +1,4 @@
-//! AURORA NAV — Smart City Integration
+//! G.A.N.E NAV — Smart City Integration
 //!
 //! Traffic signal management, infrastructure health monitoring, city-wide
 //! state aggregation, and external smart-city data integration.

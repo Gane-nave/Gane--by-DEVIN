@@ -1,4 +1,4 @@
-//! Data Compression & Serialization engine for AURORA NAV.
+//! Data Compression & Serialization engine for G.A.N.E NAV.
 //!
 //! Provides run-length encoding, delta encoding, binary serialization,
 //! and data deduplication with content-addressable storage.

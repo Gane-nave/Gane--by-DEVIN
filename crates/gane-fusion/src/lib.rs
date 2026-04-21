@@ -1,4 +1,4 @@
-//! AURORA NAV — Fusion Engine
+//! G.A.N.E NAV — Fusion Engine
 //!
 //! Extended Kalman Filter (EKF) combining GNSS, INS, odometry,
 //! map matching, and visual constraints into a unified navigation solution.

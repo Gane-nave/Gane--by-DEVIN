@@ -1,4 +1,4 @@
-//! AURORA NAV — Continuity Manager
+//! G.A.N.E NAV — Continuity Manager
 //!
 //! Automatic mode switching, graceful degradation, recovery logic,
 //! and re-entry logic per Section 13 of the spec.

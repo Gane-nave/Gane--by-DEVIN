@@ -2,7 +2,7 @@
 name = "gane-continuity"
 version.workspace = true
 edition.workspace = true
-description = "Continuity manager with automatic failover for AURORA NAV / GMIN"
+description = "Continuity manager with automatic failover for G.A.N.E NAV / G.A.N.E"
 
 [dependencies]
 gane-core = { path = "../gane-core" }

@@ -1,4 +1,4 @@
-//! AURORA NAV — Metrics Collection & Prometheus Export
+//! G.A.N.E NAV — Metrics Collection & Prometheus Export
 //!
 //! Lightweight, zero-dependency Prometheus-compatible metrics for the
 //! navigation pipeline. Counters, gauges, and histograms are collected

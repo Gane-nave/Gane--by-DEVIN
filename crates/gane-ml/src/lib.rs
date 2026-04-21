@@ -1,6 +1,6 @@
-//! # Aurora ML
+//! # G.A.N.E ML
 //!
-//! Machine learning pipeline for the AURORA NAV platform — feature
+//! Machine learning pipeline for the G.A.N.E NAV platform — feature
 //! engineering, model training, prediction serving, and model management.
 
 pub mod features;

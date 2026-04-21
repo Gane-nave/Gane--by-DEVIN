@@ -1,5 +1,5 @@
 //! Cross-crate integration — verifies that data types and interfaces work correctly
-//! when passed between different Aurora crates.
+//! when passed between different G.A.N.E crates.
 
 use std::collections::HashMap;
 

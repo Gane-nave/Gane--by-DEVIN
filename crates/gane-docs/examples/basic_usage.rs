@@ -1,4 +1,4 @@
-//! Basic usage example for AURORA NAV.
+//! Basic usage example for G.A.N.E NAV.
 //!
 //! Demonstrates creating a navigation pipeline, checking health,
 //! and inspecting subsystem status.
@@ -10,7 +10,7 @@ use gane_config::AuroraConfig;
 fn main() {
     // Use default configuration
     let config = AuroraConfig::default();
-    println!("AURORA NAV v{}", env!("CARGO_PKG_VERSION"));
+    println!("G.A.N.E NAV v{}", env!("CARGO_PKG_VERSION"));
     println!("API port: {}", config.api.port);
     println!("Min satellites: {}", config.gnss.min_satellites);
 

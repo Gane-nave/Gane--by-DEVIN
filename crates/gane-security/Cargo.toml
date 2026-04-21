@@ -2,7 +2,7 @@
 name = "gane-security"
 version.workspace = true
 edition.workspace = true
-description = "Security middleware, rate limiting, input validation, and TLS for AURORA NAV"
+description = "Security middleware, rate limiting, input validation, and TLS for G.A.N.E NAV"
 
 [dependencies]
 serde = { workspace = true }

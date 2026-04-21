@@ -1,4 +1,4 @@
-//! AURORA Trust System — reputation scoring, multi-source validation, sybil/collusion detection.
+//! GANE Trust System — reputation scoring, multi-source validation, sybil/collusion detection.
 //!
 //! Computes trust scores for users, events, and data sources, with
 //! multi-source validation, sybil attack protection, rate limiting,

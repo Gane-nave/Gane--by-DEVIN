@@ -2,6 +2,6 @@
 name = "gane-debounce"
 version = "0.1.0"
 edition = "2021"
-description = "Debouncing and throttling for event processing in AURORA NAV"
+description = "Debouncing and throttling for event processing in G.A.N.E NAV"
 
 [dependencies]

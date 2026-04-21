@@ -1,6 +1,6 @@
 #![allow(unknown_lints)]
 #![allow(clippy::unnecessary_map_or)]
-//! AURORA NAV — Emergency Satellite Layer
+//! G.A.N.E NAV — Emergency Satellite Layer
 //!
 //! Provides emergency location sharing, SOS broadcasting, satellite-based
 //! navigation, message verification, and multi-channel failover during

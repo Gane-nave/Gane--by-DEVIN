@@ -1,4 +1,4 @@
-//! Aurora I18n — internationalization, localization, RTL support, and pluralization.
+//! G.A.N.E I18n — internationalization, localization, RTL support, and pluralization.
 
 pub mod locale;
 pub mod messages;

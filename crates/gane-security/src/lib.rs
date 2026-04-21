@@ -1,5 +1,5 @@
 //! Security middleware, rate limiting, input validation, and TLS configuration
-//! for AURORA NAV.
+//! for G.A.N.E NAV.
 //!
 //! Provides defense-in-depth security layers including request rate limiting,
 //! input sanitization, security headers, and CORS policy management.

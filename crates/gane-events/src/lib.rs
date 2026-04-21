@@ -1,4 +1,4 @@
-//! AURORA NAV — Global Event Bus
+//! G.A.N.E NAV — Global Event Bus
 //!
 //! Event-driven architecture core. All system communication flows through
 //! typed events with envelope metadata, idempotency, and signature support.

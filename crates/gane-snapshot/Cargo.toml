@@ -2,6 +2,6 @@
 name = "gane-snapshot"
 version = "0.1.0"
 edition = "2021"
-description = "State snapshotting and checkpoint/restore for AURORA NAV"
+description = "State snapshotting and checkpoint/restore for G.A.N.E NAV"
 
 [dependencies]

@@ -1,4 +1,4 @@
-//! Notification system for AURORA NAV.
+//! Notification system for G.A.N.E NAV.
 //!
 //! Provides push notifications, geo-fence alerts, proximity warnings,
 //! and scheduled alert management for the navigation system.

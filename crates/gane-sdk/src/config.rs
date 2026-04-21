@@ -1,4 +1,4 @@
-//! SDK configuration — settings for the AURORA NAV SDK client,
+//! SDK configuration — settings for the G.A.N.E NAV SDK client,
 //! including connection parameters, retry policies, and feature flags.
 
 use chrono::{DateTime, Utc};

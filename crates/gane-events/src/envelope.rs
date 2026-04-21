@@ -6,7 +6,7 @@ use uuid::Uuid;
 
 use crate::event_type::EventType;
 
-/// Every event in AURORA NAV is wrapped in this envelope.
+/// Every event in G.A.N.E NAV is wrapped in this envelope.
 /// Provides traceability, idempotency, and integrity metadata.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct EventEnvelope {

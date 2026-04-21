@@ -1,4 +1,4 @@
-//! Pre-defined metric collectors for AURORA NAV subsystems.
+//! Pre-defined metric collectors for G.A.N.E NAV subsystems.
 
 use crate::registry::MetricRegistry;
 use std::sync::Arc;

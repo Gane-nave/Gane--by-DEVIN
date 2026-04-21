@@ -1,4 +1,4 @@
-//! WebSocket & Real-Time Communication engine for AURORA NAV.
+//! WebSocket & Real-Time Communication engine for G.A.N.E NAV.
 //!
 //! Provides connection management, message framing, channel/room abstractions,
 //! and heartbeat-based liveness detection.

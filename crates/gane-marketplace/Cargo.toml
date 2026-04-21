@@ -2,7 +2,7 @@
 name = "gane-marketplace"
 version.workspace = true
 edition.workspace = true
-description = "Plugin marketplace for AURORA NAV / GMIN — listings, reviews, installation, versioning"
+description = "Plugin marketplace for G.A.N.E NAV / G.A.N.E — listings, reviews, installation, versioning"
 
 [dependencies]
 gane-core = { path = "../gane-core" }

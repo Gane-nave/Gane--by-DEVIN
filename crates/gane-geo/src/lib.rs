@@ -1,4 +1,4 @@
-//! Advanced Geospatial Processing engine for AURORA NAV.
+//! Advanced Geospatial Processing engine for G.A.N.E NAV.
 //!
 //! Provides coordinate transforms, polygon operations, geofencing,
 //! and map projection utilities.

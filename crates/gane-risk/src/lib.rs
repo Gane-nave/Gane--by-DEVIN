@@ -1,4 +1,4 @@
-//! AURORA Risk Engine — segment, route, and systemic risk scoring.
+//! GANE Risk Engine — segment, route, and systemic risk scoring.
 //!
 //! Computes risk scores for road segments and routes based on multiple
 //! weighted factors: accident history, weather, visibility, infrastructure

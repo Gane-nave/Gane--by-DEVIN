@@ -1,4 +1,4 @@
-//! Aurora Accessibility — screen reader support, contrast analysis, keyboard navigation, WCAG compliance.
+//! G.A.N.E Accessibility — screen reader support, contrast analysis, keyboard navigation, WCAG compliance.
 
 pub mod contrast;
 pub mod keyboard;

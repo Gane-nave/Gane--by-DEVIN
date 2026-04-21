@@ -1,6 +1,6 @@
-//! # Aurora Analytics
+//! # G.A.N.E Analytics
 //!
-//! Analytics engine for the AURORA NAV platform — event tracking,
+//! Analytics engine for the G.A.N.E NAV platform — event tracking,
 //! funnel analysis, cohort segmentation, and reporting.
 
 pub mod cohorts;

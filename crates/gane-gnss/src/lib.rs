@@ -1,4 +1,4 @@
-//! AURORA NAV — GNSS Acquisition Layer
+//! G.A.N.E NAV — GNSS Acquisition Layer
 //!
 //! Multi-constellation, multi-frequency GNSS receiver abstraction.
 //! Independent acquisition per constellation with quality scoring,

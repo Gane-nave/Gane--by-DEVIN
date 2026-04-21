@@ -1,4 +1,4 @@
-//! # Aurora Profile
+//! # G.A.N.E Profile
 //!
 //! User profile, preferences, and personalization engine.
 //! Learns from driving patterns to optimise route suggestions,

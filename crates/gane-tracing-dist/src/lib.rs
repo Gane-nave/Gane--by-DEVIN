@@ -1,4 +1,4 @@
-//! Distributed Tracing engine for AURORA NAV.
+//! Distributed Tracing engine for G.A.N.E NAV.
 //!
 //! Provides trace/span management, context propagation,
 //! and trace collection for distributed request tracking.

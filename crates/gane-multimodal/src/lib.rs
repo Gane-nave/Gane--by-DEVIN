@@ -1,4 +1,4 @@
-//! # Aurora Multimodal
+//! # G.A.N.E Multimodal
 //!
 //! Multi-modal transport routing engine supporting pedestrian, bicycle,
 //! and public transit modes with seamless intermodal transfers.

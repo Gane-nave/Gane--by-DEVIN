@@ -1,4 +1,4 @@
-//! Circuit breaker and resilience patterns for AURORA NAV.
+//! Circuit breaker and resilience patterns for G.A.N.E NAV.
 //!
 //! Provides circuit breaker state machine, retry policies, bulkhead isolation,
 //! and fallback strategies for fault-tolerant service communication.

@@ -4,7 +4,7 @@ version.workspace = true
 edition.workspace = true
 license.workspace = true
 repository.workspace = true
-description = "AURORA NAV — Fleet operations engine: task management, assignment, dispatch, SLA monitoring, proof of visit/delivery"
+description = "G.A.N.E NAV — Fleet operations engine: task management, assignment, dispatch, SLA monitoring, proof of visit/delivery"
 
 [dependencies]
 gane-core = { path = "../gane-core" }

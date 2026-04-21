@@ -1,4 +1,4 @@
-//! Persistent storage layer for AURORA NAV.
+//! Persistent storage layer for G.A.N.E NAV.
 //!
 //! Provides time-series data storage, key-value store, schema migrations,
 //! and backup/restore capabilities for the navigation system.

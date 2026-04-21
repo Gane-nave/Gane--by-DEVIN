@@ -1,6 +1,6 @@
 #![allow(unknown_lints)]
 #![allow(clippy::unnecessary_map_or)]
-//! AURORA NAV — Immersive Visual Navigation
+//! G.A.N.E NAV — Immersive Visual Navigation
 //!
 //! 3D scene management, AR overlay positioning, landmark recognition,
 //! visual route guidance, and camera-based navigation assistance.

@@ -1,4 +1,4 @@
-//! AURORA NAV — Offline Resilience
+//! G.A.N.E NAV — Offline Resilience
 //!
 //! Priority queuing, data integrity verification, graceful degradation
 //! policies, and storage budget management for offline-first operation.

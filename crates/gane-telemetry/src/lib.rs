@@ -1,4 +1,4 @@
-//! AURORA NAV — Telemetry, Audit, and Replay
+//! G.A.N.E NAV — Telemetry, Audit, and Replay
 //!
 //! Structured logging, raw GNSS/fusion recording, source trust history,
 //! failover events, spoof/jam alerts, and replay session management.

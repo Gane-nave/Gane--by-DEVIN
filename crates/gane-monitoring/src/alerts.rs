@@ -259,7 +259,7 @@ impl AlertEngine {
         self.rules.len()
     }
 
-    /// Register default AURORA NAV alert rules.
+    /// Register default G.A.N.E NAV alert rules.
     pub fn register_defaults(&mut self) {
         let defaults = vec![
             AlertRule {

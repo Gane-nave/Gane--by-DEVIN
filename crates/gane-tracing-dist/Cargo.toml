@@ -3,6 +3,6 @@ name = "gane-tracing-dist"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
-description = "Distributed tracing engine for AURORA NAV"
+description = "Distributed tracing engine for G.A.N.E NAV"
 
 [dependencies]

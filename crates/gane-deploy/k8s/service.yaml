@@ -1,5 +1,5 @@
 # =============================================================================
-# AURORA NAV / GMIN — Kubernetes Service
+# G.A.N.E NAV / G.A.N.E — Kubernetes Service
 # =============================================================================
 apiVersion: v1
 kind: Service

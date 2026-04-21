@@ -1,4 +1,4 @@
-//! AURORA NAV — Correction Layer
+//! G.A.N.E NAV — Correction Layer
 //!
 //! SBAS, PPP, RTK, NRTK correction management with fallback logic.
 //! Operates in five modes (A through E) as defined in the spec.

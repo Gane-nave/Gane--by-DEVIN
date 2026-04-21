@@ -1,4 +1,4 @@
-//! AURORA NAV — Observability & OpenAPI
+//! G.A.N.E NAV — Observability & OpenAPI
 //!
 //! Structured logging configuration, OpenAPI 3.0 spec generation,
 //! and health probe definitions for production deployment.

@@ -2,6 +2,6 @@
 name = "gane-serialization"
 version = "0.1.0"
 edition = "2021"
-description = "Advanced serialization and schema evolution for AURORA NAV"
+description = "Advanced serialization and schema evolution for G.A.N.E NAV"
 
 [dependencies]

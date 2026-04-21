@@ -1,4 +1,4 @@
-//! Core primitive types and common value objects used across AURORA NAV.
+//! Core primitive types and common value objects used across G.A.N.E NAV.
 
 use chrono::{DateTime, Utc};
 use nalgebra::Matrix3;

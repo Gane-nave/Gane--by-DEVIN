@@ -2,7 +2,7 @@
 name = "gane-integration-tests"
 version.workspace = true
 edition.workspace = true
-description = "Cross-crate end-to-end integration tests for AURORA NAV / GMIN"
+description = "Cross-crate end-to-end integration tests for G.A.N.E NAV / G.A.N.E"
 
 [dependencies]
 gane-config = { path = "../gane-config" }
