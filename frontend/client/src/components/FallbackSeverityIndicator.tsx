@@ -20,6 +20,7 @@ import {
   type FallbackChainState,
 } from "@/engine/positionFallbackChain";
 import { useFallbackTransitionAlerts } from "@/hooks/useFallbackTransitionAlerts";
+import { useConstellationHandoffAlerts } from "@/hooks/useConstellationHandoffAlerts";
 import {
   SEVERITY_LABEL,
   tierToSeverity,
@@ -53,8 +54,9 @@ const SEVERITY_STYLE: Record<
 };
 
 export default function FallbackSeverityIndicator() {
-  // Subscribe toast alerts once.
+  // Subscribe toast alerts once — fallback chain + constellation handoffs.
   useFallbackTransitionAlerts();
+  useConstellationHandoffAlerts();
 
   const [state, setState] = useState<FallbackChainState | null>(null);
 
