@@ -1,7 +1,7 @@
-# Testing AURORA NAV
+# Testing G.A.N.E NAV
 
 ## Overview
-AURORA NAV is a Rust workspace with many crates (see workspace members in `Cargo.toml`). Testing is done entirely via `cargo` commands — there is no UI, browser, or external service to test against.
+G.A.N.E NAV is a Rust workspace with many crates (see workspace members in `Cargo.toml`). Testing is done entirely via `cargo` commands — there is no UI, browser, or external service to test against.
 
 ## Devin Secrets Needed
 None.

@@ -38,15 +38,13 @@ mod tests {
     #[test]
     fn default_toml_is_parseable() {
         let toml_str = default_toml();
-        let _cfg: crate::GaneConfig =
-            toml::from_str(&toml_str).expect("default TOML must parse");
+        let _cfg: crate::GaneConfig = toml::from_str(&toml_str).expect("default TOML must parse");
     }
 
     #[test]
     fn minimal_toml_is_parseable() {
         let toml_str = minimal_toml();
-        let cfg: crate::GaneConfig =
-            toml::from_str(toml_str).expect("minimal TOML must parse");
+        let cfg: crate::GaneConfig = toml::from_str(toml_str).expect("minimal TOML must parse");
         assert_eq!(cfg.api.port, 3000);
         assert_eq!(cfg.gnss.min_satellites, 4);
     }
